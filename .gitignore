@@ -1,2 +1,9 @@
 data/
 .mypy_cache/
+.venv/
+results/
+experiments/
+.idea/
+__pycache__/
+lymphoma-segmentation-dnn/
+answers/
