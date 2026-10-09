@@ -1,0 +1,150 @@
+[2026-10-09 01:40:49] [fold2/train] command: /home/eva25/venvs/lymphoma_seg/bin/torchrun --standalone --nproc_per_node=1 "/mnt/c/Users/eva/Desktop/6th semester/Projects/manu/lymphoma-segmentation-dnn/segmentation/trainddp.py" --fold 2 --epochs 10 --num_workers 6
+[2026-10-09 01:40:49] [fold2/train] working directory: /mnt/c/Users/eva/Desktop/6th semester/Projects/manu/experiments/unet_10ep/work
+[2026-10-09 01:40:58] [fold2/train] Training unet on fold 2
+[2026-10-09 01:40:58] [fold2/train] The models will be saved in results/models/fold2/unet/unet_fold2_randcrop192
+[2026-10-09 01:40:58] [fold2/train] The training/validation logs will be saved in results/logs/fold2/unet/unet_fold2_randcrop192
+[2026-10-09 01:40:58] [fold2/train] monai.transforms.io.dictionary LoadImaged.__init__:image_only: Current default value of argument `image_only=False` has been deprecated since version 1.1. It will be changed to `image_only=True` in version 1.3.
+[2026-10-09 01:41:00] [fold2/train] tqdm is not installed, will not show the caching progress bar.
+[2026-10-09 01:42:20] [fold2/train] [GPU0]: Running training: epoch = 1
+[2026-10-09 01:47:37] [fold2/train] [GPU:0]: epoch 1/10: average loss: 0.5888
+[2026-10-09 01:47:38] [fold2/train] [GPU:0]: Epoch 1 time: 5.29 min
+[2026-10-09 01:47:38] [fold2/train] [GPU0]: Running training: epoch = 2
+[2026-10-09 01:53:03] [fold2/train] [GPU:0]: epoch 2/10: average loss: 0.5392
+[2026-10-09 01:53:04] [fold2/train] [GPU0]: Running validation
+[2026-10-09 01:53:13] [fold2/train] Using a non-tuple sequence for multidimensional indexing is deprecated and will be changed in pytorch 2.9; use x[tuple(seq)] instead of x[seq]. In pytorch 2.9 this will be interpreted as tensor index, x[torch.tensor(seq)], which will result either in an error or a different result (Triggered internally at /pytorch/torch/csrc/autograd/python_variable_indexing.cpp:347.)
+[2026-10-09 01:53:41] [fold2/train] Using a non-tuple sequence for multidimensional indexing is deprecated and will be changed in pytorch 2.9; use x[tuple(seq)] instead of x[seq]. In pytorch 2.9 this will be interpreted as tensor index, x[torch.tensor(seq)], which will result either in an error or a different result (Triggered internally at /pytorch/torch/csrc/autograd/python_variable_indexing.cpp:347.)
+[2026-10-09 01:54:08] [fold2/train] [rank0]: Traceback (most recent call last):
+[2026-10-09 01:54:08] [fold2/train] [rank0]:   File "/mnt/c/Users/eva/Desktop/6th semester/Projects/manu/lymphoma-segmentation-dnn/segmentation/trainddp.py", line 269, in <module>
+[2026-10-09 01:54:08] [fold2/train] [rank0]:     main(args)
+[2026-10-09 01:54:08] [fold2/train] [rank0]:   File "/mnt/c/Users/eva/Desktop/6th semester/Projects/manu/lymphoma-segmentation-dnn/segmentation/trainddp.py", line 236, in main
+[2026-10-09 01:54:08] [fold2/train] [rank0]:     main_worker(save_models_dir, save_logs_dir, args)
+[2026-10-09 01:54:08] [fold2/train] [rank0]:   File "/mnt/c/Users/eva/Desktop/6th semester/Projects/manu/lymphoma-segmentation-dnn/segmentation/trainddp.py", line 197, in main_worker
+[2026-10-09 01:54:08] [fold2/train] [rank0]:     metric(y_pred=val_outputs, y=val_labels)
+[2026-10-09 01:54:08] [fold2/train] [rank0]:   File "/home/eva25/venvs/lymphoma_seg/lib/python3.11/site-packages/monai/metrics/metric.py", line 344, in __call__
+[2026-10-09 01:54:08] [fold2/train] [rank0]:     ret = super().__call__(y_pred=y_pred, y=y, **kwargs)
+[2026-10-09 01:54:08] [fold2/train] [rank0]:           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2026-10-09 01:54:08] [fold2/train] [rank0]:   File "/home/eva25/venvs/lymphoma_seg/lib/python3.11/site-packages/monai/metrics/metric.py", line 73, in __call__
+[2026-10-09 01:54:08] [fold2/train] [rank0]:     return self._compute_list(y_pred, y, **kwargs)
+[2026-10-09 01:54:08] [fold2/train] [rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2026-10-09 01:54:08] [fold2/train] [rank0]:   File "/home/eva25/venvs/lymphoma_seg/lib/python3.11/site-packages/monai/metrics/metric.py", line 97, in _compute_list
+[2026-10-09 01:54:08] [fold2/train] [rank0]:     ret = [
+[2026-10-09 01:54:08] [fold2/train] [rank0]:           ^
+[2026-10-09 01:54:08] [fold2/train] [rank0]:   File "/home/eva25/venvs/lymphoma_seg/lib/python3.11/site-packages/monai/metrics/metric.py", line 98, in <listcomp>
+[2026-10-09 01:54:08] [fold2/train] [rank0]:     self._compute_tensor(p.detach().unsqueeze(0), y_.detach().unsqueeze(0), **kwargs)
+[2026-10-09 01:54:08] [fold2/train] [rank0]:   File "/home/eva25/venvs/lymphoma_seg/lib/python3.11/site-packages/monai/metrics/meandice.py", line 95, in _compute_tensor
+[2026-10-09 01:54:08] [fold2/train] [rank0]:     return self.dice_helper(y_pred=y_pred, y=y)  # type: ignore
+[2026-10-09 01:54:08] [fold2/train] [rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2026-10-09 01:54:08] [fold2/train] [rank0]:   File "/home/eva25/venvs/lymphoma_seg/lib/python3.11/site-packages/monai/metrics/meandice.py", line 260, in __call__
+[2026-10-09 01:54:08] [fold2/train] [rank0]:     c_list.append(self.compute_channel(x_pred, x))
+[2026-10-09 01:54:08] [fold2/train] [rank0]:                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2026-10-09 01:54:08] [fold2/train] [rank0]:   File "/home/eva25/venvs/lymphoma_seg/lib/python3.11/site-packages/monai/metrics/meandice.py", line 219, in compute_channel
+[2026-10-09 01:54:08] [fold2/train] [rank0]:     if y_o > 0:
+[2026-10-09 01:54:08] [fold2/train] [rank0]:        ^^^^^^^
+[2026-10-09 01:54:08] [fold2/train] [rank0]:   File "/home/eva25/venvs/lymphoma_seg/lib/python3.11/site-packages/monai/data/meta_tensor.py", line 276, in __torch_function__
+[2026-10-09 01:54:08] [fold2/train] [rank0]:     ret = super().__torch_function__(func, types, args, kwargs)
+[2026-10-09 01:54:08] [fold2/train] [rank0]:           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2026-10-09 01:54:08] [fold2/train] [rank0]:   File "/home/eva25/venvs/lymphoma_seg/lib/python3.11/site-packages/torch/_tensor.py", line 1703, in __torch_function__
+[2026-10-09 01:54:08] [fold2/train] [rank0]:     ret = func(*args, **kwargs)
+[2026-10-09 01:54:08] [fold2/train] [rank0]:           ^^^^^^^^^^^^^^^^^^^^^
+[2026-10-09 01:54:08] [fold2/train] [rank0]: torch.AcceleratorError: CUDA error: unknown error
+[2026-10-09 01:54:08] [fold2/train] [rank0]: Search for `cudaErrorUnknown' in https://docs.nvidia.com/cuda/cuda-runtime-api/group__CUDART__TYPES.html for more information.
+[2026-10-09 01:54:08] [fold2/train] [rank0]: CUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.
+[2026-10-09 01:54:08] [fold2/train] [rank0]: For debugging consider passing CUDA_LAUNCH_BLOCKING=1
+[2026-10-09 01:54:08] [fold2/train] [rank0]: Compile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.
+[2026-10-09 01:54:09] [fold2/train] 
+[2026-10-09 01:54:14] [fold2/train] [rank0]:[W1009 01:54:14.231783654 CUDAEvent.h:57] Warning: CUDA warning: unknown error (function ~CUDAEvent)
+[2026-10-09 01:54:14] [fold2/train] [rank0]:[W1009 01:54:14.232655083 CUDAEvent.h:57] Warning: CUDA warning: unknown error (function ~CUDAEvent)
+[2026-10-09 01:54:14] [fold2/train] [rank0]:[W1009 01:54:14.232689277 CUDAEvent.h:57] Warning: CUDA warning: unknown error (function ~CUDAEvent)
+[2026-10-09 01:54:14] [fold2/train] [rank0]:[W1009 01:54:14.232719402 CUDAEvent.h:57] Warning: CUDA warning: unknown error (function ~CUDAEvent)
+[2026-10-09 01:54:14] [fold2/train] [rank0]:[W1009 01:54:14.232725672 CUDAEvent.h:57] Warning: CUDA warning: unknown error (function ~CUDAEvent)
+[2026-10-09 01:54:14] [fold2/train] [rank0]:[W1009 01:54:14.233339866 CUDAGuardImpl.h:126] Warning: CUDA warning: unknown error (function destroyEvent)
+[2026-10-09 01:54:14] [fold2/train] [rank0]:[W1009 01:54:14.236045758 CUDAGuardImpl.h:126] Warning: CUDA warning: unknown error (function destroyEvent)
+[2026-10-09 01:54:14] [fold2/train] [rank0]:[W1009 01:54:14.238596933 CUDAGuardImpl.h:126] Warning: CUDA warning: unknown error (function destroyEvent)
+[2026-10-09 01:54:14] [fold2/train] [rank0]:[W1009 01:54:14.239980910 CUDAGuardImpl.h:126] Warning: CUDA warning: unknown error (function destroyEvent)
+[2026-10-09 01:54:15] [fold2/train] [rank0]:[W1009 01:54:15.134039432 ProcessGroupNCCL.cpp:1575] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+[2026-10-09 01:54:16] [fold2/train] [rank0]:[W1009 01:54:16.200143295 CUDAEvent.h:57] Warning: CUDA warning: unknown error (function ~CUDAEvent)
+[2026-10-09 01:54:22] [fold2/train] E1009 01:54:22.508000 17802 torch/distributed/elastic/multiprocessing/api.py:986] failed (exitcode: 1) local_rank: 0 (pid: 17835) of binary: /home/eva25/venvs/lymphoma_seg/bin/python
+[2026-10-09 01:54:22] [fold2/train] Traceback (most recent call last):
+[2026-10-09 01:54:22] [fold2/train]   File "/home/eva25/venvs/lymphoma_seg/bin/torchrun", line 10, in <module>
+[2026-10-09 01:54:22] [fold2/train]     sys.exit(main())
+[2026-10-09 01:54:22] [fold2/train]              ^^^^^^
+[2026-10-09 01:54:22] [fold2/train]   File "/home/eva25/venvs/lymphoma_seg/lib/python3.11/site-packages/torch/distributed/elastic/multiprocessing/errors/__init__.py", line 362, in wrapper
+[2026-10-09 01:54:22] [fold2/train]     return f(*args, **kwargs)
+[2026-10-09 01:54:22] [fold2/train]            ^^^^^^^^^^^^^^^^^^
+[2026-10-09 01:54:22] [fold2/train]   File "/home/eva25/venvs/lymphoma_seg/lib/python3.11/site-packages/torch/distributed/run.py", line 990, in main
+[2026-10-09 01:54:22] [fold2/train]     run(args)
+[2026-10-09 01:54:22] [fold2/train]   File "/home/eva25/venvs/lymphoma_seg/lib/python3.11/site-packages/torch/distributed/run.py", line 981, in run
+[2026-10-09 01:54:22] [fold2/train]     elastic_launch(
+[2026-10-09 01:54:22] [fold2/train]   File "/home/eva25/venvs/lymphoma_seg/lib/python3.11/site-packages/torch/distributed/launcher/api.py", line 170, in __call__
+[2026-10-09 01:54:22] [fold2/train]     return launch_agent(self._config, self._entrypoint, list(args))
+[2026-10-09 01:54:22] [fold2/train]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2026-10-09 01:54:22] [fold2/train]   File "/home/eva25/venvs/lymphoma_seg/lib/python3.11/site-packages/torch/distributed/launcher/api.py", line 317, in launch_agent
+[2026-10-09 01:54:22] [fold2/train]     raise ChildFailedError(
+[2026-10-09 01:54:22] [fold2/train] torch.distributed.elastic.multiprocessing.errors.ChildFailedError: 
+[2026-10-09 01:54:22] [fold2/train] ============================================================
+[2026-10-09 01:54:22] [fold2/train] /mnt/c/Users/eva/Desktop/6th semester/Projects/manu/lymphoma-segmentation-dnn/segmentation/trainddp.py FAILED
+[2026-10-09 01:54:22] [fold2/train] ------------------------------------------------------------
+[2026-10-09 01:54:22] [fold2/train] Failures:
+[2026-10-09 01:54:22] [fold2/train]   <NO_OTHER_FAILURES>
+[2026-10-09 01:54:22] [fold2/train] ------------------------------------------------------------
+[2026-10-09 01:54:22] [fold2/train] Root Cause (first observed failure):
+[2026-10-09 01:54:22] [fold2/train] [0]:
+[2026-10-09 01:54:22] [fold2/train]   time      : 2026-10-09_01:54:22
+[2026-10-09 01:54:22] [fold2/train]   host      : DESKTOP-PJAVT06.localdomain
+[2026-10-09 01:54:22] [fold2/train]   rank      : 0 (local_rank: 0)
+[2026-10-09 01:54:22] [fold2/train]   exitcode  : 1 (pid: 17835)
+[2026-10-09 01:54:22] [fold2/train]   error_file: <N/A>
+[2026-10-09 01:54:22] [fold2/train]   traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
+[2026-10-09 01:54:22] [fold2/train] ============================================================
+[2026-10-09 01:54:27] [fold2/train] exit code: 1
+[2026-10-09 01:57:42] [fold2/train] command: /home/eva25/venvs/lymphoma_seg/bin/torchrun --standalone --nproc_per_node=1 "/mnt/c/Users/eva/Desktop/6th semester/Projects/manu/lymphoma-segmentation-dnn/segmentation/trainddp.py" --fold 2 --epochs 10 --num_workers 6
+[2026-10-09 01:57:42] [fold2/train] working directory: /mnt/c/Users/eva/Desktop/6th semester/Projects/manu/experiments/unet_10ep/work
+[2026-10-09 01:57:47] [fold2/train] Training unet on fold 2
+[2026-10-09 01:57:47] [fold2/train] The models will be saved in results/models/fold2/unet/unet_fold2_randcrop192
+[2026-10-09 01:57:47] [fold2/train] The training/validation logs will be saved in results/logs/fold2/unet/unet_fold2_randcrop192
+[2026-10-09 01:57:47] [fold2/train] monai.transforms.io.dictionary LoadImaged.__init__:image_only: Current default value of argument `image_only=False` has been deprecated since version 1.1. It will be changed to `image_only=True` in version 1.3.
+[2026-10-09 01:57:49] [fold2/train] tqdm is not installed, will not show the caching progress bar.
+[2026-10-09 01:58:38] [fold2/train] [GPU0]: Running training: epoch = 1
+[2026-10-09 02:02:44] [fold2/train] [GPU:0]: epoch 1/10: average loss: 0.5979
+[2026-10-09 02:02:44] [fold2/train] [GPU:0]: Epoch 1 time: 4.11 min
+[2026-10-09 02:02:44] [fold2/train] [GPU0]: Running training: epoch = 2
+[2026-10-09 02:06:48] [fold2/train] [GPU:0]: epoch 2/10: average loss: 0.5456
+[2026-10-09 02:06:48] [fold2/train] [GPU0]: Running validation
+[2026-10-09 02:06:55] [fold2/train] Using a non-tuple sequence for multidimensional indexing is deprecated and will be changed in pytorch 2.9; use x[tuple(seq)] instead of x[seq]. In pytorch 2.9 this will be interpreted as tensor index, x[torch.tensor(seq)], which will result either in an error or a different result (Triggered internally at /pytorch/torch/csrc/autograd/python_variable_indexing.cpp:347.)
+[2026-10-09 02:07:16] [fold2/train] Using a non-tuple sequence for multidimensional indexing is deprecated and will be changed in pytorch 2.9; use x[tuple(seq)] instead of x[seq]. In pytorch 2.9 this will be interpreted as tensor index, x[torch.tensor(seq)], which will result either in an error or a different result (Triggered internally at /pytorch/torch/csrc/autograd/python_variable_indexing.cpp:347.)
+[2026-10-09 02:08:30] [fold2/train] [GPU:0] SAVING MODEL at epoch: 2; Mean DSC: 0.0364
+[2026-10-09 02:08:31] [fold2/train] [GPU:0]: Epoch 2 time: 5.79 min
+[2026-10-09 02:08:31] [fold2/train] [GPU0]: Running training: epoch = 3
+[2026-10-09 02:14:09] [fold2/train] [GPU:0]: epoch 3/10: average loss: 0.5028
+[2026-10-09 02:14:09] [fold2/train] [GPU:0]: Epoch 3 time: 5.62 min
+[2026-10-09 02:14:09] [fold2/train] [GPU0]: Running training: epoch = 4
+[2026-10-09 02:21:48] [fold2/train] [GPU:0]: epoch 4/10: average loss: 0.4533
+[2026-10-09 02:21:48] [fold2/train] [GPU0]: Running validation
+[2026-10-09 02:24:42] [fold2/train] [GPU:0] SAVING MODEL at epoch: 4; Mean DSC: 0.1484
+[2026-10-09 02:24:43] [fold2/train] [GPU:0]: Epoch 4 time: 10.57 min
+[2026-10-09 02:24:43] [fold2/train] [GPU0]: Running training: epoch = 5
+[2026-10-09 02:31:25] [fold2/train] [GPU:0]: epoch 5/10: average loss: 0.4132
+[2026-10-09 02:31:25] [fold2/train] [GPU:0]: Epoch 5 time: 6.7 min
+[2026-10-09 02:31:25] [fold2/train] [GPU0]: Running training: epoch = 6
+[2026-10-09 02:37:53] [fold2/train] [GPU:0]: epoch 6/10: average loss: 0.3987
+[2026-10-09 02:37:53] [fold2/train] [GPU0]: Running validation
+[2026-10-09 02:40:06] [fold2/train] [GPU:0] SAVING MODEL at epoch: 6; Mean DSC: 0.1598
+[2026-10-09 02:40:07] [fold2/train] [GPU:0]: Epoch 6 time: 8.71 min
+[2026-10-09 02:40:07] [fold2/train] [GPU0]: Running training: epoch = 7
+[2026-10-09 02:44:58] [fold2/train] [GPU:0]: epoch 7/10: average loss: 0.3848
+[2026-10-09 02:44:58] [fold2/train] [GPU:0]: Epoch 7 time: 4.85 min
+[2026-10-09 02:44:58] [fold2/train] [GPU0]: Running training: epoch = 8
+[2026-10-09 02:51:02] [fold2/train] [GPU:0]: epoch 8/10: average loss: 0.3706
+[2026-10-09 02:51:02] [fold2/train] [GPU0]: Running validation
+[2026-10-09 02:53:30] [fold2/train] [GPU:0] SAVING MODEL at epoch: 8; Mean DSC: 0.3213
+[2026-10-09 02:53:32] [fold2/train] [GPU:0]: Epoch 8 time: 8.56 min
+[2026-10-09 02:53:32] [fold2/train] [GPU0]: Running training: epoch = 9
+[2026-10-09 03:00:43] [fold2/train] [GPU:0]: epoch 9/10: average loss: 0.3620
+[2026-10-09 03:00:43] [fold2/train] [GPU:0]: Epoch 9 time: 7.19 min
+[2026-10-09 03:00:43] [fold2/train] [GPU0]: Running training: epoch = 10
+[2026-10-09 03:08:49] [fold2/train] [GPU:0]: epoch 10/10: average loss: 0.3561
+[2026-10-09 03:08:49] [fold2/train] [GPU0]: Running validation
+[2026-10-09 03:11:32] [fold2/train] [GPU:0] SAVING MODEL at epoch: 10; Mean DSC: 0.3309
+[2026-10-09 03:11:34] [fold2/train] [GPU:0]: Epoch 10 time: 10.85 min
+[2026-10-09 03:11:34] [fold2/train] [GPU:0]: Total time: 1.22 hr
+[2026-10-09 03:12:10] [fold2/train] exit code: 0

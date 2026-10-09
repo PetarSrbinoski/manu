@@ -1,0 +1,51 @@
+[2026-10-09 03:14:54] [fold3/train] command: /home/eva25/venvs/lymphoma_seg/bin/torchrun --standalone --nproc_per_node=1 "/mnt/c/Users/eva/Desktop/6th semester/Projects/manu/lymphoma-segmentation-dnn/segmentation/trainddp.py" --fold 3 --epochs 10 --num_workers 6
+[2026-10-09 03:14:54] [fold3/train] working directory: /mnt/c/Users/eva/Desktop/6th semester/Projects/manu/experiments/unet_10ep/work
+[2026-10-09 03:14:58] [fold3/train] Training unet on fold 3
+[2026-10-09 03:14:58] [fold3/train] The models will be saved in results/models/fold3/unet/unet_fold3_randcrop192
+[2026-10-09 03:14:58] [fold3/train] The training/validation logs will be saved in results/logs/fold3/unet/unet_fold3_randcrop192
+[2026-10-09 03:14:59] [fold3/train] monai.transforms.io.dictionary LoadImaged.__init__:image_only: Current default value of argument `image_only=False` has been deprecated since version 1.1. It will be changed to `image_only=True` in version 1.3.
+[2026-10-09 03:15:00] [fold3/train] tqdm is not installed, will not show the caching progress bar.
+[2026-10-09 03:15:51] [fold3/train] [GPU0]: Running training: epoch = 1
+[2026-10-09 03:20:10] [fold3/train] [GPU:0]: epoch 1/10: average loss: 0.6164
+[2026-10-09 03:20:10] [fold3/train] [GPU:0]: Epoch 1 time: 4.32 min
+[2026-10-09 03:20:10] [fold3/train] [GPU0]: Running training: epoch = 2
+[2026-10-09 03:24:11] [fold3/train] [GPU:0]: epoch 2/10: average loss: 0.5650
+[2026-10-09 03:24:11] [fold3/train] [GPU0]: Running validation
+[2026-10-09 03:24:16] [fold3/train] Using a non-tuple sequence for multidimensional indexing is deprecated and will be changed in pytorch 2.9; use x[tuple(seq)] instead of x[seq]. In pytorch 2.9 this will be interpreted as tensor index, x[torch.tensor(seq)], which will result either in an error or a different result (Triggered internally at /pytorch/torch/csrc/autograd/python_variable_indexing.cpp:347.)
+[2026-10-09 03:24:36] [fold3/train] Using a non-tuple sequence for multidimensional indexing is deprecated and will be changed in pytorch 2.9; use x[tuple(seq)] instead of x[seq]. In pytorch 2.9 this will be interpreted as tensor index, x[torch.tensor(seq)], which will result either in an error or a different result (Triggered internally at /pytorch/torch/csrc/autograd/python_variable_indexing.cpp:347.)
+[2026-10-09 03:25:24] [fold3/train] [GPU:0] SAVING MODEL at epoch: 2; Mean DSC: 0.1530
+[2026-10-09 03:25:25] [fold3/train] [GPU:0]: Epoch 2 time: 5.25 min
+[2026-10-09 03:25:25] [fold3/train] [GPU0]: Running training: epoch = 3
+[2026-10-09 03:30:08] [fold3/train] [GPU:0]: epoch 3/10: average loss: 0.5279
+[2026-10-09 03:30:08] [fold3/train] [GPU:0]: Epoch 3 time: 4.72 min
+[2026-10-09 03:30:08] [fold3/train] [GPU0]: Running training: epoch = 4
+[2026-10-09 03:35:25] [fold3/train] [GPU:0]: epoch 4/10: average loss: 0.5052
+[2026-10-09 03:35:25] [fold3/train] [GPU0]: Running validation
+[2026-10-09 03:36:53] [fold3/train] [GPU:0] SAVING MODEL at epoch: 4; Mean DSC: 0.1779
+[2026-10-09 03:36:54] [fold3/train] [GPU:0]: Epoch 4 time: 6.77 min
+[2026-10-09 03:36:54] [fold3/train] [GPU0]: Running training: epoch = 5
+[2026-10-09 03:42:06] [fold3/train] [GPU:0]: epoch 5/10: average loss: 0.4838
+[2026-10-09 03:42:06] [fold3/train] [GPU:0]: Epoch 5 time: 5.2 min
+[2026-10-09 03:42:06] [fold3/train] [GPU0]: Running training: epoch = 6
+[2026-10-09 03:48:04] [fold3/train] [GPU:0]: epoch 6/10: average loss: 0.4644
+[2026-10-09 03:48:04] [fold3/train] [GPU0]: Running validation
+[2026-10-09 03:49:52] [fold3/train] [GPU:0] SAVING MODEL at epoch: 6; Mean DSC: 0.1580
+[2026-10-09 03:49:54] [fold3/train] [GPU:0]: Epoch 6 time: 7.8 min
+[2026-10-09 03:49:54] [fold3/train] [GPU0]: Running training: epoch = 7
+[2026-10-09 03:55:09] [fold3/train] [GPU:0]: epoch 7/10: average loss: 0.4532
+[2026-10-09 03:55:10] [fold3/train] [GPU:0]: Epoch 7 time: 5.26 min
+[2026-10-09 03:55:10] [fold3/train] [GPU0]: Running training: epoch = 8
+[2026-10-09 04:00:07] [fold3/train] [GPU:0]: epoch 8/10: average loss: 0.4474
+[2026-10-09 04:00:07] [fold3/train] [GPU0]: Running validation
+[2026-10-09 04:01:11] [fold3/train] [GPU:0] SAVING MODEL at epoch: 8; Mean DSC: 0.1747
+[2026-10-09 04:01:13] [fold3/train] [GPU:0]: Epoch 8 time: 6.05 min
+[2026-10-09 04:01:13] [fold3/train] [GPU0]: Running training: epoch = 9
+[2026-10-09 04:06:48] [fold3/train] [GPU:0]: epoch 9/10: average loss: 0.4342
+[2026-10-09 04:06:48] [fold3/train] [GPU:0]: Epoch 9 time: 5.59 min
+[2026-10-09 04:06:48] [fold3/train] [GPU0]: Running training: epoch = 10
+[2026-10-09 04:11:40] [fold3/train] [GPU:0]: epoch 10/10: average loss: 0.4356
+[2026-10-09 04:11:40] [fold3/train] [GPU0]: Running validation
+[2026-10-09 04:12:48] [fold3/train] [GPU:0] SAVING MODEL at epoch: 10; Mean DSC: 0.1843
+[2026-10-09 04:12:50] [fold3/train] [GPU:0]: Epoch 10 time: 6.02 min
+[2026-10-09 04:12:50] [fold3/train] [GPU:0]: Total time: 0.95 hr
+[2026-10-09 04:13:21] [fold3/train] exit code: 0

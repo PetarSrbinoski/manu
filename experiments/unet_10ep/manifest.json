@@ -1,0 +1,193 @@
+{
+  "experiment": "unet_10ep",
+  "microsoft_repo": {
+    "path": "/mnt/c/Users/eva/Desktop/6th semester/Projects/manu/lymphoma-segmentation-dnn",
+    "remote": "https://github.com/microsoft/lymphoma-segmentation-dnn.git",
+    "commit": "81129243db3c868370a7664c9adc2ad52609484f",
+    "status_tracked_files": "",
+    "diff_against_HEAD": "",
+    "untracked": [
+      "?? __pycache__/",
+      "?? data_split/",
+      "?? segmentation/__pycache__/"
+    ]
+  },
+  "dataset": {
+    "root": "/home/eva25/data/lymphoma-baseline",
+    "sha256_cases_json": "7159021f88c0cd67071fa6d1f8e81f9429a8580b908488a409216e778ad0ebe9",
+    "sha256_splits_patient_level_json": "ff786bdec51e67dcb2fe759f77bb0d76af550b253431c52dcc11112fb83ca0cb",
+    "sha256_train_filepaths_csv": "d2fe99fc2f3c2f960bf2cd2a3782c75871dfbce481f97b4b7d42d087ddede418",
+    "held_out_examinations_per_fold": {
+      "0": 30,
+      "1": 29,
+      "2": 29,
+      "3": 29,
+      "4": 28
+    }
+  },
+  "training_arguments": {
+    "passed": {
+      "--epochs": 10,
+      "--num_workers": 6
+    },
+    "microsoft_defaults_not_passed": {
+      "--network-name": "unet",
+      "--input-patch-size": 192,
+      "--train-bs": 1,
+      "--cache-rate": 0.1,
+      "--lr": 0.0002,
+      "--wd": 1e-05,
+      "--val-interval": 2,
+      "--sw-bs": 2
+    }
+  },
+  "commands": {
+    "fold0": {
+      "train": "/home/eva25/venvs/lymphoma_seg/bin/torchrun --standalone --nproc_per_node=1 /mnt/c/Users/eva/Desktop/6th semester/Projects/manu/lymphoma-segmentation-dnn/segmentation/trainddp.py --fold 0 --epochs 10 --num_workers 6",
+      "inference": "/home/eva25/venvs/lymphoma_seg/bin/python /mnt/c/Users/eva/Desktop/6th semester/Projects/manu/lymphoma-segmentation-dnn/segmentation/inference.py --fold 0",
+      "metrics": "/home/eva25/venvs/lymphoma_seg/bin/python /mnt/c/Users/eva/Desktop/6th semester/Projects/manu/lymphoma-segmentation-dnn/segmentation/calculate_test_metrics.py --fold 0",
+      "lesion_measures": "/home/eva25/venvs/lymphoma_seg/bin/python /mnt/c/Users/eva/Desktop/6th semester/Projects/manu/cv_lesion_measures.py --ms-repo /mnt/c/Users/eva/Desktop/6th semester/Projects/manu/lymphoma-segmentation-dnn --test-csv /mnt/c/Users/eva/Desktop/6th semester/Projects/manu/experiments/unet_10ep/test_lists/fold0_test_filepaths.csv --pred-dir /mnt/c/Users/eva/Desktop/6th semester/Projects/manu/experiments/unet_10ep/work/results/predictions/fold0/unet/unet_fold0_randcrop192 --out-csv /mnt/c/Users/eva/Desktop/6th semester/Projects/manu/experiments/unet_10ep/work/results/test_lesion_measures_no_dmax/fold0/unet/unet_fold0_randcrop192/testlesionmeasures_no_dmax.csv"
+    },
+    "fold1": {
+      "train": "/home/eva25/venvs/lymphoma_seg/bin/torchrun --standalone --nproc_per_node=1 /mnt/c/Users/eva/Desktop/6th semester/Projects/manu/lymphoma-segmentation-dnn/segmentation/trainddp.py --fold 1 --epochs 10 --num_workers 6",
+      "inference": "/home/eva25/venvs/lymphoma_seg/bin/python /mnt/c/Users/eva/Desktop/6th semester/Projects/manu/lymphoma-segmentation-dnn/segmentation/inference.py --fold 1",
+      "metrics": "/home/eva25/venvs/lymphoma_seg/bin/python /mnt/c/Users/eva/Desktop/6th semester/Projects/manu/lymphoma-segmentation-dnn/segmentation/calculate_test_metrics.py --fold 1",
+      "lesion_measures": "/home/eva25/venvs/lymphoma_seg/bin/python /mnt/c/Users/eva/Desktop/6th semester/Projects/manu/cv_lesion_measures.py --ms-repo /mnt/c/Users/eva/Desktop/6th semester/Projects/manu/lymphoma-segmentation-dnn --test-csv /mnt/c/Users/eva/Desktop/6th semester/Projects/manu/experiments/unet_10ep/test_lists/fold1_test_filepaths.csv --pred-dir /mnt/c/Users/eva/Desktop/6th semester/Projects/manu/experiments/unet_10ep/work/results/predictions/fold1/unet/unet_fold1_randcrop192 --out-csv /mnt/c/Users/eva/Desktop/6th semester/Projects/manu/experiments/unet_10ep/work/results/test_lesion_measures_no_dmax/fold1/unet/unet_fold1_randcrop192/testlesionmeasures_no_dmax.csv"
+    },
+    "fold2": {
+      "train": "/home/eva25/venvs/lymphoma_seg/bin/torchrun --standalone --nproc_per_node=1 /mnt/c/Users/eva/Desktop/6th semester/Projects/manu/lymphoma-segmentation-dnn/segmentation/trainddp.py --fold 2 --epochs 10 --num_workers 6",
+      "inference": "/home/eva25/venvs/lymphoma_seg/bin/python /mnt/c/Users/eva/Desktop/6th semester/Projects/manu/lymphoma-segmentation-dnn/segmentation/inference.py --fold 2",
+      "metrics": "/home/eva25/venvs/lymphoma_seg/bin/python /mnt/c/Users/eva/Desktop/6th semester/Projects/manu/lymphoma-segmentation-dnn/segmentation/calculate_test_metrics.py --fold 2",
+      "lesion_measures": "/home/eva25/venvs/lymphoma_seg/bin/python /mnt/c/Users/eva/Desktop/6th semester/Projects/manu/cv_lesion_measures.py --ms-repo /mnt/c/Users/eva/Desktop/6th semester/Projects/manu/lymphoma-segmentation-dnn --test-csv /mnt/c/Users/eva/Desktop/6th semester/Projects/manu/experiments/unet_10ep/test_lists/fold2_test_filepaths.csv --pred-dir /mnt/c/Users/eva/Desktop/6th semester/Projects/manu/experiments/unet_10ep/work/results/predictions/fold2/unet/unet_fold2_randcrop192 --out-csv /mnt/c/Users/eva/Desktop/6th semester/Projects/manu/experiments/unet_10ep/work/results/test_lesion_measures_no_dmax/fold2/unet/unet_fold2_randcrop192/testlesionmeasures_no_dmax.csv"
+    },
+    "fold3": {
+      "train": "/home/eva25/venvs/lymphoma_seg/bin/torchrun --standalone --nproc_per_node=1 /mnt/c/Users/eva/Desktop/6th semester/Projects/manu/lymphoma-segmentation-dnn/segmentation/trainddp.py --fold 3 --epochs 10 --num_workers 6",
+      "inference": "/home/eva25/venvs/lymphoma_seg/bin/python /mnt/c/Users/eva/Desktop/6th semester/Projects/manu/lymphoma-segmentation-dnn/segmentation/inference.py --fold 3",
+      "metrics": "/home/eva25/venvs/lymphoma_seg/bin/python /mnt/c/Users/eva/Desktop/6th semester/Projects/manu/lymphoma-segmentation-dnn/segmentation/calculate_test_metrics.py --fold 3",
+      "lesion_measures": "/home/eva25/venvs/lymphoma_seg/bin/python /mnt/c/Users/eva/Desktop/6th semester/Projects/manu/cv_lesion_measures.py --ms-repo /mnt/c/Users/eva/Desktop/6th semester/Projects/manu/lymphoma-segmentation-dnn --test-csv /mnt/c/Users/eva/Desktop/6th semester/Projects/manu/experiments/unet_10ep/test_lists/fold3_test_filepaths.csv --pred-dir /mnt/c/Users/eva/Desktop/6th semester/Projects/manu/experiments/unet_10ep/work/results/predictions/fold3/unet/unet_fold3_randcrop192 --out-csv /mnt/c/Users/eva/Desktop/6th semester/Projects/manu/experiments/unet_10ep/work/results/test_lesion_measures_no_dmax/fold3/unet/unet_fold3_randcrop192/testlesionmeasures_no_dmax.csv"
+    },
+    "fold4": {
+      "train": "/home/eva25/venvs/lymphoma_seg/bin/torchrun --standalone --nproc_per_node=1 /mnt/c/Users/eva/Desktop/6th semester/Projects/manu/lymphoma-segmentation-dnn/segmentation/trainddp.py --fold 4 --epochs 10 --num_workers 6",
+      "inference": "/home/eva25/venvs/lymphoma_seg/bin/python /mnt/c/Users/eva/Desktop/6th semester/Projects/manu/lymphoma-segmentation-dnn/segmentation/inference.py --fold 4",
+      "metrics": "/home/eva25/venvs/lymphoma_seg/bin/python /mnt/c/Users/eva/Desktop/6th semester/Projects/manu/lymphoma-segmentation-dnn/segmentation/calculate_test_metrics.py --fold 4",
+      "lesion_measures": "/home/eva25/venvs/lymphoma_seg/bin/python /mnt/c/Users/eva/Desktop/6th semester/Projects/manu/cv_lesion_measures.py --ms-repo /mnt/c/Users/eva/Desktop/6th semester/Projects/manu/lymphoma-segmentation-dnn --test-csv /mnt/c/Users/eva/Desktop/6th semester/Projects/manu/experiments/unet_10ep/test_lists/fold4_test_filepaths.csv --pred-dir /mnt/c/Users/eva/Desktop/6th semester/Projects/manu/experiments/unet_10ep/work/results/predictions/fold4/unet/unet_fold4_randcrop192 --out-csv /mnt/c/Users/eva/Desktop/6th semester/Projects/manu/experiments/unet_10ep/work/results/test_lesion_measures_no_dmax/fold4/unet/unet_fold4_randcrop192/testlesionmeasures_no_dmax.csv"
+    }
+  },
+  "working_directory_of_all_commands": "/mnt/c/Users/eva/Desktop/6th semester/Projects/manu/experiments/unet_10ep/work",
+  "software": {
+    "python": "3.11.17",
+    "torch": "2.11.0+cu128",
+    "torch_cuda": "12.8",
+    "monai": "1.2.0",
+    "numpy": "1.24.3",
+    "pandas": "2.0.3",
+    "SimpleITK": "2.3.0",
+    "cc3d": "unknown",
+    "itk": "5.3.0",
+    "nibabel": "5.1.0"
+  },
+  "gpu": "NVIDIA GeForce RTX 5060 Laptop GPU",
+  "created": "2026-10-07T20:27:31",
+  "runs": [
+    {
+      "started": "2026-10-07T20:27:31",
+      "folds_requested": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "software": {
+        "python": "3.11.17",
+        "torch": "2.11.0+cu128",
+        "torch_cuda": "12.8",
+        "monai": "1.2.0",
+        "numpy": "1.24.3",
+        "pandas": "2.0.3",
+        "SimpleITK": "2.3.0",
+        "cc3d": "unknown",
+        "itk": "5.3.0",
+        "nibabel": "5.1.0"
+      }
+    },
+    {
+      "started": "2026-10-09T00:47:02",
+      "folds_requested": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "stages_requested": [
+        "train",
+        "inference"
+      ],
+      "software": {
+        "python": "3.11.17",
+        "torch": "2.11.0+cu128",
+        "torch_cuda": "12.8",
+        "monai": "1.2.0",
+        "numpy": "1.24.3",
+        "pandas": "2.0.3",
+        "SimpleITK": "2.3.0",
+        "cc3d": "unknown",
+        "itk": "5.3.0",
+        "nibabel": "5.1.0"
+      }
+    },
+    {
+      "started": "2026-10-09T01:56:51",
+      "folds_requested": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "stages_requested": [
+        "train",
+        "inference"
+      ],
+      "software": {
+        "python": "3.11.17",
+        "torch": "2.11.0+cu128",
+        "torch_cuda": "12.8",
+        "monai": "1.2.0",
+        "numpy": "1.24.3",
+        "pandas": "2.0.3",
+        "SimpleITK": "2.3.0",
+        "cc3d": "unknown",
+        "itk": "5.3.0",
+        "nibabel": "5.1.0"
+      }
+    },
+    {
+      "started": "2026-10-09T01:57:41",
+      "folds_requested": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "stages_requested": [
+        "train",
+        "inference"
+      ],
+      "software": {
+        "python": "3.11.17",
+        "torch": "2.11.0+cu128",
+        "torch_cuda": "12.8",
+        "monai": "1.2.0",
+        "numpy": "1.24.3",
+        "pandas": "2.0.3",
+        "SimpleITK": "2.3.0",
+        "cc3d": "unknown",
+        "itk": "5.3.0",
+        "nibabel": "5.1.0"
+      }
+    }
+  ]
+}

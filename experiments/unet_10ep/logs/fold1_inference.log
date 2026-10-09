@@ -1,0 +1,65 @@
+[2026-10-09 01:37:06] [fold1/inference] command: /home/eva25/venvs/lymphoma_seg/bin/python "/mnt/c/Users/eva/Desktop/6th semester/Projects/manu/lymphoma-segmentation-dnn/segmentation/inference.py" --fold 1
+[2026-10-09 01:37:06] [fold1/inference] working directory: /mnt/c/Users/eva/Desktop/6th semester/Projects/manu/experiments/unet_10ep/work
+[2026-10-09 01:37:18] [fold1/inference] Using the unet model at epoch=10 with mean valid DSC = 0.2936
+[2026-10-09 01:37:21] [fold1/inference] monai.transforms.io.dictionary LoadImaged.__init__:image_only: Current default value of argument `image_only=False` has been deprecated since version 1.1. It will be changed to `image_only=True` in version 1.3.
+[2026-10-09 01:37:35] [fold1/inference] 2
+[2026-10-09 01:37:35] [fold1/inference] Using a non-tuple sequence for multidimensional indexing is deprecated and will be changed in pytorch 2.9; use x[tuple(seq)] instead of x[seq]. In pytorch 2.9 this will be interpreted as tensor index, x[torch.tensor(seq)], which will result either in an error or a different result (Triggered internally at /pytorch/torch/csrc/autograd/python_variable_indexing.cpp:347.)
+[2026-10-09 01:37:36] [fold1/inference] Using a non-tuple sequence for multidimensional indexing is deprecated and will be changed in pytorch 2.9; use x[tuple(seq)] instead of x[seq]. In pytorch 2.9 this will be interpreted as tensor index, x[torch.tensor(seq)], which will result either in an error or a different result (Triggered internally at /pytorch/torch/csrc/autograd/python_variable_indexing.cpp:347.)
+[2026-10-09 01:37:37] [fold1/inference] 2026-10-09 01:37:37,723 INFO image_writer.py:197 - writing: results/predictions/fold1/unet/unet_fold1_randcrop192/PETCT_04ab5c61c9_11-22-2002-NA-PET-CT Ganzkoerper  primaer mit KM-42241.nii.gz
+[2026-10-09 01:37:39] [fold1/inference] 2
+[2026-10-09 01:37:40] [fold1/inference] 2026-10-09 01:37:40,360 INFO image_writer.py:197 - writing: results/predictions/fold1/unet/unet_fold1_randcrop192/PETCT_13d0984c93_09-08-2003-NA-PET-CT Ganzkoerper  primaer mit KM-48750.nii.gz
+[2026-10-09 01:37:47] [fold1/inference] 2
+[2026-10-09 01:37:48] [fold1/inference] 2026-10-09 01:37:48,242 INFO image_writer.py:197 - writing: results/predictions/fold1/unet/unet_fold1_randcrop192/PETCT_1fe6e48293_06-26-2003-NA-PET-CT Ganzkoerper  primaer mit KM-45853.nii.gz
+[2026-10-09 01:37:49] [fold1/inference] 2
+[2026-10-09 01:37:50] [fold1/inference] 2026-10-09 01:37:50,772 INFO image_writer.py:197 - writing: results/predictions/fold1/unet/unet_fold1_randcrop192/PETCT_223f70f0b0_11-29-2003-NA-PET-CT Ganzkoerper  primaer mit KM-10527.nii.gz
+[2026-10-09 01:37:57] [fold1/inference] 2
+[2026-10-09 01:37:58] [fold1/inference] 2026-10-09 01:37:58,657 INFO image_writer.py:197 - writing: results/predictions/fold1/unet/unet_fold1_randcrop192/PETCT_249c02c01c_03-06-2003-NA-PET-CT Ganzkoerper  primaer mit KM-65884.nii.gz
+[2026-10-09 01:38:00] [fold1/inference] 2
+[2026-10-09 01:38:01] [fold1/inference] 2026-10-09 01:38:01,409 INFO image_writer.py:197 - writing: results/predictions/fold1/unet/unet_fold1_randcrop192/PETCT_2e97a9e5c2_06-23-2003-NA-PET-CT Ganzkoerper  primaer mit KM-00442.nii.gz
+[2026-10-09 01:38:05] [fold1/inference] 2
+[2026-10-09 01:38:06] [fold1/inference] 2026-10-09 01:38:06,412 INFO image_writer.py:197 - writing: results/predictions/fold1/unet/unet_fold1_randcrop192/PETCT_2f9aec0275_05-31-2003-NA-PET-CT Ganzkoerper  primaer mit KM-55211.nii.gz
+[2026-10-09 01:38:07] [fold1/inference] 2
+[2026-10-09 01:38:08] [fold1/inference] 2026-10-09 01:38:08,607 INFO image_writer.py:197 - writing: results/predictions/fold1/unet/unet_fold1_randcrop192/PETCT_527c5afc5d_07-18-2003-NA-PET-CT Ganzkoerper  primaer mit KM-02474.nii.gz
+[2026-10-09 01:38:17] [fold1/inference] 2
+[2026-10-09 01:38:18] [fold1/inference] 2026-10-09 01:38:18,841 INFO image_writer.py:197 - writing: results/predictions/fold1/unet/unet_fold1_randcrop192/PETCT_59e6d1de22_08-06-2005-NA-PET-CT Ganzkoerper  primaer mit KM-59516.nii.gz
+[2026-10-09 01:38:20] [fold1/inference] 2
+[2026-10-09 01:38:21] [fold1/inference] 2026-10-09 01:38:21,243 INFO image_writer.py:197 - writing: results/predictions/fold1/unet/unet_fold1_randcrop192/PETCT_5d10be5b89_05-30-2005-NA-PET-CT Ganzkoerper  primaer mit KM-53829.nii.gz
+[2026-10-09 01:38:42] [fold1/inference] 2
+[2026-10-09 01:38:44] [fold1/inference] 2026-10-09 01:38:44,173 INFO image_writer.py:197 - writing: results/predictions/fold1/unet/unet_fold1_randcrop192/PETCT_642d6c78d6_05-02-2005-NA-PET-CT Ganzkoerper  primaer mit KM-84654.nii.gz
+[2026-10-09 01:38:47] [fold1/inference] 2
+[2026-10-09 01:38:48] [fold1/inference] 2026-10-09 01:38:48,360 INFO image_writer.py:197 - writing: results/predictions/fold1/unet/unet_fold1_randcrop192/PETCT_644d80e987_02-15-2003-NA-PET-CT Ganzkoerper  primaer mit KM-86028.nii.gz
+[2026-10-09 01:38:51] [fold1/inference] 2
+[2026-10-09 01:38:52] [fold1/inference] 2026-10-09 01:38:52,161 INFO image_writer.py:197 - writing: results/predictions/fold1/unet/unet_fold1_randcrop192/PETCT_6a3477cd9a_01-15-2005-NA-PET-CT Ganzkoerper  primaer mit KM-52826.nii.gz
+[2026-10-09 01:38:53] [fold1/inference] 2
+[2026-10-09 01:38:54] [fold1/inference] 2026-10-09 01:38:54,742 INFO image_writer.py:197 - writing: results/predictions/fold1/unet/unet_fold1_randcrop192/PETCT_7a8a062ed5_03-12-2005-NA-PET-CT Ganzkoerper  primaer mit KM-27527.nii.gz
+[2026-10-09 01:39:01] [fold1/inference] 2
+[2026-10-09 01:39:02] [fold1/inference] 2026-10-09 01:39:02,033 INFO image_writer.py:197 - writing: results/predictions/fold1/unet/unet_fold1_randcrop192/PETCT_870181d7fd_10-31-2004-NA-PET-CT Ganzkoerper  primaer mit KM-80978.nii.gz
+[2026-10-09 01:39:03] [fold1/inference] 2
+[2026-10-09 01:39:04] [fold1/inference] 2026-10-09 01:39:04,490 INFO image_writer.py:197 - writing: results/predictions/fold1/unet/unet_fold1_randcrop192/PETCT_8b74860ce6_03-10-2005-NA-PET-CT Ganzkoerper  primaer mit KM-00433.nii.gz
+[2026-10-09 01:39:10] [fold1/inference] 2
+[2026-10-09 01:39:11] [fold1/inference] 2026-10-09 01:39:11,505 INFO image_writer.py:197 - writing: results/predictions/fold1/unet/unet_fold1_randcrop192/PETCT_97320b0b58_04-17-2005-NA-PET-CT Ganzkoerper  primaer mit KM-10200.nii.gz
+[2026-10-09 01:39:12] [fold1/inference] 2
+[2026-10-09 01:39:13] [fold1/inference] 2026-10-09 01:39:13,841 INFO image_writer.py:197 - writing: results/predictions/fold1/unet/unet_fold1_randcrop192/PETCT_987c8a1160_01-22-2005-NA-PET-CT Ganzkoerper  primaer mit KM-13761.nii.gz
+[2026-10-09 01:39:20] [fold1/inference] 2
+[2026-10-09 01:39:20] [fold1/inference] 2026-10-09 01:39:20,703 INFO image_writer.py:197 - writing: results/predictions/fold1/unet/unet_fold1_randcrop192/PETCT_a19ef8e0d2_12-26-1999-NA-PET-CT Ganzkoerper  primaer mit KM-80792.nii.gz
+[2026-10-09 01:39:22] [fold1/inference] 2
+[2026-10-09 01:39:23] [fold1/inference] 2026-10-09 01:39:23,677 INFO image_writer.py:197 - writing: results/predictions/fold1/unet/unet_fold1_randcrop192/PETCT_c29aba73da_08-23-2002-NA-PET-CT Ganzkoerper  primaer mit KM-89538.nii.gz
+[2026-10-09 01:39:31] [fold1/inference] 2
+[2026-10-09 01:39:32] [fold1/inference] 2026-10-09 01:39:32,558 INFO image_writer.py:197 - writing: results/predictions/fold1/unet/unet_fold1_randcrop192/PETCT_ca89066e44_08-11-2005-NA-PET-CT Ganzkoerper  primaer mit KM-64009.nii.gz
+[2026-10-09 01:39:34] [fold1/inference] 2
+[2026-10-09 01:39:34] [fold1/inference] 2026-10-09 01:39:34,941 INFO image_writer.py:197 - writing: results/predictions/fold1/unet/unet_fold1_randcrop192/PETCT_e0aa99fa04_08-29-2003-NA-PET-CT Ganzkoerper  primaer mit KM-05827.nii.gz
+[2026-10-09 01:39:40] [fold1/inference] 2
+[2026-10-09 01:39:41] [fold1/inference] 2026-10-09 01:39:41,471 INFO image_writer.py:197 - writing: results/predictions/fold1/unet/unet_fold1_randcrop192/PETCT_e44480b9b8_05-26-2002-NA-PET-CT Ganzkoerper  primaer mit KM-00331.nii.gz
+[2026-10-09 01:39:43] [fold1/inference] 2
+[2026-10-09 01:39:44] [fold1/inference] 2026-10-09 01:39:44,117 INFO image_writer.py:197 - writing: results/predictions/fold1/unet/unet_fold1_randcrop192/PETCT_e4712dc58c_02-12-1999-NA-PET-CT Ganzkoerper  primaer mit KM-56899.nii.gz
+[2026-10-09 01:39:49] [fold1/inference] 2
+[2026-10-09 01:39:49] [fold1/inference] 2026-10-09 01:39:49,858 INFO image_writer.py:197 - writing: results/predictions/fold1/unet/unet_fold1_randcrop192/PETCT_ea42c88cc7_02-26-2006-NA-PET-CT Ganzkoerper  primaer mit KM-88113.nii.gz
+[2026-10-09 01:39:52] [fold1/inference] 2
+[2026-10-09 01:39:52] [fold1/inference] 2026-10-09 01:39:52,883 INFO image_writer.py:197 - writing: results/predictions/fold1/unet/unet_fold1_randcrop192/PETCT_ea6c621616_08-08-2005-NA-PET-CT Ganzkoerper  primaer mit KM-54129.nii.gz
+[2026-10-09 01:39:59] [fold1/inference] 2
+[2026-10-09 01:40:00] [fold1/inference] 2026-10-09 01:40:00,739 INFO image_writer.py:197 - writing: results/predictions/fold1/unet/unet_fold1_randcrop192/PETCT_ed9dca00d2_09-25-2004-NA-PET-CT Ganzkoerper  primaer mit KM-44626.nii.gz
+[2026-10-09 01:40:02] [fold1/inference] 2
+[2026-10-09 01:40:03] [fold1/inference] 2026-10-09 01:40:03,458 INFO image_writer.py:197 - writing: results/predictions/fold1/unet/unet_fold1_randcrop192/PETCT_f1501b1f45_03-20-2005-NA-PET-CT Ganzkoerper  primaer mit KM-34354.nii.gz
+[2026-10-09 01:40:08] [fold1/inference] 2
+[2026-10-09 01:40:08] [fold1/inference] 2026-10-09 01:40:08,366 INFO image_writer.py:197 - writing: results/predictions/fold1/unet/unet_fold1_randcrop192/PETCT_fe705ea1cc_12-29-2002-NA-Unspecified CT ABDOMEN-93772.nii.gz
+[2026-10-09 01:40:11] [fold1/inference] exit code: 0

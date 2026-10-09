@@ -1,0 +1,779 @@
+[2026-10-07 20:27:28] [pipeline] experiment "unet_10ep" at /mnt/c/Users/eva/Desktop/6th semester/Projects/manu/experiments/unet_10ep
+[2026-10-07 20:27:31] [pipeline] Microsoft repo commit 81129243db3c868370a7664c9adc2ad52609484f, tracked files unmodified: True
+[2026-10-07 20:27:31] [fold0/train] command: /home/eva25/venvs/lymphoma_seg/bin/torchrun --standalone --nproc_per_node=1 "/mnt/c/Users/eva/Desktop/6th semester/Projects/manu/lymphoma-segmentation-dnn/segmentation/trainddp.py" --fold 0 --epochs 10 --num_workers 6
+[2026-10-07 20:27:31] [fold0/train] working directory: /mnt/c/Users/eva/Desktop/6th semester/Projects/manu/experiments/unet_10ep/work
+[2026-10-07 20:27:36] [fold0/train] Training unet on fold 0
+[2026-10-07 20:27:36] [fold0/train] The models will be saved in results/models/fold0/unet/unet_fold0_randcrop192
+[2026-10-07 20:27:36] [fold0/train] The training/validation logs will be saved in results/logs/fold0/unet/unet_fold0_randcrop192
+[2026-10-07 20:27:36] [fold0/train] monai.transforms.io.dictionary LoadImaged.__init__:image_only: Current default value of argument `image_only=False` has been deprecated since version 1.1. It will be changed to `image_only=True` in version 1.3.
+[2026-10-07 20:27:38] [fold0/train] tqdm is not installed, will not show the caching progress bar.
+[2026-10-07 20:28:23] [fold0/train] [GPU0]: Running training: epoch = 1
+[2026-10-07 20:32:04] [fold0/train] [GPU:0]: epoch 1/10: average loss: 0.5956
+[2026-10-07 20:32:04] [fold0/train] [GPU:0]: Epoch 1 time: 3.68 min
+[2026-10-07 20:32:04] [fold0/train] [GPU0]: Running training: epoch = 2
+[2026-10-07 20:35:32] [fold0/train] [GPU:0]: epoch 2/10: average loss: 0.5441
+[2026-10-07 20:35:32] [fold0/train] [GPU0]: Running validation
+[2026-10-07 20:35:41] [fold0/train] Using a non-tuple sequence for multidimensional indexing is deprecated and will be changed in pytorch 2.9; use x[tuple(seq)] instead of x[seq]. In pytorch 2.9 this will be interpreted as tensor index, x[torch.tensor(seq)], which will result either in an error or a different result (Triggered internally at /pytorch/torch/csrc/autograd/python_variable_indexing.cpp:347.)
+[2026-10-07 20:36:00] [fold0/train] Using a non-tuple sequence for multidimensional indexing is deprecated and will be changed in pytorch 2.9; use x[tuple(seq)] instead of x[seq]. In pytorch 2.9 this will be interpreted as tensor index, x[torch.tensor(seq)], which will result either in an error or a different result (Triggered internally at /pytorch/torch/csrc/autograd/python_variable_indexing.cpp:347.)
+[2026-10-07 20:36:51] [fold0/train] [GPU:0] SAVING MODEL at epoch: 2; Mean DSC: 0.1500
+[2026-10-07 20:36:52] [fold0/train] [GPU:0]: Epoch 2 time: 4.8 min
+[2026-10-07 20:36:52] [fold0/train] [GPU0]: Running training: epoch = 3
+[2026-10-07 20:40:19] [fold0/train] [GPU:0]: epoch 3/10: average loss: 0.5149
+[2026-10-07 20:40:19] [fold0/train] [GPU:0]: Epoch 3 time: 3.45 min
+[2026-10-07 20:40:19] [fold0/train] [GPU0]: Running training: epoch = 4
+[2026-10-07 20:45:44] [fold0/train] [GPU:0]: epoch 4/10: average loss: 0.4917
+[2026-10-07 20:45:44] [fold0/train] [GPU0]: Running validation
+[2026-10-07 20:47:12] [fold0/train] [GPU:0] SAVING MODEL at epoch: 4; Mean DSC: 0.1719
+[2026-10-07 20:47:13] [fold0/train] [GPU:0]: Epoch 4 time: 6.9 min
+[2026-10-07 20:47:13] [fold0/train] [GPU0]: Running training: epoch = 5
+[2026-10-07 20:51:16] [fold0/train] [GPU:0]: epoch 5/10: average loss: 0.4741
+[2026-10-07 20:51:16] [fold0/train] [GPU:0]: Epoch 5 time: 4.05 min
+[2026-10-07 20:51:16] [fold0/train] [GPU0]: Running training: epoch = 6
+[2026-10-07 20:56:51] [fold0/train] [GPU:0]: epoch 6/10: average loss: 0.4614
+[2026-10-07 20:56:51] [fold0/train] [GPU0]: Running validation
+[2026-10-07 20:58:29] [fold0/train] [GPU:0] SAVING MODEL at epoch: 6; Mean DSC: 0.1653
+[2026-10-07 20:58:30] [fold0/train] [GPU:0]: Epoch 6 time: 7.24 min
+[2026-10-07 20:58:30] [fold0/train] [GPU0]: Running training: epoch = 7
+[2026-10-07 21:04:03] [fold0/train] [GPU:0]: epoch 7/10: average loss: 0.4342
+[2026-10-07 21:04:03] [fold0/train] [GPU:0]: Epoch 7 time: 5.55 min
+[2026-10-07 21:04:03] [fold0/train] [GPU0]: Running training: epoch = 8
+[2026-10-07 21:15:05] [fold0/train] [GPU:0]: epoch 8/10: average loss: 0.4288
+[2026-10-07 21:15:05] [fold0/train] [GPU0]: Running validation
+[2026-10-07 21:16:49] [fold0/train] [GPU:0] SAVING MODEL at epoch: 8; Mean DSC: 0.2154
+[2026-10-07 21:16:50] [fold0/train] [GPU:0]: Epoch 8 time: 12.78 min
+[2026-10-07 21:16:50] [fold0/train] [GPU0]: Running training: epoch = 9
+[2026-10-07 21:23:15] [fold0/train] [GPU:0]: epoch 9/10: average loss: 0.4215
+[2026-10-07 21:23:15] [fold0/train] [GPU:0]: Epoch 9 time: 6.42 min
+[2026-10-07 21:23:15] [fold0/train] [GPU0]: Running training: epoch = 10
+[2026-10-07 21:29:27] [fold0/train] [GPU:0]: epoch 10/10: average loss: 0.4126
+[2026-10-07 21:29:27] [fold0/train] [GPU0]: Running validation
+[2026-10-07 21:31:09] [fold0/train] [GPU:0] SAVING MODEL at epoch: 10; Mean DSC: 0.2714
+[2026-10-07 21:31:11] [fold0/train] [GPU:0]: Epoch 10 time: 7.93 min
+[2026-10-07 21:31:11] [fold0/train] [GPU:0]: Total time: 1.05 hr
+[2026-10-07 21:31:37] [fold0/train] exit code: 0
+[2026-10-07 21:31:38] [fold0/train] COMPLETE in 64.1 min
+[2026-10-07 21:31:38] [fold0] test list for fold 0 written: 30 held-out examinations
+[2026-10-07 21:31:38] [fold0/inference] Microsoft rule selects checkpoint model_ep=0010.pth (validation mean DSC 0.2714)
+[2026-10-07 21:31:38] [fold0/inference] command: /home/eva25/venvs/lymphoma_seg/bin/python "/mnt/c/Users/eva/Desktop/6th semester/Projects/manu/lymphoma-segmentation-dnn/segmentation/inference.py" --fold 0
+[2026-10-07 21:31:38] [fold0/inference] working directory: /mnt/c/Users/eva/Desktop/6th semester/Projects/manu/experiments/unet_10ep/work
+[2026-10-07 21:31:44] [fold0/inference] Using the unet model at epoch=10 with mean valid DSC = 0.2714
+[2026-10-07 21:31:46] [fold0/inference] monai.transforms.io.dictionary LoadImaged.__init__:image_only: Current default value of argument `image_only=False` has been deprecated since version 1.1. It will be changed to `image_only=True` in version 1.3.
+[2026-10-07 21:32:06] [fold0/inference] 2
+[2026-10-07 21:32:06] [fold0/inference] Using a non-tuple sequence for multidimensional indexing is deprecated and will be changed in pytorch 2.9; use x[tuple(seq)] instead of x[seq]. In pytorch 2.9 this will be interpreted as tensor index, x[torch.tensor(seq)], which will result either in an error or a different result (Triggered internally at /pytorch/torch/csrc/autograd/python_variable_indexing.cpp:347.)
+[2026-10-07 21:32:07] [fold0/inference] Using a non-tuple sequence for multidimensional indexing is deprecated and will be changed in pytorch 2.9; use x[tuple(seq)] instead of x[seq]. In pytorch 2.9 this will be interpreted as tensor index, x[torch.tensor(seq)], which will result either in an error or a different result (Triggered internally at /pytorch/torch/csrc/autograd/python_variable_indexing.cpp:347.)
+[2026-10-07 21:32:08] [fold0/inference] 2026-10-07 21:32:08,912 INFO image_writer.py:197 - writing: results/predictions/fold0/unet/unet_fold0_randcrop192/PETCT_0223010e46_09-04-2003-NA-PET-CT Ganzkoerper  primaer mit KM-25360.nii.gz
+[2026-10-07 21:32:10] [fold0/inference] 2
+[2026-10-07 21:32:11] [fold0/inference] 2026-10-07 21:32:11,576 INFO image_writer.py:197 - writing: results/predictions/fold0/unet/unet_fold0_randcrop192/PETCT_07574bfa00_04-20-2003-NA-PET-CT Ganzkoerper  primaer mit KM-91235.nii.gz
+[2026-10-07 21:32:15] [fold0/inference] 2
+[2026-10-07 21:32:16] [fold0/inference] 2026-10-07 21:32:16,264 INFO image_writer.py:197 - writing: results/predictions/fold0/unet/unet_fold0_randcrop192/PETCT_08cdb15e0b_11-21-2003-NA-PET-CT Ganzkoerper  primaer mit KM-47234.nii.gz
+[2026-10-07 21:32:17] [fold0/inference] 2
+[2026-10-07 21:32:18] [fold0/inference] 2026-10-07 21:32:18,293 INFO image_writer.py:197 - writing: results/predictions/fold0/unet/unet_fold0_randcrop192/PETCT_0f44cec2e6_09-07-2003-NA-PET-CT Ganzkoerper  primaer mit KM-99224.nii.gz
+[2026-10-07 21:32:22] [fold0/inference] 2
+[2026-10-07 21:32:23] [fold0/inference] 2026-10-07 21:32:23,142 INFO image_writer.py:197 - writing: results/predictions/fold0/unet/unet_fold0_randcrop192/PETCT_108c1763d4_09-30-2004-NA-PET-CT Ganzkoerper  primaer mit KM-86848.nii.gz
+[2026-10-07 21:32:23] [fold0/inference] 2
+[2026-10-07 21:32:24] [fold0/inference] 2026-10-07 21:32:24,569 INFO image_writer.py:197 - writing: results/predictions/fold0/unet/unet_fold0_randcrop192/PETCT_11e258cc1f_03-06-2003-NA-PET-CT Ganzkoerper  primaer mit KM-87979.nii.gz
+[2026-10-07 21:32:29] [fold0/inference] 2
+[2026-10-07 21:32:30] [fold0/inference] 2026-10-07 21:32:30,766 INFO image_writer.py:197 - writing: results/predictions/fold0/unet/unet_fold0_randcrop192/PETCT_15f4b7254f_07-18-2003-NA-PET-CT Ganzkoerper  primaer mit KM-44296.nii.gz
+[2026-10-07 21:32:31] [fold0/inference] 2
+[2026-10-07 21:32:32] [fold0/inference] 2026-10-07 21:32:32,188 INFO image_writer.py:197 - writing: results/predictions/fold0/unet/unet_fold0_randcrop192/PETCT_15f4b7254f_10-11-2003-NA-PET-CT Ganzkoerper  primaer mit KM-99526.nii.gz
+[2026-10-07 21:32:38] [fold0/inference] 2
+[2026-10-07 21:32:39] [fold0/inference] 2026-10-07 21:32:39,030 INFO image_writer.py:197 - writing: results/predictions/fold0/unet/unet_fold0_randcrop192/PETCT_2b60c8135a_12-09-2005-NA-PET-CT Ganzkoerper  primaer mit KM-49696.nii.gz
+[2026-10-07 21:32:39] [fold0/inference] 2
+[2026-10-07 21:32:40] [fold0/inference] 2026-10-07 21:32:40,918 INFO image_writer.py:197 - writing: results/predictions/fold0/unet/unet_fold0_randcrop192/PETCT_4076ea9a15_04-29-2005-NA-PET-CT Ganzkoerper  primaer mit KM-17567.nii.gz
+[2026-10-07 21:32:46] [fold0/inference] 2
+[2026-10-07 21:32:48] [fold0/inference] 2026-10-07 21:32:48,012 INFO image_writer.py:197 - writing: results/predictions/fold0/unet/unet_fold0_randcrop192/PETCT_5cf118ac06_02-28-2004-NA-PET-CT Ganzkoerper  primaer mit KM-95778.nii.gz
+[2026-10-07 21:32:49] [fold0/inference] 2
+[2026-10-07 21:32:50] [fold0/inference] 2026-10-07 21:32:50,026 INFO image_writer.py:197 - writing: results/predictions/fold0/unet/unet_fold0_randcrop192/PETCT_61348439bf_07-24-2005-NA-PET-CT Ganzkoerper  primaer mit KM-57273.nii.gz
+[2026-10-07 21:32:55] [fold0/inference] 2
+[2026-10-07 21:32:56] [fold0/inference] 2026-10-07 21:32:56,381 INFO image_writer.py:197 - writing: results/predictions/fold0/unet/unet_fold0_randcrop192/PETCT_62405d117c_03-11-2001-NA-PET-CT Ganzkoerper  primaer mit KM-26235.nii.gz
+[2026-10-07 21:32:57] [fold0/inference] 2
+[2026-10-07 21:32:58] [fold0/inference] 2026-10-07 21:32:58,273 INFO image_writer.py:197 - writing: results/predictions/fold0/unet/unet_fold0_randcrop192/PETCT_8a52353a72_02-17-2003-NA-PET-CT Ganzkoerper  primaer mit KM-13495.nii.gz
+[2026-10-07 21:33:02] [fold0/inference] 2
+[2026-10-07 21:33:03] [fold0/inference] 2026-10-07 21:33:03,945 INFO image_writer.py:197 - writing: results/predictions/fold0/unet/unet_fold0_randcrop192/PETCT_8ec13728df_10-14-1999-NA-PET-CT Ganzkoerper  primaer mit KM-64354.nii.gz
+[2026-10-07 21:33:04] [fold0/inference] 2
+[2026-10-07 21:33:05] [fold0/inference] 2026-10-07 21:33:05,769 INFO image_writer.py:197 - writing: results/predictions/fold0/unet/unet_fold0_randcrop192/PETCT_901573a747_05-13-2005-NA-PET-CT Ganzkoerper  primaer mit KM-32417.nii.gz
+[2026-10-07 21:33:09] [fold0/inference] 2
+[2026-10-07 21:33:10] [fold0/inference] 2026-10-07 21:33:10,217 INFO image_writer.py:197 - writing: results/predictions/fold0/unet/unet_fold0_randcrop192/PETCT_ac75e49284_11-13-2004-NA-PET-CT Ganzkoerper  primaer mit KM-83508.nii.gz
+[2026-10-07 21:33:10] [fold0/inference] 2
+[2026-10-07 21:33:11] [fold0/inference] 2026-10-07 21:33:11,285 INFO image_writer.py:197 - writing: results/predictions/fold0/unet/unet_fold0_randcrop192/PETCT_b2f82ed4b9_11-11-2002-NA-Unspecified CT ABDOMEN-06609.nii.gz
+[2026-10-07 21:33:16] [fold0/inference] 2
+[2026-10-07 21:33:17] [fold0/inference] 2026-10-07 21:33:17,955 INFO image_writer.py:197 - writing: results/predictions/fold0/unet/unet_fold0_randcrop192/PETCT_b3d4773f85_11-04-2000-NA-PET-CT Ganzkoerper  primaer mit KM-03046.nii.gz
+[2026-10-07 21:33:18] [fold0/inference] 2
+[2026-10-07 21:33:19] [fold0/inference] 2026-10-07 21:33:19,568 INFO image_writer.py:197 - writing: results/predictions/fold0/unet/unet_fold0_randcrop192/PETCT_c3cc732d95_07-21-2005-NA-PET-CT Ganzkoerper  primaer mit KM-95170.nii.gz
+[2026-10-07 21:33:23] [fold0/inference] 2
+[2026-10-07 21:33:23] [fold0/inference] 2026-10-07 21:33:23,846 INFO image_writer.py:197 - writing: results/predictions/fold0/unet/unet_fold0_randcrop192/PETCT_c4a686881e_04-23-1999-NA-PET-CT Ganzkoerper  primaer mit KM-83878.nii.gz
+[2026-10-07 21:33:24] [fold0/inference] 2
+[2026-10-07 21:33:25] [fold0/inference] 2026-10-07 21:33:25,823 INFO image_writer.py:197 - writing: results/predictions/fold0/unet/unet_fold0_randcrop192/PETCT_ca47fe5e7d_09-01-2003-NA-PET-CT Ganzkoerper  primaer mit KM-30672.nii.gz
+[2026-10-07 21:33:31] [fold0/inference] 2
+[2026-10-07 21:33:31] [fold0/inference] 2026-10-07 21:33:31,992 INFO image_writer.py:197 - writing: results/predictions/fold0/unet/unet_fold0_randcrop192/PETCT_cbbc9e2879_01-16-2006-NA-PET-CT Ganzkoerper  primaer mit KM-56695.nii.gz
+[2026-10-07 21:33:32] [fold0/inference] 2
+[2026-10-07 21:33:33] [fold0/inference] 2026-10-07 21:33:33,779 INFO image_writer.py:197 - writing: results/predictions/fold0/unet/unet_fold0_randcrop192/PETCT_d31c9ebd93_07-21-2003-NA-PET-CT Ganzkoerper  primaer mit KM-37139.nii.gz
+[2026-10-07 21:33:39] [fold0/inference] 2
+[2026-10-07 21:33:40] [fold0/inference] 2026-10-07 21:33:40,184 INFO image_writer.py:197 - writing: results/predictions/fold0/unet/unet_fold0_randcrop192/PETCT_dd8f9f217c_02-15-2004-NA-PET-CT Ganzkoerper  primaer mit KM-50103.nii.gz
+[2026-10-07 21:33:41] [fold0/inference] 2
+[2026-10-07 21:33:42] [fold0/inference] 2026-10-07 21:33:42,115 INFO image_writer.py:197 - writing: results/predictions/fold0/unet/unet_fold0_randcrop192/PETCT_ddbb3c69f0_08-11-2003-NA-PET-CT Ganzkoerper  primaer mit KM-00479.nii.gz
+[2026-10-07 21:33:46] [fold0/inference] 2
+[2026-10-07 21:33:47] [fold0/inference] 2026-10-07 21:33:47,774 INFO image_writer.py:197 - writing: results/predictions/fold0/unet/unet_fold0_randcrop192/PETCT_e61c9da258_12-13-2002-NA-PET-CT Ganzkoerper  primaer mit KM-78457.nii.gz
+[2026-10-07 21:33:48] [fold0/inference] 2
+[2026-10-07 21:33:49] [fold0/inference] 2026-10-07 21:33:49,668 INFO image_writer.py:197 - writing: results/predictions/fold0/unet/unet_fold0_randcrop192/PETCT_ea051a3e6c_10-22-2004-NA-PET-CT Ganzkoerper  primaer mit KM-19249.nii.gz
+[2026-10-07 21:33:54] [fold0/inference] 2
+[2026-10-07 21:33:55] [fold0/inference] 2026-10-07 21:33:55,430 INFO image_writer.py:197 - writing: results/predictions/fold0/unet/unet_fold0_randcrop192/PETCT_f47e31ceb5_07-26-2003-NA-PET-CT Ganzkoerper  primaer mit KM-36586.nii.gz
+[2026-10-07 21:33:56] [fold0/inference] 2
+[2026-10-07 21:33:57] [fold0/inference] 2026-10-07 21:33:57,187 INFO image_writer.py:197 - writing: results/predictions/fold0/unet/unet_fold0_randcrop192/PETCT_f9e0c504af_06-29-2003-NA-PET-CT Ganzkoerper  primaer mit KM-14170.nii.gz
+[2026-10-07 21:33:58] [fold0/inference] exit code: 0
+[2026-10-07 21:34:25] [fold0] predicted components per case: median 78, max 312; true lesions per case: median 9, max 325
+[2026-10-07 21:34:25] [fold0/inference] COMPLETE in 2.8 min
+[2026-10-07 21:34:25] [fold0] test list for fold 0 written: 30 held-out examinations
+[2026-10-07 21:34:26] [fold0/metrics] command: /home/eva25/venvs/lymphoma_seg/bin/python "/mnt/c/Users/eva/Desktop/6th semester/Projects/manu/lymphoma-segmentation-dnn/segmentation/calculate_test_metrics.py" --fold 0
+[2026-10-07 21:34:26] [fold0/metrics] working directory: /mnt/c/Users/eva/Desktop/6th semester/Projects/manu/experiments/unet_10ep/work
+[2026-10-07 21:38:15] [fold0/metrics] PETCT_0223010e46_09-04-2003-NA-PET-CT Ganzkoerper  primaer mit KM-25360: DSC = 0.0
+[2026-10-07 21:38:15] [fold0/metrics] FPV = 1400.6723 ml
+[2026-10-07 21:38:15] [fold0/metrics] FNV = 0.0995 ml
+[2026-10-07 21:46:37] [fold0/metrics] PETCT_07574bfa00_04-20-2003-NA-PET-CT Ganzkoerper  primaer mit KM-91235: DSC = 0.6715
+[2026-10-07 21:46:37] [fold0/metrics] FPV = 365.654 ml
+[2026-10-07 21:46:37] [fold0/metrics] FNV = 0.3359 ml
+[2026-10-07 22:01:23] [fold0/metrics] PETCT_08cdb15e0b_11-21-2003-NA-PET-CT Ganzkoerper  primaer mit KM-47234: DSC = 0.0952
+[2026-10-07 22:01:23] [fold0/metrics] FPV = 702.1961 ml
+[2026-10-07 22:01:23] [fold0/metrics] FNV = 1.045 ml
+[2026-10-07 22:06:42] [fold0/metrics] PETCT_0f44cec2e6_09-07-2003-NA-PET-CT Ganzkoerper  primaer mit KM-99224: DSC = 0.0
+[2026-10-07 22:06:42] [fold0/metrics] FPV = 388.8068 ml
+[2026-10-07 22:06:42] [fold0/metrics] FNV = 5.6482 ml
+[2026-10-07 22:08:25] [fold0/metrics] PETCT_108c1763d4_09-30-2004-NA-PET-CT Ganzkoerper  primaer mit KM-86848: DSC = 0.0964
+[2026-10-07 22:08:25] [fold0/metrics] FPV = 426.5155 ml
+[2026-10-07 22:08:25] [fold0/metrics] FNV = 0.0124 ml
+[2026-10-07 22:14:56] [fold0/metrics] PETCT_11e258cc1f_03-06-2003-NA-PET-CT Ganzkoerper  primaer mit KM-87979: DSC = 0.3807
+[2026-10-07 22:14:56] [fold0/metrics] FPV = 668.3192 ml
+[2026-10-07 22:14:56] [fold0/metrics] FNV = 0.0 ml
+[2026-10-07 22:20:37] [fold0/metrics] PETCT_15f4b7254f_07-18-2003-NA-PET-CT Ganzkoerper  primaer mit KM-44296: DSC = 0.2901
+[2026-10-07 22:20:37] [fold0/metrics] FPV = 625.5843 ml
+[2026-10-07 22:20:37] [fold0/metrics] FNV = 0.6345 ml
+[2026-10-07 22:23:58] [fold0/metrics] PETCT_15f4b7254f_10-11-2003-NA-PET-CT Ganzkoerper  primaer mit KM-99526: DSC = 0.0004
+[2026-10-07 22:23:58] [fold0/metrics] FPV = 789.1713 ml
+[2026-10-07 22:23:58] [fold0/metrics] FNV = 0.0 ml
+[2026-10-07 23:52:48] [fold0/metrics] PETCT_2b60c8135a_12-09-2005-NA-PET-CT Ganzkoerper  primaer mit KM-49696: DSC = 0.673
+[2026-10-07 23:52:48] [fold0/metrics] FPV = 462.8308 ml
+[2026-10-07 23:52:48] [fold0/metrics] FNV = 8.7709 ml
+[2026-10-07 23:57:54] [fold0/metrics] PETCT_4076ea9a15_04-29-2005-NA-PET-CT Ganzkoerper  primaer mit KM-17567: DSC = 0.0002
+[2026-10-07 23:57:54] [fold0/metrics] FPV = 1628.0942 ml
+[2026-10-07 23:57:54] [fold0/metrics] FNV = 0.0124 ml
+[2026-10-08 00:16:40] [fold0/metrics] PETCT_5cf118ac06_02-28-2004-NA-PET-CT Ganzkoerper  primaer mit KM-95778: DSC = 0.4677
+[2026-10-08 00:16:40] [fold0/metrics] FPV = 805.1331 ml
+[2026-10-08 00:16:40] [fold0/metrics] FNV = 2.8366 ml
+[2026-10-08 00:52:12] [fold0/metrics] PETCT_61348439bf_07-24-2005-NA-PET-CT Ganzkoerper  primaer mit KM-57273: DSC = 0.072
+[2026-10-08 00:52:12] [fold0/metrics] FPV = 468.1805 ml
+[2026-10-08 00:52:12] [fold0/metrics] FNV = 3.1351 ml
+[2026-10-08 01:00:52] [fold0/metrics] PETCT_62405d117c_03-11-2001-NA-PET-CT Ganzkoerper  primaer mit KM-26235: DSC = 0.2449
+[2026-10-08 01:00:52] [fold0/metrics] FPV = 711.0043 ml
+[2026-10-08 01:00:52] [fold0/metrics] FNV = 0.0124 ml
+[2026-10-08 09:31:38] [pipeline] PIPELINE STOPPED: interrupted by signal; the running stage was terminated and is NOT marked complete
+[2026-10-09 00:46:57] [pipeline] experiment "unet_10ep" at /mnt/c/Users/eva/Desktop/6th semester/Projects/manu/experiments/unet_10ep
+[2026-10-09 00:47:02] [pipeline] Microsoft repo commit 81129243db3c868370a7664c9adc2ad52609484f, tracked files unmodified: True
+[2026-10-09 00:47:02] [fold0/train] already complete, skipping
+[2026-10-09 00:47:02] [fold0/inference] already complete, skipping
+[2026-10-09 00:47:02] [pipeline] summary written to /mnt/c/Users/eva/Desktop/6th semester/Projects/manu/experiments/unet_10ep/summary
+[2026-10-09 00:47:02] [fold1/train] command: /home/eva25/venvs/lymphoma_seg/bin/torchrun --standalone --nproc_per_node=1 "/mnt/c/Users/eva/Desktop/6th semester/Projects/manu/lymphoma-segmentation-dnn/segmentation/trainddp.py" --fold 1 --epochs 10 --num_workers 6
+[2026-10-09 00:47:02] [fold1/train] working directory: /mnt/c/Users/eva/Desktop/6th semester/Projects/manu/experiments/unet_10ep/work
+[2026-10-09 00:47:07] [fold1/train] Training unet on fold 1
+[2026-10-09 00:47:07] [fold1/train] The models will be saved in results/models/fold1/unet/unet_fold1_randcrop192
+[2026-10-09 00:47:07] [fold1/train] The training/validation logs will be saved in results/logs/fold1/unet/unet_fold1_randcrop192
+[2026-10-09 00:47:07] [fold1/train] monai.transforms.io.dictionary LoadImaged.__init__:image_only: Current default value of argument `image_only=False` has been deprecated since version 1.1. It will be changed to `image_only=True` in version 1.3.
+[2026-10-09 00:47:09] [fold1/train] tqdm is not installed, will not show the caching progress bar.
+[2026-10-09 00:48:00] [fold1/train] [GPU0]: Running training: epoch = 1
+[2026-10-09 00:51:56] [fold1/train] [GPU:0]: epoch 1/10: average loss: 0.6026
+[2026-10-09 00:51:56] [fold1/train] [GPU:0]: Epoch 1 time: 3.92 min
+[2026-10-09 00:51:56] [fold1/train] [GPU0]: Running training: epoch = 2
+[2026-10-09 00:55:42] [fold1/train] [GPU:0]: epoch 2/10: average loss: 0.5512
+[2026-10-09 00:55:42] [fold1/train] [GPU0]: Running validation
+[2026-10-09 00:55:44] [fold1/train] Using a non-tuple sequence for multidimensional indexing is deprecated and will be changed in pytorch 2.9; use x[tuple(seq)] instead of x[seq]. In pytorch 2.9 this will be interpreted as tensor index, x[torch.tensor(seq)], which will result either in an error or a different result (Triggered internally at /pytorch/torch/csrc/autograd/python_variable_indexing.cpp:347.)
+[2026-10-09 00:56:06] [fold1/train] Using a non-tuple sequence for multidimensional indexing is deprecated and will be changed in pytorch 2.9; use x[tuple(seq)] instead of x[seq]. In pytorch 2.9 this will be interpreted as tensor index, x[torch.tensor(seq)], which will result either in an error or a different result (Triggered internally at /pytorch/torch/csrc/autograd/python_variable_indexing.cpp:347.)
+[2026-10-09 00:56:50] [fold1/train] [GPU:0] SAVING MODEL at epoch: 2; Mean DSC: 0.1754
+[2026-10-09 00:56:51] [fold1/train] [GPU:0]: Epoch 2 time: 4.92 min
+[2026-10-09 00:56:51] [fold1/train] [GPU0]: Running training: epoch = 3
+[2026-10-09 01:01:01] [fold1/train] [GPU:0]: epoch 3/10: average loss: 0.5182
+[2026-10-09 01:01:01] [fold1/train] [GPU:0]: Epoch 3 time: 4.18 min
+[2026-10-09 01:01:01] [fold1/train] [GPU0]: Running training: epoch = 4
+[2026-10-09 01:05:00] [fold1/train] [GPU:0]: epoch 4/10: average loss: 0.4911
+[2026-10-09 01:05:00] [fold1/train] [GPU0]: Running validation
+[2026-10-09 01:06:01] [fold1/train] [GPU:0] SAVING MODEL at epoch: 4; Mean DSC: 0.2115
+[2026-10-09 01:06:02] [fold1/train] [GPU:0]: Epoch 4 time: 5.01 min
+[2026-10-09 01:06:02] [fold1/train] [GPU0]: Running training: epoch = 5
+[2026-10-09 01:10:00] [fold1/train] [GPU:0]: epoch 5/10: average loss: 0.4718
+[2026-10-09 01:10:00] [fold1/train] [GPU:0]: Epoch 5 time: 3.97 min
+[2026-10-09 01:10:00] [fold1/train] [GPU0]: Running training: epoch = 6
+[2026-10-09 01:14:10] [fold1/train] [GPU:0]: epoch 6/10: average loss: 0.4534
+[2026-10-09 01:14:10] [fold1/train] [GPU0]: Running validation
+[2026-10-09 01:15:13] [fold1/train] [GPU:0] SAVING MODEL at epoch: 6; Mean DSC: 0.2038
+[2026-10-09 01:15:14] [fold1/train] [GPU:0]: Epoch 6 time: 5.23 min
+[2026-10-09 01:15:14] [fold1/train] [GPU0]: Running training: epoch = 7
+[2026-10-09 01:19:28] [fold1/train] [GPU:0]: epoch 7/10: average loss: 0.4420
+[2026-10-09 01:19:28] [fold1/train] [GPU:0]: Epoch 7 time: 4.23 min
+[2026-10-09 01:19:28] [fold1/train] [GPU0]: Running training: epoch = 8
+[2026-10-09 01:23:31] [fold1/train] [GPU:0]: epoch 8/10: average loss: 0.4272
+[2026-10-09 01:23:31] [fold1/train] [GPU0]: Running validation
+[2026-10-09 01:24:35] [fold1/train] [GPU:0] SAVING MODEL at epoch: 8; Mean DSC: 0.2600
+[2026-10-09 01:24:37] [fold1/train] [GPU:0]: Epoch 8 time: 5.14 min
+[2026-10-09 01:24:37] [fold1/train] [GPU0]: Running training: epoch = 9
+[2026-10-09 01:29:11] [fold1/train] [GPU:0]: epoch 9/10: average loss: 0.4280
+[2026-10-09 01:29:11] [fold1/train] [GPU:0]: Epoch 9 time: 4.57 min
+[2026-10-09 01:29:11] [fold1/train] [GPU0]: Running training: epoch = 10
+[2026-10-09 01:35:00] [fold1/train] [GPU:0]: epoch 10/10: average loss: 0.4212
+[2026-10-09 01:35:00] [fold1/train] [GPU0]: Running validation
+[2026-10-09 01:36:27] [fold1/train] [GPU:0] SAVING MODEL at epoch: 10; Mean DSC: 0.2936
+[2026-10-09 01:36:29] [fold1/train] [GPU:0]: Epoch 10 time: 7.3 min
+[2026-10-09 01:36:29] [fold1/train] [GPU:0]: Total time: 0.81 hr
+[2026-10-09 01:37:06] [fold1/train] exit code: 0
+[2026-10-09 01:37:06] [fold1/train] COMPLETE in 50.1 min
+[2026-10-09 01:37:06] [fold1] test list for fold 1 written: 29 held-out examinations
+[2026-10-09 01:37:06] [fold1/inference] Microsoft rule selects checkpoint model_ep=0010.pth (validation mean DSC 0.2936)
+[2026-10-09 01:37:06] [fold1/inference] command: /home/eva25/venvs/lymphoma_seg/bin/python "/mnt/c/Users/eva/Desktop/6th semester/Projects/manu/lymphoma-segmentation-dnn/segmentation/inference.py" --fold 1
+[2026-10-09 01:37:06] [fold1/inference] working directory: /mnt/c/Users/eva/Desktop/6th semester/Projects/manu/experiments/unet_10ep/work
+[2026-10-09 01:37:18] [fold1/inference] Using the unet model at epoch=10 with mean valid DSC = 0.2936
+[2026-10-09 01:37:21] [fold1/inference] monai.transforms.io.dictionary LoadImaged.__init__:image_only: Current default value of argument `image_only=False` has been deprecated since version 1.1. It will be changed to `image_only=True` in version 1.3.
+[2026-10-09 01:37:35] [fold1/inference] 2
+[2026-10-09 01:37:35] [fold1/inference] Using a non-tuple sequence for multidimensional indexing is deprecated and will be changed in pytorch 2.9; use x[tuple(seq)] instead of x[seq]. In pytorch 2.9 this will be interpreted as tensor index, x[torch.tensor(seq)], which will result either in an error or a different result (Triggered internally at /pytorch/torch/csrc/autograd/python_variable_indexing.cpp:347.)
+[2026-10-09 01:37:36] [fold1/inference] Using a non-tuple sequence for multidimensional indexing is deprecated and will be changed in pytorch 2.9; use x[tuple(seq)] instead of x[seq]. In pytorch 2.9 this will be interpreted as tensor index, x[torch.tensor(seq)], which will result either in an error or a different result (Triggered internally at /pytorch/torch/csrc/autograd/python_variable_indexing.cpp:347.)
+[2026-10-09 01:37:37] [fold1/inference] 2026-10-09 01:37:37,723 INFO image_writer.py:197 - writing: results/predictions/fold1/unet/unet_fold1_randcrop192/PETCT_04ab5c61c9_11-22-2002-NA-PET-CT Ganzkoerper  primaer mit KM-42241.nii.gz
+[2026-10-09 01:37:39] [fold1/inference] 2
+[2026-10-09 01:37:40] [fold1/inference] 2026-10-09 01:37:40,360 INFO image_writer.py:197 - writing: results/predictions/fold1/unet/unet_fold1_randcrop192/PETCT_13d0984c93_09-08-2003-NA-PET-CT Ganzkoerper  primaer mit KM-48750.nii.gz
+[2026-10-09 01:37:47] [fold1/inference] 2
+[2026-10-09 01:37:48] [fold1/inference] 2026-10-09 01:37:48,242 INFO image_writer.py:197 - writing: results/predictions/fold1/unet/unet_fold1_randcrop192/PETCT_1fe6e48293_06-26-2003-NA-PET-CT Ganzkoerper  primaer mit KM-45853.nii.gz
+[2026-10-09 01:37:49] [fold1/inference] 2
+[2026-10-09 01:37:50] [fold1/inference] 2026-10-09 01:37:50,772 INFO image_writer.py:197 - writing: results/predictions/fold1/unet/unet_fold1_randcrop192/PETCT_223f70f0b0_11-29-2003-NA-PET-CT Ganzkoerper  primaer mit KM-10527.nii.gz
+[2026-10-09 01:37:57] [fold1/inference] 2
+[2026-10-09 01:37:58] [fold1/inference] 2026-10-09 01:37:58,657 INFO image_writer.py:197 - writing: results/predictions/fold1/unet/unet_fold1_randcrop192/PETCT_249c02c01c_03-06-2003-NA-PET-CT Ganzkoerper  primaer mit KM-65884.nii.gz
+[2026-10-09 01:38:00] [fold1/inference] 2
+[2026-10-09 01:38:01] [fold1/inference] 2026-10-09 01:38:01,409 INFO image_writer.py:197 - writing: results/predictions/fold1/unet/unet_fold1_randcrop192/PETCT_2e97a9e5c2_06-23-2003-NA-PET-CT Ganzkoerper  primaer mit KM-00442.nii.gz
+[2026-10-09 01:38:05] [fold1/inference] 2
+[2026-10-09 01:38:06] [fold1/inference] 2026-10-09 01:38:06,412 INFO image_writer.py:197 - writing: results/predictions/fold1/unet/unet_fold1_randcrop192/PETCT_2f9aec0275_05-31-2003-NA-PET-CT Ganzkoerper  primaer mit KM-55211.nii.gz
+[2026-10-09 01:38:07] [fold1/inference] 2
+[2026-10-09 01:38:08] [fold1/inference] 2026-10-09 01:38:08,607 INFO image_writer.py:197 - writing: results/predictions/fold1/unet/unet_fold1_randcrop192/PETCT_527c5afc5d_07-18-2003-NA-PET-CT Ganzkoerper  primaer mit KM-02474.nii.gz
+[2026-10-09 01:38:17] [fold1/inference] 2
+[2026-10-09 01:38:18] [fold1/inference] 2026-10-09 01:38:18,841 INFO image_writer.py:197 - writing: results/predictions/fold1/unet/unet_fold1_randcrop192/PETCT_59e6d1de22_08-06-2005-NA-PET-CT Ganzkoerper  primaer mit KM-59516.nii.gz
+[2026-10-09 01:38:20] [fold1/inference] 2
+[2026-10-09 01:38:21] [fold1/inference] 2026-10-09 01:38:21,243 INFO image_writer.py:197 - writing: results/predictions/fold1/unet/unet_fold1_randcrop192/PETCT_5d10be5b89_05-30-2005-NA-PET-CT Ganzkoerper  primaer mit KM-53829.nii.gz
+[2026-10-09 01:38:42] [fold1/inference] 2
+[2026-10-09 01:38:44] [fold1/inference] 2026-10-09 01:38:44,173 INFO image_writer.py:197 - writing: results/predictions/fold1/unet/unet_fold1_randcrop192/PETCT_642d6c78d6_05-02-2005-NA-PET-CT Ganzkoerper  primaer mit KM-84654.nii.gz
+[2026-10-09 01:38:47] [fold1/inference] 2
+[2026-10-09 01:38:48] [fold1/inference] 2026-10-09 01:38:48,360 INFO image_writer.py:197 - writing: results/predictions/fold1/unet/unet_fold1_randcrop192/PETCT_644d80e987_02-15-2003-NA-PET-CT Ganzkoerper  primaer mit KM-86028.nii.gz
+[2026-10-09 01:38:51] [fold1/inference] 2
+[2026-10-09 01:38:52] [fold1/inference] 2026-10-09 01:38:52,161 INFO image_writer.py:197 - writing: results/predictions/fold1/unet/unet_fold1_randcrop192/PETCT_6a3477cd9a_01-15-2005-NA-PET-CT Ganzkoerper  primaer mit KM-52826.nii.gz
+[2026-10-09 01:38:53] [fold1/inference] 2
+[2026-10-09 01:38:54] [fold1/inference] 2026-10-09 01:38:54,742 INFO image_writer.py:197 - writing: results/predictions/fold1/unet/unet_fold1_randcrop192/PETCT_7a8a062ed5_03-12-2005-NA-PET-CT Ganzkoerper  primaer mit KM-27527.nii.gz
+[2026-10-09 01:39:01] [fold1/inference] 2
+[2026-10-09 01:39:02] [fold1/inference] 2026-10-09 01:39:02,033 INFO image_writer.py:197 - writing: results/predictions/fold1/unet/unet_fold1_randcrop192/PETCT_870181d7fd_10-31-2004-NA-PET-CT Ganzkoerper  primaer mit KM-80978.nii.gz
+[2026-10-09 01:39:03] [fold1/inference] 2
+[2026-10-09 01:39:04] [fold1/inference] 2026-10-09 01:39:04,490 INFO image_writer.py:197 - writing: results/predictions/fold1/unet/unet_fold1_randcrop192/PETCT_8b74860ce6_03-10-2005-NA-PET-CT Ganzkoerper  primaer mit KM-00433.nii.gz
+[2026-10-09 01:39:10] [fold1/inference] 2
+[2026-10-09 01:39:11] [fold1/inference] 2026-10-09 01:39:11,505 INFO image_writer.py:197 - writing: results/predictions/fold1/unet/unet_fold1_randcrop192/PETCT_97320b0b58_04-17-2005-NA-PET-CT Ganzkoerper  primaer mit KM-10200.nii.gz
+[2026-10-09 01:39:12] [fold1/inference] 2
+[2026-10-09 01:39:13] [fold1/inference] 2026-10-09 01:39:13,841 INFO image_writer.py:197 - writing: results/predictions/fold1/unet/unet_fold1_randcrop192/PETCT_987c8a1160_01-22-2005-NA-PET-CT Ganzkoerper  primaer mit KM-13761.nii.gz
+[2026-10-09 01:39:20] [fold1/inference] 2
+[2026-10-09 01:39:20] [fold1/inference] 2026-10-09 01:39:20,703 INFO image_writer.py:197 - writing: results/predictions/fold1/unet/unet_fold1_randcrop192/PETCT_a19ef8e0d2_12-26-1999-NA-PET-CT Ganzkoerper  primaer mit KM-80792.nii.gz
+[2026-10-09 01:39:22] [fold1/inference] 2
+[2026-10-09 01:39:23] [fold1/inference] 2026-10-09 01:39:23,677 INFO image_writer.py:197 - writing: results/predictions/fold1/unet/unet_fold1_randcrop192/PETCT_c29aba73da_08-23-2002-NA-PET-CT Ganzkoerper  primaer mit KM-89538.nii.gz
+[2026-10-09 01:39:31] [fold1/inference] 2
+[2026-10-09 01:39:32] [fold1/inference] 2026-10-09 01:39:32,558 INFO image_writer.py:197 - writing: results/predictions/fold1/unet/unet_fold1_randcrop192/PETCT_ca89066e44_08-11-2005-NA-PET-CT Ganzkoerper  primaer mit KM-64009.nii.gz
+[2026-10-09 01:39:34] [fold1/inference] 2
+[2026-10-09 01:39:34] [fold1/inference] 2026-10-09 01:39:34,941 INFO image_writer.py:197 - writing: results/predictions/fold1/unet/unet_fold1_randcrop192/PETCT_e0aa99fa04_08-29-2003-NA-PET-CT Ganzkoerper  primaer mit KM-05827.nii.gz
+[2026-10-09 01:39:40] [fold1/inference] 2
+[2026-10-09 01:39:41] [fold1/inference] 2026-10-09 01:39:41,471 INFO image_writer.py:197 - writing: results/predictions/fold1/unet/unet_fold1_randcrop192/PETCT_e44480b9b8_05-26-2002-NA-PET-CT Ganzkoerper  primaer mit KM-00331.nii.gz
+[2026-10-09 01:39:43] [fold1/inference] 2
+[2026-10-09 01:39:44] [fold1/inference] 2026-10-09 01:39:44,117 INFO image_writer.py:197 - writing: results/predictions/fold1/unet/unet_fold1_randcrop192/PETCT_e4712dc58c_02-12-1999-NA-PET-CT Ganzkoerper  primaer mit KM-56899.nii.gz
+[2026-10-09 01:39:49] [fold1/inference] 2
+[2026-10-09 01:39:49] [fold1/inference] 2026-10-09 01:39:49,858 INFO image_writer.py:197 - writing: results/predictions/fold1/unet/unet_fold1_randcrop192/PETCT_ea42c88cc7_02-26-2006-NA-PET-CT Ganzkoerper  primaer mit KM-88113.nii.gz
+[2026-10-09 01:39:52] [fold1/inference] 2
+[2026-10-09 01:39:52] [fold1/inference] 2026-10-09 01:39:52,883 INFO image_writer.py:197 - writing: results/predictions/fold1/unet/unet_fold1_randcrop192/PETCT_ea6c621616_08-08-2005-NA-PET-CT Ganzkoerper  primaer mit KM-54129.nii.gz
+[2026-10-09 01:39:59] [fold1/inference] 2
+[2026-10-09 01:40:00] [fold1/inference] 2026-10-09 01:40:00,739 INFO image_writer.py:197 - writing: results/predictions/fold1/unet/unet_fold1_randcrop192/PETCT_ed9dca00d2_09-25-2004-NA-PET-CT Ganzkoerper  primaer mit KM-44626.nii.gz
+[2026-10-09 01:40:02] [fold1/inference] 2
+[2026-10-09 01:40:03] [fold1/inference] 2026-10-09 01:40:03,458 INFO image_writer.py:197 - writing: results/predictions/fold1/unet/unet_fold1_randcrop192/PETCT_f1501b1f45_03-20-2005-NA-PET-CT Ganzkoerper  primaer mit KM-34354.nii.gz
+[2026-10-09 01:40:08] [fold1/inference] 2
+[2026-10-09 01:40:08] [fold1/inference] 2026-10-09 01:40:08,366 INFO image_writer.py:197 - writing: results/predictions/fold1/unet/unet_fold1_randcrop192/PETCT_fe705ea1cc_12-29-2002-NA-Unspecified CT ABDOMEN-93772.nii.gz
+[2026-10-09 01:40:11] [fold1/inference] exit code: 0
+[2026-10-09 01:40:49] [fold1] predicted components per case: median 96, max 291; true lesions per case: median 8, max 157
+[2026-10-09 01:40:49] [fold1/inference] COMPLETE in 3.7 min
+[2026-10-09 01:40:49] [pipeline] summary written to /mnt/c/Users/eva/Desktop/6th semester/Projects/manu/experiments/unet_10ep/summary
+[2026-10-09 01:40:49] [fold2/train] command: /home/eva25/venvs/lymphoma_seg/bin/torchrun --standalone --nproc_per_node=1 "/mnt/c/Users/eva/Desktop/6th semester/Projects/manu/lymphoma-segmentation-dnn/segmentation/trainddp.py" --fold 2 --epochs 10 --num_workers 6
+[2026-10-09 01:40:49] [fold2/train] working directory: /mnt/c/Users/eva/Desktop/6th semester/Projects/manu/experiments/unet_10ep/work
+[2026-10-09 01:40:58] [fold2/train] Training unet on fold 2
+[2026-10-09 01:40:58] [fold2/train] The models will be saved in results/models/fold2/unet/unet_fold2_randcrop192
+[2026-10-09 01:40:58] [fold2/train] The training/validation logs will be saved in results/logs/fold2/unet/unet_fold2_randcrop192
+[2026-10-09 01:40:58] [fold2/train] monai.transforms.io.dictionary LoadImaged.__init__:image_only: Current default value of argument `image_only=False` has been deprecated since version 1.1. It will be changed to `image_only=True` in version 1.3.
+[2026-10-09 01:41:00] [fold2/train] tqdm is not installed, will not show the caching progress bar.
+[2026-10-09 01:42:20] [fold2/train] [GPU0]: Running training: epoch = 1
+[2026-10-09 01:47:37] [fold2/train] [GPU:0]: epoch 1/10: average loss: 0.5888
+[2026-10-09 01:47:38] [fold2/train] [GPU:0]: Epoch 1 time: 5.29 min
+[2026-10-09 01:47:38] [fold2/train] [GPU0]: Running training: epoch = 2
+[2026-10-09 01:53:03] [fold2/train] [GPU:0]: epoch 2/10: average loss: 0.5392
+[2026-10-09 01:53:04] [fold2/train] [GPU0]: Running validation
+[2026-10-09 01:53:13] [fold2/train] Using a non-tuple sequence for multidimensional indexing is deprecated and will be changed in pytorch 2.9; use x[tuple(seq)] instead of x[seq]. In pytorch 2.9 this will be interpreted as tensor index, x[torch.tensor(seq)], which will result either in an error or a different result (Triggered internally at /pytorch/torch/csrc/autograd/python_variable_indexing.cpp:347.)
+[2026-10-09 01:53:41] [fold2/train] Using a non-tuple sequence for multidimensional indexing is deprecated and will be changed in pytorch 2.9; use x[tuple(seq)] instead of x[seq]. In pytorch 2.9 this will be interpreted as tensor index, x[torch.tensor(seq)], which will result either in an error or a different result (Triggered internally at /pytorch/torch/csrc/autograd/python_variable_indexing.cpp:347.)
+[2026-10-09 01:54:08] [fold2/train] [rank0]: Traceback (most recent call last):
+[2026-10-09 01:54:08] [fold2/train] [rank0]:   File "/mnt/c/Users/eva/Desktop/6th semester/Projects/manu/lymphoma-segmentation-dnn/segmentation/trainddp.py", line 269, in <module>
+[2026-10-09 01:54:08] [fold2/train] [rank0]:     main(args)
+[2026-10-09 01:54:08] [fold2/train] [rank0]:   File "/mnt/c/Users/eva/Desktop/6th semester/Projects/manu/lymphoma-segmentation-dnn/segmentation/trainddp.py", line 236, in main
+[2026-10-09 01:54:08] [fold2/train] [rank0]:     main_worker(save_models_dir, save_logs_dir, args)
+[2026-10-09 01:54:08] [fold2/train] [rank0]:   File "/mnt/c/Users/eva/Desktop/6th semester/Projects/manu/lymphoma-segmentation-dnn/segmentation/trainddp.py", line 197, in main_worker
+[2026-10-09 01:54:08] [fold2/train] [rank0]:     metric(y_pred=val_outputs, y=val_labels)
+[2026-10-09 01:54:08] [fold2/train] [rank0]:   File "/home/eva25/venvs/lymphoma_seg/lib/python3.11/site-packages/monai/metrics/metric.py", line 344, in __call__
+[2026-10-09 01:54:08] [fold2/train] [rank0]:     ret = super().__call__(y_pred=y_pred, y=y, **kwargs)
+[2026-10-09 01:54:08] [fold2/train] [rank0]:           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2026-10-09 01:54:08] [fold2/train] [rank0]:   File "/home/eva25/venvs/lymphoma_seg/lib/python3.11/site-packages/monai/metrics/metric.py", line 73, in __call__
+[2026-10-09 01:54:08] [fold2/train] [rank0]:     return self._compute_list(y_pred, y, **kwargs)
+[2026-10-09 01:54:08] [fold2/train] [rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2026-10-09 01:54:08] [fold2/train] [rank0]:   File "/home/eva25/venvs/lymphoma_seg/lib/python3.11/site-packages/monai/metrics/metric.py", line 97, in _compute_list
+[2026-10-09 01:54:08] [fold2/train] [rank0]:     ret = [
+[2026-10-09 01:54:08] [fold2/train] [rank0]:           ^
+[2026-10-09 01:54:08] [fold2/train] [rank0]:   File "/home/eva25/venvs/lymphoma_seg/lib/python3.11/site-packages/monai/metrics/metric.py", line 98, in <listcomp>
+[2026-10-09 01:54:08] [fold2/train] [rank0]:     self._compute_tensor(p.detach().unsqueeze(0), y_.detach().unsqueeze(0), **kwargs)
+[2026-10-09 01:54:08] [fold2/train] [rank0]:   File "/home/eva25/venvs/lymphoma_seg/lib/python3.11/site-packages/monai/metrics/meandice.py", line 95, in _compute_tensor
+[2026-10-09 01:54:08] [fold2/train] [rank0]:     return self.dice_helper(y_pred=y_pred, y=y)  # type: ignore
+[2026-10-09 01:54:08] [fold2/train] [rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2026-10-09 01:54:08] [fold2/train] [rank0]:   File "/home/eva25/venvs/lymphoma_seg/lib/python3.11/site-packages/monai/metrics/meandice.py", line 260, in __call__
+[2026-10-09 01:54:08] [fold2/train] [rank0]:     c_list.append(self.compute_channel(x_pred, x))
+[2026-10-09 01:54:08] [fold2/train] [rank0]:                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2026-10-09 01:54:08] [fold2/train] [rank0]:   File "/home/eva25/venvs/lymphoma_seg/lib/python3.11/site-packages/monai/metrics/meandice.py", line 219, in compute_channel
+[2026-10-09 01:54:08] [fold2/train] [rank0]:     if y_o > 0:
+[2026-10-09 01:54:08] [fold2/train] [rank0]:        ^^^^^^^
+[2026-10-09 01:54:08] [fold2/train] [rank0]:   File "/home/eva25/venvs/lymphoma_seg/lib/python3.11/site-packages/monai/data/meta_tensor.py", line 276, in __torch_function__
+[2026-10-09 01:54:08] [fold2/train] [rank0]:     ret = super().__torch_function__(func, types, args, kwargs)
+[2026-10-09 01:54:08] [fold2/train] [rank0]:           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2026-10-09 01:54:08] [fold2/train] [rank0]:   File "/home/eva25/venvs/lymphoma_seg/lib/python3.11/site-packages/torch/_tensor.py", line 1703, in __torch_function__
+[2026-10-09 01:54:08] [fold2/train] [rank0]:     ret = func(*args, **kwargs)
+[2026-10-09 01:54:08] [fold2/train] [rank0]:           ^^^^^^^^^^^^^^^^^^^^^
+[2026-10-09 01:54:08] [fold2/train] [rank0]: torch.AcceleratorError: CUDA error: unknown error
+[2026-10-09 01:54:08] [fold2/train] [rank0]: Search for `cudaErrorUnknown' in https://docs.nvidia.com/cuda/cuda-runtime-api/group__CUDART__TYPES.html for more information.
+[2026-10-09 01:54:08] [fold2/train] [rank0]: CUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.
+[2026-10-09 01:54:08] [fold2/train] [rank0]: For debugging consider passing CUDA_LAUNCH_BLOCKING=1
+[2026-10-09 01:54:08] [fold2/train] [rank0]: Compile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.
+[2026-10-09 01:54:09] [fold2/train] 
+[2026-10-09 01:54:14] [fold2/train] [rank0]:[W1009 01:54:14.231783654 CUDAEvent.h:57] Warning: CUDA warning: unknown error (function ~CUDAEvent)
+[2026-10-09 01:54:14] [fold2/train] [rank0]:[W1009 01:54:14.232655083 CUDAEvent.h:57] Warning: CUDA warning: unknown error (function ~CUDAEvent)
+[2026-10-09 01:54:14] [fold2/train] [rank0]:[W1009 01:54:14.232689277 CUDAEvent.h:57] Warning: CUDA warning: unknown error (function ~CUDAEvent)
+[2026-10-09 01:54:14] [fold2/train] [rank0]:[W1009 01:54:14.232719402 CUDAEvent.h:57] Warning: CUDA warning: unknown error (function ~CUDAEvent)
+[2026-10-09 01:54:14] [fold2/train] [rank0]:[W1009 01:54:14.232725672 CUDAEvent.h:57] Warning: CUDA warning: unknown error (function ~CUDAEvent)
+[2026-10-09 01:54:14] [fold2/train] [rank0]:[W1009 01:54:14.233339866 CUDAGuardImpl.h:126] Warning: CUDA warning: unknown error (function destroyEvent)
+[2026-10-09 01:54:14] [fold2/train] [rank0]:[W1009 01:54:14.236045758 CUDAGuardImpl.h:126] Warning: CUDA warning: unknown error (function destroyEvent)
+[2026-10-09 01:54:14] [fold2/train] [rank0]:[W1009 01:54:14.238596933 CUDAGuardImpl.h:126] Warning: CUDA warning: unknown error (function destroyEvent)
+[2026-10-09 01:54:14] [fold2/train] [rank0]:[W1009 01:54:14.239980910 CUDAGuardImpl.h:126] Warning: CUDA warning: unknown error (function destroyEvent)
+[2026-10-09 01:54:15] [fold2/train] [rank0]:[W1009 01:54:15.134039432 ProcessGroupNCCL.cpp:1575] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+[2026-10-09 01:54:16] [fold2/train] [rank0]:[W1009 01:54:16.200143295 CUDAEvent.h:57] Warning: CUDA warning: unknown error (function ~CUDAEvent)
+[2026-10-09 01:54:22] [fold2/train] E1009 01:54:22.508000 17802 torch/distributed/elastic/multiprocessing/api.py:986] failed (exitcode: 1) local_rank: 0 (pid: 17835) of binary: /home/eva25/venvs/lymphoma_seg/bin/python
+[2026-10-09 01:54:22] [fold2/train] Traceback (most recent call last):
+[2026-10-09 01:54:22] [fold2/train]   File "/home/eva25/venvs/lymphoma_seg/bin/torchrun", line 10, in <module>
+[2026-10-09 01:54:22] [fold2/train]     sys.exit(main())
+[2026-10-09 01:54:22] [fold2/train]              ^^^^^^
+[2026-10-09 01:54:22] [fold2/train]   File "/home/eva25/venvs/lymphoma_seg/lib/python3.11/site-packages/torch/distributed/elastic/multiprocessing/errors/__init__.py", line 362, in wrapper
+[2026-10-09 01:54:22] [fold2/train]     return f(*args, **kwargs)
+[2026-10-09 01:54:22] [fold2/train]            ^^^^^^^^^^^^^^^^^^
+[2026-10-09 01:54:22] [fold2/train]   File "/home/eva25/venvs/lymphoma_seg/lib/python3.11/site-packages/torch/distributed/run.py", line 990, in main
+[2026-10-09 01:54:22] [fold2/train]     run(args)
+[2026-10-09 01:54:22] [fold2/train]   File "/home/eva25/venvs/lymphoma_seg/lib/python3.11/site-packages/torch/distributed/run.py", line 981, in run
+[2026-10-09 01:54:22] [fold2/train]     elastic_launch(
+[2026-10-09 01:54:22] [fold2/train]   File "/home/eva25/venvs/lymphoma_seg/lib/python3.11/site-packages/torch/distributed/launcher/api.py", line 170, in __call__
+[2026-10-09 01:54:22] [fold2/train]     return launch_agent(self._config, self._entrypoint, list(args))
+[2026-10-09 01:54:22] [fold2/train]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2026-10-09 01:54:22] [fold2/train]   File "/home/eva25/venvs/lymphoma_seg/lib/python3.11/site-packages/torch/distributed/launcher/api.py", line 317, in launch_agent
+[2026-10-09 01:54:22] [fold2/train]     raise ChildFailedError(
+[2026-10-09 01:54:22] [fold2/train] torch.distributed.elastic.multiprocessing.errors.ChildFailedError: 
+[2026-10-09 01:54:22] [fold2/train] ============================================================
+[2026-10-09 01:54:22] [fold2/train] /mnt/c/Users/eva/Desktop/6th semester/Projects/manu/lymphoma-segmentation-dnn/segmentation/trainddp.py FAILED
+[2026-10-09 01:54:22] [fold2/train] ------------------------------------------------------------
+[2026-10-09 01:54:22] [fold2/train] Failures:
+[2026-10-09 01:54:22] [fold2/train]   <NO_OTHER_FAILURES>
+[2026-10-09 01:54:22] [fold2/train] ------------------------------------------------------------
+[2026-10-09 01:54:22] [fold2/train] Root Cause (first observed failure):
+[2026-10-09 01:54:22] [fold2/train] [0]:
+[2026-10-09 01:54:22] [fold2/train]   time      : 2026-10-09_01:54:22
+[2026-10-09 01:54:22] [fold2/train]   host      : DESKTOP-PJAVT06.localdomain
+[2026-10-09 01:54:22] [fold2/train]   rank      : 0 (local_rank: 0)
+[2026-10-09 01:54:22] [fold2/train]   exitcode  : 1 (pid: 17835)
+[2026-10-09 01:54:22] [fold2/train]   error_file: <N/A>
+[2026-10-09 01:54:22] [fold2/train]   traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
+[2026-10-09 01:54:22] [fold2/train] ============================================================
+[2026-10-09 01:54:27] [fold2/train] exit code: 1
+[2026-10-09 01:54:28] [pipeline] PIPELINE STOPPED: fold2/train: command failed with exit code 1; see /mnt/c/Users/eva/Desktop/6th semester/Projects/manu/experiments/unet_10ep/logs/fold2_train.log
+[2026-10-09 01:56:44] [pipeline] experiment "unet_10ep" at /mnt/c/Users/eva/Desktop/6th semester/Projects/manu/experiments/unet_10ep
+[2026-10-09 01:56:51] [pipeline] Microsoft repo commit 81129243db3c868370a7664c9adc2ad52609484f, tracked files unmodified: True
+[2026-10-09 01:56:51] [fold0/train] already complete, skipping
+[2026-10-09 01:56:51] [fold0/inference] already complete, skipping
+[2026-10-09 01:56:51] [pipeline] summary written to /mnt/c/Users/eva/Desktop/6th semester/Projects/manu/experiments/unet_10ep/summary
+[2026-10-09 01:56:51] [fold1/train] already complete, skipping
+[2026-10-09 01:56:52] [fold1/inference] already complete, skipping
+[2026-10-09 01:56:52] [pipeline] summary written to /mnt/c/Users/eva/Desktop/6th semester/Projects/manu/experiments/unet_10ep/summary
+[2026-10-09 01:56:52] [pipeline] PIPELINE STOPPED: fold2/train: outputs exist without a completion marker (interrupted or foreign run): ['/mnt/c/Users/eva/Desktop/6th semester/Projects/manu/experiments/unet_10ep/work/results/logs/fold2/unet/unet_fold2_randcrop192']. Nothing was touched. To move them aside and redo this stage, restart with --archive-partial 2
+[2026-10-09 01:57:38] [pipeline] experiment "unet_10ep" at /mnt/c/Users/eva/Desktop/6th semester/Projects/manu/experiments/unet_10ep
+[2026-10-09 01:57:42] [pipeline] Microsoft repo commit 81129243db3c868370a7664c9adc2ad52609484f, tracked files unmodified: True
+[2026-10-09 01:57:42] [fold0/train] already complete, skipping
+[2026-10-09 01:57:42] [fold0/inference] already complete, skipping
+[2026-10-09 01:57:42] [pipeline] summary written to /mnt/c/Users/eva/Desktop/6th semester/Projects/manu/experiments/unet_10ep/summary
+[2026-10-09 01:57:42] [fold1/train] already complete, skipping
+[2026-10-09 01:57:42] [fold1/inference] already complete, skipping
+[2026-10-09 01:57:42] [pipeline] summary written to /mnt/c/Users/eva/Desktop/6th semester/Projects/manu/experiments/unet_10ep/summary
+[2026-10-09 01:57:42] [fold2/train] moved leftover /mnt/c/Users/eva/Desktop/6th semester/Projects/manu/experiments/unet_10ep/work/results/logs/fold2/unet/unet_fold2_randcrop192 -> /mnt/c/Users/eva/Desktop/6th semester/Projects/manu/experiments/unet_10ep/archived_partial/20261009_015742_fold2_train/logs/fold2/unet/unet_fold2_randcrop192
+[2026-10-09 01:57:42] [fold2/train] moved leftover /mnt/c/Users/eva/Desktop/6th semester/Projects/manu/experiments/unet_10ep/work/results/models/fold2/unet/unet_fold2_randcrop192 -> /mnt/c/Users/eva/Desktop/6th semester/Projects/manu/experiments/unet_10ep/archived_partial/20261009_015742_fold2_train/models/fold2/unet/unet_fold2_randcrop192
+[2026-10-09 01:57:42] [fold2/train] command: /home/eva25/venvs/lymphoma_seg/bin/torchrun --standalone --nproc_per_node=1 "/mnt/c/Users/eva/Desktop/6th semester/Projects/manu/lymphoma-segmentation-dnn/segmentation/trainddp.py" --fold 2 --epochs 10 --num_workers 6
+[2026-10-09 01:57:42] [fold2/train] working directory: /mnt/c/Users/eva/Desktop/6th semester/Projects/manu/experiments/unet_10ep/work
+[2026-10-09 01:57:47] [fold2/train] Training unet on fold 2
+[2026-10-09 01:57:47] [fold2/train] The models will be saved in results/models/fold2/unet/unet_fold2_randcrop192
+[2026-10-09 01:57:47] [fold2/train] The training/validation logs will be saved in results/logs/fold2/unet/unet_fold2_randcrop192
+[2026-10-09 01:57:47] [fold2/train] monai.transforms.io.dictionary LoadImaged.__init__:image_only: Current default value of argument `image_only=False` has been deprecated since version 1.1. It will be changed to `image_only=True` in version 1.3.
+[2026-10-09 01:57:49] [fold2/train] tqdm is not installed, will not show the caching progress bar.
+[2026-10-09 01:58:38] [fold2/train] [GPU0]: Running training: epoch = 1
+[2026-10-09 02:02:44] [fold2/train] [GPU:0]: epoch 1/10: average loss: 0.5979
+[2026-10-09 02:02:44] [fold2/train] [GPU:0]: Epoch 1 time: 4.11 min
+[2026-10-09 02:02:44] [fold2/train] [GPU0]: Running training: epoch = 2
+[2026-10-09 02:06:48] [fold2/train] [GPU:0]: epoch 2/10: average loss: 0.5456
+[2026-10-09 02:06:48] [fold2/train] [GPU0]: Running validation
+[2026-10-09 02:06:55] [fold2/train] Using a non-tuple sequence for multidimensional indexing is deprecated and will be changed in pytorch 2.9; use x[tuple(seq)] instead of x[seq]. In pytorch 2.9 this will be interpreted as tensor index, x[torch.tensor(seq)], which will result either in an error or a different result (Triggered internally at /pytorch/torch/csrc/autograd/python_variable_indexing.cpp:347.)
+[2026-10-09 02:07:16] [fold2/train] Using a non-tuple sequence for multidimensional indexing is deprecated and will be changed in pytorch 2.9; use x[tuple(seq)] instead of x[seq]. In pytorch 2.9 this will be interpreted as tensor index, x[torch.tensor(seq)], which will result either in an error or a different result (Triggered internally at /pytorch/torch/csrc/autograd/python_variable_indexing.cpp:347.)
+[2026-10-09 02:08:30] [fold2/train] [GPU:0] SAVING MODEL at epoch: 2; Mean DSC: 0.0364
+[2026-10-09 02:08:31] [fold2/train] [GPU:0]: Epoch 2 time: 5.79 min
+[2026-10-09 02:08:31] [fold2/train] [GPU0]: Running training: epoch = 3
+[2026-10-09 02:14:09] [fold2/train] [GPU:0]: epoch 3/10: average loss: 0.5028
+[2026-10-09 02:14:09] [fold2/train] [GPU:0]: Epoch 3 time: 5.62 min
+[2026-10-09 02:14:09] [fold2/train] [GPU0]: Running training: epoch = 4
+[2026-10-09 02:21:48] [fold2/train] [GPU:0]: epoch 4/10: average loss: 0.4533
+[2026-10-09 02:21:48] [fold2/train] [GPU0]: Running validation
+[2026-10-09 02:24:42] [fold2/train] [GPU:0] SAVING MODEL at epoch: 4; Mean DSC: 0.1484
+[2026-10-09 02:24:43] [fold2/train] [GPU:0]: Epoch 4 time: 10.57 min
+[2026-10-09 02:24:43] [fold2/train] [GPU0]: Running training: epoch = 5
+[2026-10-09 02:31:25] [fold2/train] [GPU:0]: epoch 5/10: average loss: 0.4132
+[2026-10-09 02:31:25] [fold2/train] [GPU:0]: Epoch 5 time: 6.7 min
+[2026-10-09 02:31:25] [fold2/train] [GPU0]: Running training: epoch = 6
+[2026-10-09 02:37:53] [fold2/train] [GPU:0]: epoch 6/10: average loss: 0.3987
+[2026-10-09 02:37:53] [fold2/train] [GPU0]: Running validation
+[2026-10-09 02:40:06] [fold2/train] [GPU:0] SAVING MODEL at epoch: 6; Mean DSC: 0.1598
+[2026-10-09 02:40:07] [fold2/train] [GPU:0]: Epoch 6 time: 8.71 min
+[2026-10-09 02:40:07] [fold2/train] [GPU0]: Running training: epoch = 7
+[2026-10-09 02:44:58] [fold2/train] [GPU:0]: epoch 7/10: average loss: 0.3848
+[2026-10-09 02:44:58] [fold2/train] [GPU:0]: Epoch 7 time: 4.85 min
+[2026-10-09 02:44:58] [fold2/train] [GPU0]: Running training: epoch = 8
+[2026-10-09 02:51:02] [fold2/train] [GPU:0]: epoch 8/10: average loss: 0.3706
+[2026-10-09 02:51:02] [fold2/train] [GPU0]: Running validation
+[2026-10-09 02:53:30] [fold2/train] [GPU:0] SAVING MODEL at epoch: 8; Mean DSC: 0.3213
+[2026-10-09 02:53:32] [fold2/train] [GPU:0]: Epoch 8 time: 8.56 min
+[2026-10-09 02:53:32] [fold2/train] [GPU0]: Running training: epoch = 9
+[2026-10-09 03:00:43] [fold2/train] [GPU:0]: epoch 9/10: average loss: 0.3620
+[2026-10-09 03:00:43] [fold2/train] [GPU:0]: Epoch 9 time: 7.19 min
+[2026-10-09 03:00:43] [fold2/train] [GPU0]: Running training: epoch = 10
+[2026-10-09 03:08:49] [fold2/train] [GPU:0]: epoch 10/10: average loss: 0.3561
+[2026-10-09 03:08:49] [fold2/train] [GPU0]: Running validation
+[2026-10-09 03:11:32] [fold2/train] [GPU:0] SAVING MODEL at epoch: 10; Mean DSC: 0.3309
+[2026-10-09 03:11:34] [fold2/train] [GPU:0]: Epoch 10 time: 10.85 min
+[2026-10-09 03:11:34] [fold2/train] [GPU:0]: Total time: 1.22 hr
+[2026-10-09 03:12:10] [fold2/train] exit code: 0
+[2026-10-09 03:12:10] [fold2/train] COMPLETE in 74.5 min
+[2026-10-09 03:12:11] [fold2] test list for fold 2 written: 29 held-out examinations
+[2026-10-09 03:12:11] [fold2/inference] Microsoft rule selects checkpoint model_ep=0010.pth (validation mean DSC 0.3309)
+[2026-10-09 03:12:11] [fold2/inference] command: /home/eva25/venvs/lymphoma_seg/bin/python "/mnt/c/Users/eva/Desktop/6th semester/Projects/manu/lymphoma-segmentation-dnn/segmentation/inference.py" --fold 2
+[2026-10-09 03:12:11] [fold2/inference] working directory: /mnt/c/Users/eva/Desktop/6th semester/Projects/manu/experiments/unet_10ep/work
+[2026-10-09 03:12:20] [fold2/inference] Using the unet model at epoch=10 with mean valid DSC = 0.3309
+[2026-10-09 03:12:22] [fold2/inference] monai.transforms.io.dictionary LoadImaged.__init__:image_only: Current default value of argument `image_only=False` has been deprecated since version 1.1. It will be changed to `image_only=True` in version 1.3.
+[2026-10-09 03:12:33] [fold2/inference] 2
+[2026-10-09 03:12:33] [fold2/inference] Using a non-tuple sequence for multidimensional indexing is deprecated and will be changed in pytorch 2.9; use x[tuple(seq)] instead of x[seq]. In pytorch 2.9 this will be interpreted as tensor index, x[torch.tensor(seq)], which will result either in an error or a different result (Triggered internally at /pytorch/torch/csrc/autograd/python_variable_indexing.cpp:347.)
+[2026-10-09 03:12:33] [fold2/inference] Using a non-tuple sequence for multidimensional indexing is deprecated and will be changed in pytorch 2.9; use x[tuple(seq)] instead of x[seq]. In pytorch 2.9 this will be interpreted as tensor index, x[torch.tensor(seq)], which will result either in an error or a different result (Triggered internally at /pytorch/torch/csrc/autograd/python_variable_indexing.cpp:347.)
+[2026-10-09 03:12:35] [fold2/inference] 2026-10-09 03:12:35,194 INFO image_writer.py:197 - writing: results/predictions/fold2/unet/unet_fold2_randcrop192/PETCT_0b57b247b6_05-02-2002-NA-PET-CT Ganzkoerper  primaer mit KM-42966.nii.gz
+[2026-10-09 03:12:36] [fold2/inference] 2
+[2026-10-09 03:12:37] [fold2/inference] 2026-10-09 03:12:37,188 INFO image_writer.py:197 - writing: results/predictions/fold2/unet/unet_fold2_randcrop192/PETCT_0fa313309d_04-23-2005-NA-Unspecified CT-29055.nii.gz
+[2026-10-09 03:12:41] [fold2/inference] 2
+[2026-10-09 03:12:42] [fold2/inference] 2026-10-09 03:12:42,375 INFO image_writer.py:197 - writing: results/predictions/fold2/unet/unet_fold2_randcrop192/PETCT_1b1bdfc35b_10-29-2000-NA-PET-CT Ganzkoerper  primaer mit KM-59300.nii.gz
+[2026-10-09 03:12:43] [fold2/inference] 2
+[2026-10-09 03:12:44] [fold2/inference] 2026-10-09 03:12:44,257 INFO image_writer.py:197 - writing: results/predictions/fold2/unet/unet_fold2_randcrop192/PETCT_1f6b6b0548_10-16-2003-NA-PET-CT Ganzkoerper  primaer mit KM-05707.nii.gz
+[2026-10-09 03:12:48] [fold2/inference] 2
+[2026-10-09 03:12:48] [fold2/inference] 2026-10-09 03:12:48,961 INFO image_writer.py:197 - writing: results/predictions/fold2/unet/unet_fold2_randcrop192/PETCT_21e4ffcb52_05-06-2002-NA-PET-CT Ganzkoerper  primaer mit KM-72081.nii.gz
+[2026-10-09 03:12:49] [fold2/inference] 2
+[2026-10-09 03:12:50] [fold2/inference] 2026-10-09 03:12:50,603 INFO image_writer.py:197 - writing: results/predictions/fold2/unet/unet_fold2_randcrop192/PETCT_2202a936e0_05-31-2002-NA-PET-CT Ganzkoerper  primaer mit KM-73351.nii.gz
+[2026-10-09 03:12:54] [fold2/inference] 2
+[2026-10-09 03:12:55] [fold2/inference] 2026-10-09 03:12:55,542 INFO image_writer.py:197 - writing: results/predictions/fold2/unet/unet_fold2_randcrop192/PETCT_22d07bdc49_01-05-2003-NA-PET-CT Ganzkoerper  primaer mit KM-77260.nii.gz
+[2026-10-09 03:12:56] [fold2/inference] 2
+[2026-10-09 03:12:57] [fold2/inference] 2026-10-09 03:12:57,578 INFO image_writer.py:197 - writing: results/predictions/fold2/unet/unet_fold2_randcrop192/PETCT_323cc5aff8_11-09-2001-NA-Unspecified CT ABDOMEN-48314.nii.gz
+[2026-10-09 03:13:01] [fold2/inference] 2
+[2026-10-09 03:13:02] [fold2/inference] 2026-10-09 03:13:02,064 INFO image_writer.py:197 - writing: results/predictions/fold2/unet/unet_fold2_randcrop192/PETCT_350e91119a_10-23-2005-NA-PET-CT Ganzkoerper  primaer mit KM-47863.nii.gz
+[2026-10-09 03:13:04] [fold2/inference] 2
+[2026-10-09 03:13:05] [fold2/inference] 2026-10-09 03:13:05,644 INFO image_writer.py:197 - writing: results/predictions/fold2/unet/unet_fold2_randcrop192/PETCT_548213edf7_09-19-2005-NA-PET-CT Ganzkoerper  primaer mit KM-05001.nii.gz
+[2026-10-09 03:13:10] [fold2/inference] 2
+[2026-10-09 03:13:11] [fold2/inference] 2026-10-09 03:13:11,834 INFO image_writer.py:197 - writing: results/predictions/fold2/unet/unet_fold2_randcrop192/PETCT_556b56485a_08-29-2003-NA-PET-CT Ganzkoerper  primaer mit KM-83019.nii.gz
+[2026-10-09 03:13:13] [fold2/inference] 2
+[2026-10-09 03:13:14] [fold2/inference] 2026-10-09 03:13:14,364 INFO image_writer.py:197 - writing: results/predictions/fold2/unet/unet_fold2_randcrop192/PETCT_5ac322455f_05-26-2003-NA-PET-CT Ganzkoerper  primaer mit KM-53199.nii.gz
+[2026-10-09 03:13:17] [fold2/inference] 2
+[2026-10-09 03:13:18] [fold2/inference] 2026-10-09 03:13:18,618 INFO image_writer.py:197 - writing: results/predictions/fold2/unet/unet_fold2_randcrop192/PETCT_5de3ac617a_11-13-2005-NA-PET-CT Ganzkoerper  primaer mit KM-12499.nii.gz
+[2026-10-09 03:13:20] [fold2/inference] 2
+[2026-10-09 03:13:21] [fold2/inference] 2026-10-09 03:13:21,713 INFO image_writer.py:197 - writing: results/predictions/fold2/unet/unet_fold2_randcrop192/PETCT_62011ff15b_05-05-2005-NA-PET-CT Ganzkoerper  primaer mit KM-31211.nii.gz
+[2026-10-09 03:13:23] [fold2/inference] 2
+[2026-10-09 03:13:24] [fold2/inference] 2026-10-09 03:13:24,198 INFO image_writer.py:197 - writing: results/predictions/fold2/unet/unet_fold2_randcrop192/PETCT_63508c679d_02-17-2005-NA-PET-CT Ganzkoerper  primaer mit KM-71545.nii.gz
+[2026-10-09 03:13:27] [fold2/inference] 2
+[2026-10-09 03:13:28] [fold2/inference] 2026-10-09 03:13:28,592 INFO image_writer.py:197 - writing: results/predictions/fold2/unet/unet_fold2_randcrop192/PETCT_65bd1a4c38_09-30-2005-NA-PET-CT Ganzkoerper  primaer mit KM-59426.nii.gz
+[2026-10-09 03:13:30] [fold2/inference] 2
+[2026-10-09 03:13:30] [fold2/inference] 2026-10-09 03:13:30,620 INFO image_writer.py:197 - writing: results/predictions/fold2/unet/unet_fold2_randcrop192/PETCT_685d7c09b5_12-23-2000-NA-PET-CT Ganzkoerper  primaer mit KM-22883.nii.gz
+[2026-10-09 03:13:34] [fold2/inference] 2
+[2026-10-09 03:13:35] [fold2/inference] 2026-10-09 03:13:35,049 INFO image_writer.py:197 - writing: results/predictions/fold2/unet/unet_fold2_randcrop192/PETCT_7147385005_05-09-2002-NA-PET-CT Ganzkoerper  primaer mit KM-92807.nii.gz
+[2026-10-09 03:13:36] [fold2/inference] 2
+[2026-10-09 03:13:36] [fold2/inference] 2026-10-09 03:13:36,415 INFO image_writer.py:197 - writing: results/predictions/fold2/unet/unet_fold2_randcrop192/PETCT_74bbceaeeb_06-03-2005-NA-PET-CT Ganzkoerper  primaer mit KM-94697.nii.gz
+[2026-10-09 03:13:42] [fold2/inference] 2
+[2026-10-09 03:13:43] [fold2/inference] 2026-10-09 03:13:43,323 INFO image_writer.py:197 - writing: results/predictions/fold2/unet/unet_fold2_randcrop192/PETCT_80d7e682f7_02-11-2005-NA-PET-CT Ganzkoerper  primaer mit KM-04329.nii.gz
+[2026-10-09 03:13:52] [fold2/inference] 2
+[2026-10-09 03:13:53] [fold2/inference] 2026-10-09 03:13:53,800 INFO image_writer.py:197 - writing: results/predictions/fold2/unet/unet_fold2_randcrop192/PETCT_a4ff5d0d9d_05-30-2005-NA-PET-CT Ganzkoerper  primaer mit KM-03082.nii.gz
+[2026-10-09 03:13:55] [fold2/inference] 2
+[2026-10-09 03:13:56] [fold2/inference] 2026-10-09 03:13:56,586 INFO image_writer.py:197 - writing: results/predictions/fold2/unet/unet_fold2_randcrop192/PETCT_aa27cb9156_12-14-2003-NA-PET-CT Ganzkoerper  primaer mit KM-81079.nii.gz
+[2026-10-09 03:14:00] [fold2/inference] 2
+[2026-10-09 03:14:01] [fold2/inference] 2026-10-09 03:14:01,051 INFO image_writer.py:197 - writing: results/predictions/fold2/unet/unet_fold2_randcrop192/PETCT_ae96f738c0_05-01-2003-NA-PET-CT Ganzkoerper  primaer mit KM-67749.nii.gz
+[2026-10-09 03:14:02] [fold2/inference] 2
+[2026-10-09 03:14:02] [fold2/inference] 2026-10-09 03:14:02,975 INFO image_writer.py:197 - writing: results/predictions/fold2/unet/unet_fold2_randcrop192/PETCT_b509ace2a2_05-27-2002-NA-PET-CT Ganzkoerper  primaer mit KM-84477.nii.gz
+[2026-10-09 03:14:08] [fold2/inference] 2
+[2026-10-09 03:14:09] [fold2/inference] 2026-10-09 03:14:09,581 INFO image_writer.py:197 - writing: results/predictions/fold2/unet/unet_fold2_randcrop192/PETCT_b53ba7c6bf_11-21-2003-NA-PET-CT Ganzkoerper  primaer mit KM-57637.nii.gz
+[2026-10-09 03:14:10] [fold2/inference] 2
+[2026-10-09 03:14:11] [fold2/inference] 2026-10-09 03:14:11,653 INFO image_writer.py:197 - writing: results/predictions/fold2/unet/unet_fold2_randcrop192/PETCT_bb45bfcffd_01-03-2003-NA-PET-CT Ganzkoerper  primaer mit KM-50107.nii.gz
+[2026-10-09 03:14:18] [fold2/inference] 2
+[2026-10-09 03:14:19] [fold2/inference] 2026-10-09 03:14:19,705 INFO image_writer.py:197 - writing: results/predictions/fold2/unet/unet_fold2_randcrop192/PETCT_d40a16781a_09-13-2003-NA-PET-CT Ganzkoerper  primaer mit KM-42002.nii.gz
+[2026-10-09 03:14:20] [fold2/inference] 2
+[2026-10-09 03:14:21] [fold2/inference] 2026-10-09 03:14:21,432 INFO image_writer.py:197 - writing: results/predictions/fold2/unet/unet_fold2_randcrop192/PETCT_ddca6cfba6_02-27-2004-NA-PET-CT Ganzkoerper  primaer mit KM-47148.nii.gz
+[2026-10-09 03:14:25] [fold2/inference] 2
+[2026-10-09 03:14:26] [fold2/inference] 2026-10-09 03:14:26,177 INFO image_writer.py:197 - writing: results/predictions/fold2/unet/unet_fold2_randcrop192/PETCT_f21755a99b_05-05-2005-NA-PET-CT Ganzkoerper  primaer mit KM-44651.nii.gz
+[2026-10-09 03:14:27] [fold2/inference] exit code: 0
+[2026-10-09 03:14:53] [fold2] predicted components per case: median 257, max 998; true lesions per case: median 10, max 69
+[2026-10-09 03:14:53] [fold2/inference] COMPLETE in 2.7 min
+[2026-10-09 03:14:54] [pipeline] summary written to /mnt/c/Users/eva/Desktop/6th semester/Projects/manu/experiments/unet_10ep/summary
+[2026-10-09 03:14:54] [fold3/train] command: /home/eva25/venvs/lymphoma_seg/bin/torchrun --standalone --nproc_per_node=1 "/mnt/c/Users/eva/Desktop/6th semester/Projects/manu/lymphoma-segmentation-dnn/segmentation/trainddp.py" --fold 3 --epochs 10 --num_workers 6
+[2026-10-09 03:14:54] [fold3/train] working directory: /mnt/c/Users/eva/Desktop/6th semester/Projects/manu/experiments/unet_10ep/work
+[2026-10-09 03:14:58] [fold3/train] Training unet on fold 3
+[2026-10-09 03:14:58] [fold3/train] The models will be saved in results/models/fold3/unet/unet_fold3_randcrop192
+[2026-10-09 03:14:58] [fold3/train] The training/validation logs will be saved in results/logs/fold3/unet/unet_fold3_randcrop192
+[2026-10-09 03:14:59] [fold3/train] monai.transforms.io.dictionary LoadImaged.__init__:image_only: Current default value of argument `image_only=False` has been deprecated since version 1.1. It will be changed to `image_only=True` in version 1.3.
+[2026-10-09 03:15:00] [fold3/train] tqdm is not installed, will not show the caching progress bar.
+[2026-10-09 03:15:51] [fold3/train] [GPU0]: Running training: epoch = 1
+[2026-10-09 03:20:10] [fold3/train] [GPU:0]: epoch 1/10: average loss: 0.6164
+[2026-10-09 03:20:10] [fold3/train] [GPU:0]: Epoch 1 time: 4.32 min
+[2026-10-09 03:20:10] [fold3/train] [GPU0]: Running training: epoch = 2
+[2026-10-09 03:24:11] [fold3/train] [GPU:0]: epoch 2/10: average loss: 0.5650
+[2026-10-09 03:24:11] [fold3/train] [GPU0]: Running validation
+[2026-10-09 03:24:16] [fold3/train] Using a non-tuple sequence for multidimensional indexing is deprecated and will be changed in pytorch 2.9; use x[tuple(seq)] instead of x[seq]. In pytorch 2.9 this will be interpreted as tensor index, x[torch.tensor(seq)], which will result either in an error or a different result (Triggered internally at /pytorch/torch/csrc/autograd/python_variable_indexing.cpp:347.)
+[2026-10-09 03:24:36] [fold3/train] Using a non-tuple sequence for multidimensional indexing is deprecated and will be changed in pytorch 2.9; use x[tuple(seq)] instead of x[seq]. In pytorch 2.9 this will be interpreted as tensor index, x[torch.tensor(seq)], which will result either in an error or a different result (Triggered internally at /pytorch/torch/csrc/autograd/python_variable_indexing.cpp:347.)
+[2026-10-09 03:25:24] [fold3/train] [GPU:0] SAVING MODEL at epoch: 2; Mean DSC: 0.1530
+[2026-10-09 03:25:25] [fold3/train] [GPU:0]: Epoch 2 time: 5.25 min
+[2026-10-09 03:25:25] [fold3/train] [GPU0]: Running training: epoch = 3
+[2026-10-09 03:30:08] [fold3/train] [GPU:0]: epoch 3/10: average loss: 0.5279
+[2026-10-09 03:30:08] [fold3/train] [GPU:0]: Epoch 3 time: 4.72 min
+[2026-10-09 03:30:08] [fold3/train] [GPU0]: Running training: epoch = 4
+[2026-10-09 03:35:25] [fold3/train] [GPU:0]: epoch 4/10: average loss: 0.5052
+[2026-10-09 03:35:25] [fold3/train] [GPU0]: Running validation
+[2026-10-09 03:36:53] [fold3/train] [GPU:0] SAVING MODEL at epoch: 4; Mean DSC: 0.1779
+[2026-10-09 03:36:54] [fold3/train] [GPU:0]: Epoch 4 time: 6.77 min
+[2026-10-09 03:36:54] [fold3/train] [GPU0]: Running training: epoch = 5
+[2026-10-09 03:42:06] [fold3/train] [GPU:0]: epoch 5/10: average loss: 0.4838
+[2026-10-09 03:42:06] [fold3/train] [GPU:0]: Epoch 5 time: 5.2 min
+[2026-10-09 03:42:06] [fold3/train] [GPU0]: Running training: epoch = 6
+[2026-10-09 03:48:04] [fold3/train] [GPU:0]: epoch 6/10: average loss: 0.4644
+[2026-10-09 03:48:04] [fold3/train] [GPU0]: Running validation
+[2026-10-09 03:49:52] [fold3/train] [GPU:0] SAVING MODEL at epoch: 6; Mean DSC: 0.1580
+[2026-10-09 03:49:54] [fold3/train] [GPU:0]: Epoch 6 time: 7.8 min
+[2026-10-09 03:49:54] [fold3/train] [GPU0]: Running training: epoch = 7
+[2026-10-09 03:55:09] [fold3/train] [GPU:0]: epoch 7/10: average loss: 0.4532
+[2026-10-09 03:55:10] [fold3/train] [GPU:0]: Epoch 7 time: 5.26 min
+[2026-10-09 03:55:10] [fold3/train] [GPU0]: Running training: epoch = 8
+[2026-10-09 04:00:07] [fold3/train] [GPU:0]: epoch 8/10: average loss: 0.4474
+[2026-10-09 04:00:07] [fold3/train] [GPU0]: Running validation
+[2026-10-09 04:01:11] [fold3/train] [GPU:0] SAVING MODEL at epoch: 8; Mean DSC: 0.1747
+[2026-10-09 04:01:13] [fold3/train] [GPU:0]: Epoch 8 time: 6.05 min
+[2026-10-09 04:01:13] [fold3/train] [GPU0]: Running training: epoch = 9
+[2026-10-09 04:06:48] [fold3/train] [GPU:0]: epoch 9/10: average loss: 0.4342
+[2026-10-09 04:06:48] [fold3/train] [GPU:0]: Epoch 9 time: 5.59 min
+[2026-10-09 04:06:48] [fold3/train] [GPU0]: Running training: epoch = 10
+[2026-10-09 04:11:40] [fold3/train] [GPU:0]: epoch 10/10: average loss: 0.4356
+[2026-10-09 04:11:40] [fold3/train] [GPU0]: Running validation
+[2026-10-09 04:12:48] [fold3/train] [GPU:0] SAVING MODEL at epoch: 10; Mean DSC: 0.1843
+[2026-10-09 04:12:50] [fold3/train] [GPU:0]: Epoch 10 time: 6.02 min
+[2026-10-09 04:12:50] [fold3/train] [GPU:0]: Total time: 0.95 hr
+[2026-10-09 04:13:21] [fold3/train] exit code: 0
+[2026-10-09 04:13:21] [fold3/train] COMPLETE in 58.5 min
+[2026-10-09 04:13:22] [fold3] test list for fold 3 written: 29 held-out examinations
+[2026-10-09 04:13:22] [fold3/inference] Microsoft rule selects checkpoint model_ep=0010.pth (validation mean DSC 0.1843)
+[2026-10-09 04:13:22] [fold3/inference] command: /home/eva25/venvs/lymphoma_seg/bin/python "/mnt/c/Users/eva/Desktop/6th semester/Projects/manu/lymphoma-segmentation-dnn/segmentation/inference.py" --fold 3
+[2026-10-09 04:13:22] [fold3/inference] working directory: /mnt/c/Users/eva/Desktop/6th semester/Projects/manu/experiments/unet_10ep/work
+[2026-10-09 04:13:30] [fold3/inference] Using the unet model at epoch=10 with mean valid DSC = 0.1843
+[2026-10-09 04:13:32] [fold3/inference] monai.transforms.io.dictionary LoadImaged.__init__:image_only: Current default value of argument `image_only=False` has been deprecated since version 1.1. It will be changed to `image_only=True` in version 1.3.
+[2026-10-09 04:13:45] [fold3/inference] 2
+[2026-10-09 04:13:45] [fold3/inference] Using a non-tuple sequence for multidimensional indexing is deprecated and will be changed in pytorch 2.9; use x[tuple(seq)] instead of x[seq]. In pytorch 2.9 this will be interpreted as tensor index, x[torch.tensor(seq)], which will result either in an error or a different result (Triggered internally at /pytorch/torch/csrc/autograd/python_variable_indexing.cpp:347.)
+[2026-10-09 04:13:46] [fold3/inference] Using a non-tuple sequence for multidimensional indexing is deprecated and will be changed in pytorch 2.9; use x[tuple(seq)] instead of x[seq]. In pytorch 2.9 this will be interpreted as tensor index, x[torch.tensor(seq)], which will result either in an error or a different result (Triggered internally at /pytorch/torch/csrc/autograd/python_variable_indexing.cpp:347.)
+[2026-10-09 04:13:47] [fold3/inference] 2026-10-09 04:13:47,353 INFO image_writer.py:197 - writing: results/predictions/fold3/unet/unet_fold3_randcrop192/PETCT_05808cf24e_07-29-1999-NA-PET-CT Ganzkoerper nativ-42289.nii.gz
+[2026-10-09 04:13:48] [fold3/inference] 2
+[2026-10-09 04:13:49] [fold3/inference] 2026-10-09 04:13:49,931 INFO image_writer.py:197 - writing: results/predictions/fold3/unet/unet_fold3_randcrop192/PETCT_0beb67c923_07-25-1999-NA-PET-CT Ganzkoerper  primaer mit KM-37911.nii.gz
+[2026-10-09 04:13:52] [fold3/inference] 2
+[2026-10-09 04:13:53] [fold3/inference] 2026-10-09 04:13:53,066 INFO image_writer.py:197 - writing: results/predictions/fold3/unet/unet_fold3_randcrop192/PETCT_119165872d_02-12-2005-NA-PET-CT Ganzkoerper  primaer mit KM-05102.nii.gz
+[2026-10-09 04:13:53] [fold3/inference] 2
+[2026-10-09 04:13:54] [fold3/inference] 2026-10-09 04:13:54,717 INFO image_writer.py:197 - writing: results/predictions/fold3/unet/unet_fold3_randcrop192/PETCT_249dd35d0c_05-20-2005-NA-PET-CT Ganzkoerper  primaer mit KM-75049.nii.gz
+[2026-10-09 04:13:59] [fold3/inference] 2
+[2026-10-09 04:14:00] [fold3/inference] 2026-10-09 04:14:00,479 INFO image_writer.py:197 - writing: results/predictions/fold3/unet/unet_fold3_randcrop192/PETCT_2ce074c2ea_02-04-2006-NA-PET-CT Ganzkoerper  primaer mit KM-43376.nii.gz
+[2026-10-09 04:14:01] [fold3/inference] 2
+[2026-10-09 04:14:02] [fold3/inference] 2026-10-09 04:14:02,356 INFO image_writer.py:197 - writing: results/predictions/fold3/unet/unet_fold3_randcrop192/PETCT_30001118d0_04-03-1999-NA-PET-CT Ganzkoerper  primaer mit KM-62786.nii.gz
+[2026-10-09 04:14:08] [fold3/inference] 2
+[2026-10-09 04:14:09] [fold3/inference] 2026-10-09 04:14:09,187 INFO image_writer.py:197 - writing: results/predictions/fold3/unet/unet_fold3_randcrop192/PETCT_4011ffe8ae_02-07-2005-NA-PET-CT Ganzkoerper  primaer mit KM-03025.nii.gz
+[2026-10-09 04:14:10] [fold3/inference] 2
+[2026-10-09 04:14:10] [fold3/inference] 2026-10-09 04:14:10,563 INFO image_writer.py:197 - writing: results/predictions/fold3/unet/unet_fold3_randcrop192/PETCT_44b08f570e_02-10-2001-NA-PET-CT Ganzkoerper  primaer mit KM-98707.nii.gz
+[2026-10-09 04:14:16] [fold3/inference] 2
+[2026-10-09 04:14:17] [fold3/inference] 2026-10-09 04:14:17,114 INFO image_writer.py:197 - writing: results/predictions/fold3/unet/unet_fold3_randcrop192/PETCT_4848bebb10_02-23-2003-NA-PET-CT Ganzkoerper  primaer mit KM-17214.nii.gz
+[2026-10-09 04:14:18] [fold3/inference] 2
+[2026-10-09 04:14:19] [fold3/inference] 2026-10-09 04:14:19,090 INFO image_writer.py:197 - writing: results/predictions/fold3/unet/unet_fold3_randcrop192/PETCT_55ca11402a_06-05-2003-NA-PET-CT Ganzkoerper  primaer mit KM-30298.nii.gz
+[2026-10-09 04:14:22] [fold3/inference] 2
+[2026-10-09 04:14:23] [fold3/inference] 2026-10-09 04:14:23,706 INFO image_writer.py:197 - writing: results/predictions/fold3/unet/unet_fold3_randcrop192/PETCT_60baa6979c_08-16-2003-NA-PET-CT Ganzkoerper  primaer mit KM-94215.nii.gz
+[2026-10-09 04:14:24] [fold3/inference] 2
+[2026-10-09 04:14:25] [fold3/inference] 2026-10-09 04:14:25,026 INFO image_writer.py:197 - writing: results/predictions/fold3/unet/unet_fold3_randcrop192/PETCT_68f73c4518_11-13-2004-NA-PET-CT Ganzkoerper  primaer mit KM-36034.nii.gz
+[2026-10-09 04:14:29] [fold3/inference] 2
+[2026-10-09 04:14:30] [fold3/inference] 2026-10-09 04:14:30,730 INFO image_writer.py:197 - writing: results/predictions/fold3/unet/unet_fold3_randcrop192/PETCT_6c469107a0_06-23-2002-NA-PET-CT Ganzkoerper  primaer mit KM-84161.nii.gz
+[2026-10-09 04:14:31] [fold3/inference] 2
+[2026-10-09 04:14:32] [fold3/inference] 2026-10-09 04:14:32,409 INFO image_writer.py:197 - writing: results/predictions/fold3/unet/unet_fold3_randcrop192/PETCT_73fda3a382_08-12-2005-NA-PET-CT Ganzkoerper  primaer mit KM-37318.nii.gz
+[2026-10-09 04:14:36] [fold3/inference] 2
+[2026-10-09 04:14:37] [fold3/inference] 2026-10-09 04:14:37,043 INFO image_writer.py:197 - writing: results/predictions/fold3/unet/unet_fold3_randcrop192/PETCT_9a2c6e618a_02-14-2000-NA-PET-CT Ganzkoerper  primaer mit KM-05254.nii.gz
+[2026-10-09 04:14:38] [fold3/inference] 2
+[2026-10-09 04:14:38] [fold3/inference] 2026-10-09 04:14:38,963 INFO image_writer.py:197 - writing: results/predictions/fold3/unet/unet_fold3_randcrop192/PETCT_9aa97cf103_07-18-2004-NA-PET-CT Ganzkoerper  primaer mit KM-81345.nii.gz
+[2026-10-09 04:14:43] [fold3/inference] 2
+[2026-10-09 04:14:44] [fold3/inference] 2026-10-09 04:14:44,229 INFO image_writer.py:197 - writing: results/predictions/fold3/unet/unet_fold3_randcrop192/PETCT_9d6699f215_06-16-2003-NA-PET-CT Ganzkoerper  primaer mit KM-75688.nii.gz
+[2026-10-09 04:14:46] [fold3/inference] 2
+[2026-10-09 04:14:47] [fold3/inference] 2026-10-09 04:14:47,853 INFO image_writer.py:197 - writing: results/predictions/fold3/unet/unet_fold3_randcrop192/PETCT_ad7cd4a9d2_10-02-2003-NA-Unspecified CT ABDOMEN-67897.nii.gz
+[2026-10-09 04:14:52] [fold3/inference] 2
+[2026-10-09 04:14:53] [fold3/inference] 2026-10-09 04:14:53,037 INFO image_writer.py:197 - writing: results/predictions/fold3/unet/unet_fold3_randcrop192/PETCT_b04be2846e_11-15-2004-NA-PET-CT Ganzkoerper  primaer mit KM-99019.nii.gz
+[2026-10-09 04:14:57] [fold3/inference] 2
+[2026-10-09 04:14:58] [fold3/inference] 2026-10-09 04:14:58,570 INFO image_writer.py:197 - writing: results/predictions/fold3/unet/unet_fold3_randcrop192/PETCT_cd2ef932b5_04-27-2003-NA-PET-CT Ganzkoerper  primaer mit KM-12737.nii.gz
+[2026-10-09 04:15:05] [fold3/inference] 2
+[2026-10-09 04:15:06] [fold3/inference] 2026-10-09 04:15:06,780 INFO image_writer.py:197 - writing: results/predictions/fold3/unet/unet_fold3_randcrop192/PETCT_d3dac0d1cd_08-09-2003-NA-PET-CT Ganzkoerper  primaer mit KM-88904.nii.gz
+[2026-10-09 04:15:08] [fold3/inference] 2
+[2026-10-09 04:15:09] [fold3/inference] 2026-10-09 04:15:09,241 INFO image_writer.py:197 - writing: results/predictions/fold3/unet/unet_fold3_randcrop192/PETCT_d51664a9e4_11-05-2004-NA-PET-CT Ganzkoerper  primaer mit KM-38087.nii.gz
+[2026-10-09 04:15:12] [fold3/inference] 2
+[2026-10-09 04:15:12] [fold3/inference] 2026-10-09 04:15:12,750 INFO image_writer.py:197 - writing: results/predictions/fold3/unet/unet_fold3_randcrop192/PETCT_db3daf78d2_10-30-2000-NA-PET-CT Ganzkoerper  primaer mit KM-67998.nii.gz
+[2026-10-09 04:15:13] [fold3/inference] 2
+[2026-10-09 04:15:14] [fold3/inference] 2026-10-09 04:15:14,663 INFO image_writer.py:197 - writing: results/predictions/fold3/unet/unet_fold3_randcrop192/PETCT_dd68a71e0a_11-20-2004-NA-PET-CT Ganzkoerper  primaer mit KM-85107.nii.gz
+[2026-10-09 04:15:20] [fold3/inference] 2
+[2026-10-09 04:15:21] [fold3/inference] 2026-10-09 04:15:21,385 INFO image_writer.py:197 - writing: results/predictions/fold3/unet/unet_fold3_randcrop192/PETCT_e4749cda88_11-03-2005-NA-PET-CT Ganzkoerper  primaer mit KM-34566.nii.gz
+[2026-10-09 04:15:22] [fold3/inference] 2
+[2026-10-09 04:15:23] [fold3/inference] 2026-10-09 04:15:23,349 INFO image_writer.py:197 - writing: results/predictions/fold3/unet/unet_fold3_randcrop192/PETCT_f144b214af_02-23-2001-NA-PET-CT Ganzkoerper  primaer mit KM-64199.nii.gz
+[2026-10-09 04:15:28] [fold3/inference] 2
+[2026-10-09 04:15:29] [fold3/inference] 2026-10-09 04:15:29,923 INFO image_writer.py:197 - writing: results/predictions/fold3/unet/unet_fold3_randcrop192/PETCT_f2f28337ba_05-03-2001-NA-PET-CT Ganzkoerper  primaer mit KM-27577.nii.gz
+[2026-10-09 04:15:30] [fold3/inference] 2
+[2026-10-09 04:15:31] [fold3/inference] 2026-10-09 04:15:31,736 INFO image_writer.py:197 - writing: results/predictions/fold3/unet/unet_fold3_randcrop192/PETCT_fb014a1ea0_12-01-2005-NA-PET-CT Ganzkoerper  primaer mit KM-85859.nii.gz
+[2026-10-09 04:15:35] [fold3/inference] 2
+[2026-10-09 04:15:36] [fold3/inference] 2026-10-09 04:15:36,056 INFO image_writer.py:197 - writing: results/predictions/fold3/unet/unet_fold3_randcrop192/PETCT_fbd907a179_10-04-2003-NA-PET-CT Ganzkoerper  primaer mit KM-52084.nii.gz
+[2026-10-09 04:15:37] [fold3/inference] exit code: 0
+[2026-10-09 04:16:06] [fold3] predicted components per case: median 51, max 120; true lesions per case: median 9, max 125
+[2026-10-09 04:16:06] [fold3/inference] COMPLETE in 2.7 min
+[2026-10-09 04:16:06] [pipeline] summary written to /mnt/c/Users/eva/Desktop/6th semester/Projects/manu/experiments/unet_10ep/summary
+[2026-10-09 04:16:06] [fold4/train] command: /home/eva25/venvs/lymphoma_seg/bin/torchrun --standalone --nproc_per_node=1 "/mnt/c/Users/eva/Desktop/6th semester/Projects/manu/lymphoma-segmentation-dnn/segmentation/trainddp.py" --fold 4 --epochs 10 --num_workers 6
+[2026-10-09 04:16:06] [fold4/train] working directory: /mnt/c/Users/eva/Desktop/6th semester/Projects/manu/experiments/unet_10ep/work
+[2026-10-09 04:16:12] [fold4/train] Training unet on fold 4
+[2026-10-09 04:16:12] [fold4/train] The models will be saved in results/models/fold4/unet/unet_fold4_randcrop192
+[2026-10-09 04:16:12] [fold4/train] The training/validation logs will be saved in results/logs/fold4/unet/unet_fold4_randcrop192
+[2026-10-09 04:16:12] [fold4/train] monai.transforms.io.dictionary LoadImaged.__init__:image_only: Current default value of argument `image_only=False` has been deprecated since version 1.1. It will be changed to `image_only=True` in version 1.3.
+[2026-10-09 04:16:14] [fold4/train] tqdm is not installed, will not show the caching progress bar.
+[2026-10-09 04:17:10] [fold4/train] [GPU0]: Running training: epoch = 1
+[2026-10-09 04:21:29] [fold4/train] [GPU:0]: epoch 1/10: average loss: 0.6291
+[2026-10-09 04:21:29] [fold4/train] [GPU:0]: Epoch 1 time: 4.33 min
+[2026-10-09 04:21:29] [fold4/train] [GPU0]: Running training: epoch = 2
+[2026-10-09 04:25:40] [fold4/train] [GPU:0]: epoch 2/10: average loss: 0.5680
+[2026-10-09 04:25:40] [fold4/train] [GPU0]: Running validation
+[2026-10-09 04:25:45] [fold4/train] Using a non-tuple sequence for multidimensional indexing is deprecated and will be changed in pytorch 2.9; use x[tuple(seq)] instead of x[seq]. In pytorch 2.9 this will be interpreted as tensor index, x[torch.tensor(seq)], which will result either in an error or a different result (Triggered internally at /pytorch/torch/csrc/autograd/python_variable_indexing.cpp:347.)
+[2026-10-09 04:26:05] [fold4/train] Using a non-tuple sequence for multidimensional indexing is deprecated and will be changed in pytorch 2.9; use x[tuple(seq)] instead of x[seq]. In pytorch 2.9 this will be interpreted as tensor index, x[torch.tensor(seq)], which will result either in an error or a different result (Triggered internally at /pytorch/torch/csrc/autograd/python_variable_indexing.cpp:347.)
+[2026-10-09 04:27:08] [fold4/train] [GPU:0] SAVING MODEL at epoch: 2; Mean DSC: 0.0320
+[2026-10-09 04:27:09] [fold4/train] [GPU:0]: Epoch 2 time: 5.66 min
+[2026-10-09 04:27:09] [fold4/train] [GPU0]: Running training: epoch = 3
+[2026-10-09 04:33:07] [fold4/train] [GPU:0]: epoch 3/10: average loss: 0.5305
+[2026-10-09 04:33:07] [fold4/train] [GPU:0]: Epoch 3 time: 5.97 min
+[2026-10-09 04:33:07] [fold4/train] [GPU0]: Running training: epoch = 4
+[2026-10-09 04:39:07] [fold4/train] [GPU:0]: epoch 4/10: average loss: 0.5069
+[2026-10-09 04:39:07] [fold4/train] [GPU0]: Running validation
+[2026-10-09 04:42:07] [fold4/train] [GPU:0] SAVING MODEL at epoch: 4; Mean DSC: 0.0555
+[2026-10-09 04:42:08] [fold4/train] [GPU:0]: Epoch 4 time: 9.01 min
+[2026-10-09 04:42:08] [fold4/train] [GPU0]: Running training: epoch = 5
+[2026-10-09 04:47:58] [fold4/train] [GPU:0]: epoch 5/10: average loss: 0.4740
+[2026-10-09 04:47:58] [fold4/train] [GPU:0]: Epoch 5 time: 5.83 min
+[2026-10-09 04:47:58] [fold4/train] [GPU0]: Running training: epoch = 6
+[2026-10-09 04:54:41] [fold4/train] [GPU:0]: epoch 6/10: average loss: 0.4303
+[2026-10-09 04:54:41] [fold4/train] [GPU0]: Running validation
+[2026-10-09 04:57:31] [fold4/train] [GPU:0] SAVING MODEL at epoch: 6; Mean DSC: 0.2040
+[2026-10-09 04:57:33] [fold4/train] [GPU:0]: Epoch 6 time: 9.58 min
+[2026-10-09 04:57:33] [fold4/train] [GPU0]: Running training: epoch = 7
+[2026-10-09 05:03:26] [fold4/train] [GPU:0]: epoch 7/10: average loss: 0.4042
+[2026-10-09 05:03:27] [fold4/train] [GPU:0]: Epoch 7 time: 5.9 min
+[2026-10-09 05:03:27] [fold4/train] [GPU0]: Running training: epoch = 8
+[2026-10-09 05:08:54] [fold4/train] [GPU:0]: epoch 8/10: average loss: 0.3823
+[2026-10-09 05:08:54] [fold4/train] [GPU0]: Running validation
+[2026-10-09 05:12:15] [fold4/train] [GPU:0] SAVING MODEL at epoch: 8; Mean DSC: 0.3635
+[2026-10-09 05:12:17] [fold4/train] [GPU:0]: Epoch 8 time: 8.84 min
+[2026-10-09 05:12:17] [fold4/train] [GPU0]: Running training: epoch = 9
+[2026-10-09 05:17:10] [fold4/train] [GPU:0]: epoch 9/10: average loss: 0.3543
+[2026-10-09 05:17:10] [fold4/train] [GPU:0]: Epoch 9 time: 4.89 min
+[2026-10-09 05:17:10] [fold4/train] [GPU0]: Running training: epoch = 10
+[2026-10-09 05:22:05] [fold4/train] [GPU:0]: epoch 10/10: average loss: 0.3463
+[2026-10-09 05:22:05] [fold4/train] [GPU0]: Running validation
+[2026-10-09 05:25:03] [fold4/train] [GPU:0] SAVING MODEL at epoch: 10; Mean DSC: 0.4337
+[2026-10-09 05:25:04] [fold4/train] [GPU:0]: Epoch 10 time: 7.9 min
+[2026-10-09 05:25:04] [fold4/train] [GPU:0]: Total time: 1.13 hr
+[2026-10-09 05:25:40] [fold4/train] exit code: 0
+[2026-10-09 05:25:40] [fold4/train] COMPLETE in 69.6 min
+[2026-10-09 05:25:41] [fold4] test list for fold 4 written: 28 held-out examinations
+[2026-10-09 05:25:41] [fold4/inference] Microsoft rule selects checkpoint model_ep=0010.pth (validation mean DSC 0.4337)
+[2026-10-09 05:25:41] [fold4/inference] command: /home/eva25/venvs/lymphoma_seg/bin/python "/mnt/c/Users/eva/Desktop/6th semester/Projects/manu/lymphoma-segmentation-dnn/segmentation/inference.py" --fold 4
+[2026-10-09 05:25:41] [fold4/inference] working directory: /mnt/c/Users/eva/Desktop/6th semester/Projects/manu/experiments/unet_10ep/work
+[2026-10-09 05:25:48] [fold4/inference] Using the unet model at epoch=10 with mean valid DSC = 0.4337
+[2026-10-09 05:25:51] [fold4/inference] monai.transforms.io.dictionary LoadImaged.__init__:image_only: Current default value of argument `image_only=False` has been deprecated since version 1.1. It will be changed to `image_only=True` in version 1.3.
+[2026-10-09 05:26:04] [fold4/inference] 2
+[2026-10-09 05:26:04] [fold4/inference] Using a non-tuple sequence for multidimensional indexing is deprecated and will be changed in pytorch 2.9; use x[tuple(seq)] instead of x[seq]. In pytorch 2.9 this will be interpreted as tensor index, x[torch.tensor(seq)], which will result either in an error or a different result (Triggered internally at /pytorch/torch/csrc/autograd/python_variable_indexing.cpp:347.)
+[2026-10-09 05:26:04] [fold4/inference] Using a non-tuple sequence for multidimensional indexing is deprecated and will be changed in pytorch 2.9; use x[tuple(seq)] instead of x[seq]. In pytorch 2.9 this will be interpreted as tensor index, x[torch.tensor(seq)], which will result either in an error or a different result (Triggered internally at /pytorch/torch/csrc/autograd/python_variable_indexing.cpp:347.)
+[2026-10-09 05:26:06] [fold4/inference] 2026-10-09 05:26:06,086 INFO image_writer.py:197 - writing: results/predictions/fold4/unet/unet_fold4_randcrop192/PETCT_08212d7f6c_09-11-2003-NA-PET-CT Ganzkoerper  primaer mit KM-65721.nii.gz
+[2026-10-09 05:26:07] [fold4/inference] 2
+[2026-10-09 05:26:08] [fold4/inference] 2026-10-09 05:26:08,230 INFO image_writer.py:197 - writing: results/predictions/fold4/unet/unet_fold4_randcrop192/PETCT_0cda25453b_10-12-2003-NA-PET-CT Ganzkoerper  primaer mit KM-47333.nii.gz
+[2026-10-09 05:26:11] [fold4/inference] 2
+[2026-10-09 05:26:12] [fold4/inference] 2026-10-09 05:26:12,171 INFO image_writer.py:197 - writing: results/predictions/fold4/unet/unet_fold4_randcrop192/PETCT_0f4ee9e078_02-10-2005-NA-PET-CT Ganzkoerper  primaer mit KM-08757.nii.gz
+[2026-10-09 05:26:13] [fold4/inference] 2
+[2026-10-09 05:26:13] [fold4/inference] 2026-10-09 05:26:13,432 INFO image_writer.py:197 - writing: results/predictions/fold4/unet/unet_fold4_randcrop192/PETCT_16cdbc8689_07-15-2005-NA-PET-CT Ganzkoerper  primaer mit KM-33251.nii.gz
+[2026-10-09 05:26:18] [fold4/inference] 2
+[2026-10-09 05:26:19] [fold4/inference] 2026-10-09 05:26:19,312 INFO image_writer.py:197 - writing: results/predictions/fold4/unet/unet_fold4_randcrop192/PETCT_1956667fce_07-28-2005-NA-PET-CT Ganzkoerper  primaer mit KM-69901.nii.gz
+[2026-10-09 05:26:20] [fold4/inference] 2
+[2026-10-09 05:26:21] [fold4/inference] 2026-10-09 05:26:21,030 INFO image_writer.py:197 - writing: results/predictions/fold4/unet/unet_fold4_randcrop192/PETCT_1fc35d02da_08-09-2003-NA-PET-CT Ganzkoerper  primaer mit KM-36800.nii.gz
+[2026-10-09 05:26:26] [fold4/inference] 2
+[2026-10-09 05:26:27] [fold4/inference] 2026-10-09 05:26:27,410 INFO image_writer.py:197 - writing: results/predictions/fold4/unet/unet_fold4_randcrop192/PETCT_29ab45ef17_06-27-2002-NA-PET-CT Ganzkoerper  primaer mit KM-40288.nii.gz
+[2026-10-09 05:26:28] [fold4/inference] 2
+[2026-10-09 05:26:29] [fold4/inference] 2026-10-09 05:26:29,294 INFO image_writer.py:197 - writing: results/predictions/fold4/unet/unet_fold4_randcrop192/PETCT_2dc17aaeaf_07-01-2005-NA-PET-CT Ganzkoerper  primaer mit KM-40778.nii.gz
+[2026-10-09 05:26:34] [fold4/inference] 2
+[2026-10-09 05:26:35] [fold4/inference] 2026-10-09 05:26:35,711 INFO image_writer.py:197 - writing: results/predictions/fold4/unet/unet_fold4_randcrop192/PETCT_3d6f425a76_01-28-2002-NA-PET-CT Ganzkoerper  primaer mit KM-67631.nii.gz
+[2026-10-09 05:26:36] [fold4/inference] 2
+[2026-10-09 05:26:37] [fold4/inference] 2026-10-09 05:26:37,263 INFO image_writer.py:197 - writing: results/predictions/fold4/unet/unet_fold4_randcrop192/PETCT_3fd361ec14_10-24-2004-NA-PET-CT Ganzkoerper  primaer mit KM-79985.nii.gz
+[2026-10-09 05:26:44] [fold4/inference] 2
+[2026-10-09 05:26:45] [fold4/inference] 2026-10-09 05:26:45,920 INFO image_writer.py:197 - writing: results/predictions/fold4/unet/unet_fold4_randcrop192/PETCT_456d14846b_09-01-2003-NA-PET-CT Ganzkoerper  primaer mit KM-55189.nii.gz
+[2026-10-09 05:26:47] [fold4/inference] 2
+[2026-10-09 05:26:47] [fold4/inference] 2026-10-09 05:26:47,947 INFO image_writer.py:197 - writing: results/predictions/fold4/unet/unet_fold4_randcrop192/PETCT_49f3d297b0_07-24-2003-NA-PET-CT Ganzkoerper  primaer mit KM-42325.nii.gz
+[2026-10-09 05:26:51] [fold4/inference] 2
+[2026-10-09 05:26:52] [fold4/inference] 2026-10-09 05:26:52,136 INFO image_writer.py:197 - writing: results/predictions/fold4/unet/unet_fold4_randcrop192/PETCT_4a255db7bd_05-24-2003-NA-PET-CT Ganzkoerper  primaer mit KM-52913.nii.gz
+[2026-10-09 05:26:52] [fold4/inference] 2
+[2026-10-09 05:26:53] [fold4/inference] 2026-10-09 05:26:53,649 INFO image_writer.py:197 - writing: results/predictions/fold4/unet/unet_fold4_randcrop192/PETCT_510fb36781_02-06-2003-NA-PET-CT Ganzkoerper  primaer mit KM-07563.nii.gz
+[2026-10-09 05:26:58] [fold4/inference] 2
+[2026-10-09 05:26:58] [fold4/inference] 2026-10-09 05:26:58,725 INFO image_writer.py:197 - writing: results/predictions/fold4/unet/unet_fold4_randcrop192/PETCT_5ef99b0b6b_09-07-2000-NA-PET-CT Ganzkoerper  primaer mit KM-44649.nii.gz
+[2026-10-09 05:26:59] [fold4/inference] 2
+[2026-10-09 05:27:00] [fold4/inference] 2026-10-09 05:27:00,109 INFO image_writer.py:197 - writing: results/predictions/fold4/unet/unet_fold4_randcrop192/PETCT_6170317f2e_02-18-2000-NA-PET-CT Ganzkoerper  primaer mit KM-94274.nii.gz
+[2026-10-09 05:27:06] [fold4/inference] 2
+[2026-10-09 05:27:07] [fold4/inference] 2026-10-09 05:27:07,673 INFO image_writer.py:197 - writing: results/predictions/fold4/unet/unet_fold4_randcrop192/PETCT_62b114e09b_03-27-2003-NA-PET-CT Ganzkoerper  primaer mit KM-71302.nii.gz
+[2026-10-09 05:27:08] [fold4/inference] 2
+[2026-10-09 05:27:09] [fold4/inference] 2026-10-09 05:27:09,389 INFO image_writer.py:197 - writing: results/predictions/fold4/unet/unet_fold4_randcrop192/PETCT_790246c76c_02-07-2004-NA-PET-CT Ganzkoerper  primaer mit KM-97446.nii.gz
+[2026-10-09 05:27:15] [fold4/inference] 2
+[2026-10-09 05:27:15] [fold4/inference] 2026-10-09 05:27:15,957 INFO image_writer.py:197 - writing: results/predictions/fold4/unet/unet_fold4_randcrop192/PETCT_8de6953d23_01-19-2001-NA-PET-CT Ganzkoerper  primaer mit KM-85501.nii.gz
+[2026-10-09 05:27:17] [fold4/inference] 2
+[2026-10-09 05:27:17] [fold4/inference] 2026-10-09 05:27:17,993 INFO image_writer.py:197 - writing: results/predictions/fold4/unet/unet_fold4_randcrop192/PETCT_9f206193d3_04-07-2003-NA-PET-CT Ganzkoerper  primaer mit KM-98703.nii.gz
+[2026-10-09 05:27:22] [fold4/inference] 2
+[2026-10-09 05:27:23] [fold4/inference] 2026-10-09 05:27:23,206 INFO image_writer.py:197 - writing: results/predictions/fold4/unet/unet_fold4_randcrop192/PETCT_9ffd8409b3_07-15-2005-NA-PET-CT Ganzkoerper  primaer mit KM-58670.nii.gz
+[2026-10-09 05:27:23] [fold4/inference] 2
+[2026-10-09 05:27:24] [fold4/inference] 2026-10-09 05:27:24,928 INFO image_writer.py:197 - writing: results/predictions/fold4/unet/unet_fold4_randcrop192/PETCT_a7b323b3fd_04-01-2005-NA-PET-CT Ganzkoerper  primaer mit KM-97322.nii.gz
+[2026-10-09 05:27:29] [fold4/inference] 2
+[2026-10-09 05:27:30] [fold4/inference] 2026-10-09 05:27:30,541 INFO image_writer.py:197 - writing: results/predictions/fold4/unet/unet_fold4_randcrop192/PETCT_ae3074834a_07-26-2003-NA-PET-CT Ganzkoerper  primaer mit KM-46217.nii.gz
+[2026-10-09 05:27:31] [fold4/inference] 2
+[2026-10-09 05:27:32] [fold4/inference] 2026-10-09 05:27:32,347 INFO image_writer.py:197 - writing: results/predictions/fold4/unet/unet_fold4_randcrop192/PETCT_b7c1533a39_02-12-2005-NA-PET-CT Ganzkoerper  primaer mit KM-24066.nii.gz
+[2026-10-09 05:27:39] [fold4/inference] 2
+[2026-10-09 05:27:40] [fold4/inference] 2026-10-09 05:27:40,170 INFO image_writer.py:197 - writing: results/predictions/fold4/unet/unet_fold4_randcrop192/PETCT_c898e2abcb_12-10-2004-NA-PET-CT Ganzkoerper  primaer mit KM-38964.nii.gz
+[2026-10-09 05:27:41] [fold4/inference] 2
+[2026-10-09 05:27:42] [fold4/inference] 2026-10-09 05:27:42,030 INFO image_writer.py:197 - writing: results/predictions/fold4/unet/unet_fold4_randcrop192/PETCT_e69152b6b4_01-26-2004-NA-PET-CT Ganzkoerper  primaer mit KM-31607.nii.gz
+[2026-10-09 05:27:46] [fold4/inference] 2
+[2026-10-09 05:27:46] [fold4/inference] 2026-10-09 05:27:46,921 INFO image_writer.py:197 - writing: results/predictions/fold4/unet/unet_fold4_randcrop192/PETCT_e77124b7f4_09-29-2005-NA-PET-CT Ganzkoerper  primaer mit KM-55351.nii.gz
+[2026-10-09 05:27:47] [fold4/inference] 2
+[2026-10-09 05:27:48] [fold4/inference] 2026-10-09 05:27:48,747 INFO image_writer.py:197 - writing: results/predictions/fold4/unet/unet_fold4_randcrop192/PETCT_ea0fd89f0f_10-25-2003-NA-PET-CT Ganzkoerper  primaer mit KM-32502.nii.gz
+[2026-10-09 05:27:50] [fold4/inference] exit code: 0
+[2026-10-09 05:28:16] [fold4] predicted components per case: median 29, max 218; true lesions per case: median 10, max 132
+[2026-10-09 05:28:16] [fold4/inference] COMPLETE in 2.6 min
+[2026-10-09 05:28:16] [pipeline] summary written to /mnt/c/Users/eva/Desktop/6th semester/Projects/manu/experiments/unet_10ep/summary
+[2026-10-09 05:28:16] [pipeline] ALL REQUESTED FOLDS COMPLETE (stages: train, inference)
