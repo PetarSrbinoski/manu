@@ -5,7 +5,7 @@ np = pytest.importorskip('numpy')
 nib = pytest.importorskip('nibabel')
 torch = pytest.importorskip('torch')
 pytest.importorskip('monai')
-from train import Case, build_transforms, predict_volume, export_prediction
+from scripts.train import Case, build_transforms, predict_volume, export_prediction
 
 
 def make_case(tmp_path, lesion_outside=False):
@@ -67,7 +67,7 @@ def test_full_field_of_view_preserves_lesions_outside_ct_foreground(tmp_path):
 
 def test_data_audit_rejects_duplicate_images_and_misaligned_masks(tmp_path):
     from shutil import copytree
-    from train import discover_cases
+    from scripts.train import discover_cases
     case, _, _ = make_case(tmp_path)
     assert len(discover_cases(tmp_path)) == 1
     duplicate = tmp_path / 'another-patient' / 'visit'

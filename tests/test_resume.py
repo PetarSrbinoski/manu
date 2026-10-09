@@ -4,7 +4,7 @@ import pytest
 
 torch = pytest.importorskip('torch')
 np = pytest.importorskip('numpy')
-from train import save_checkpoint, restore_checkpoint
+from scripts.train import save_checkpoint, restore_checkpoint
 
 
 def test_epoch_boundary_resume_matches_uninterrupted_update(tmp_path):

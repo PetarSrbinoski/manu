@@ -2,7 +2,7 @@ from pathlib import Path
 
 import pytest
 
-from train import Case, load_or_create_splits, fold_cases
+from scripts.train import Case, load_or_create_splits, fold_cases
 
 
 def test_patient_separation_repeat_visits_and_immutable_manifest(tmp_path):

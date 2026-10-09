@@ -4,7 +4,7 @@ np = pytest.importorskip('numpy')
 nib = pytest.importorskip('nibabel')
 torch = pytest.importorskip('torch')
 pytest.importorskip('monai')
-from train import Case, load_or_create_splits, fold_cases, predict_held_out, summarize_folds, atomic_json
+from scripts.train import Case, load_or_create_splits, fold_cases, predict_held_out, summarize_folds, atomic_json
 
 
 def test_all_folds_export_each_exam_once_and_never_training_patients(tmp_path):
