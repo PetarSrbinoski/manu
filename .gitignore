@@ -7,3 +7,5 @@ experiments/
 __pycache__/
 lymphoma-segmentation-dnn/
 answers/
+checkpoints/
+autopet-3-submission/

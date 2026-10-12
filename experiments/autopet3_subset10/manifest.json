@@ -1,0 +1,70 @@
+{
+    "description": "Examinations predicted with the official pretrained autoPET III checkpoint. Orientation only: the checkpoint was trained on data that includes them.",
+    "seed": 42,
+    "n_cases": 10,
+    "selection": "sorted patients of cases.json, random.Random(seed).sample, first examination per patient",
+    "dataset_root": "/home/eva25/data/lymphoma-baseline",
+    "baseline_results": "experiments/unet_10ep/light_eval/light_metrics_all_folds.csv, rows where ImageID == case_id",
+    "cases": [
+        {
+            "case_id": "PETCT_0b57b247b6_05-02-2002-NA-PET-CT Ganzkoerper  primaer mit KM-42966",
+            "patient": "PETCT_0b57b247b6",
+            "exam": "05-02-2002-NA-PET-CT Ganzkoerper  primaer mit KM-42966",
+            "baseline_fold": 2
+        },
+        {
+            "case_id": "PETCT_1fe6e48293_06-26-2003-NA-PET-CT Ganzkoerper  primaer mit KM-45853",
+            "patient": "PETCT_1fe6e48293",
+            "exam": "06-26-2003-NA-PET-CT Ganzkoerper  primaer mit KM-45853",
+            "baseline_fold": 1
+        },
+        {
+            "case_id": "PETCT_22d07bdc49_01-05-2003-NA-PET-CT Ganzkoerper  primaer mit KM-77260",
+            "patient": "PETCT_22d07bdc49",
+            "exam": "01-05-2003-NA-PET-CT Ganzkoerper  primaer mit KM-77260",
+            "baseline_fold": 2
+        },
+        {
+            "case_id": "PETCT_249dd35d0c_05-20-2005-NA-PET-CT Ganzkoerper  primaer mit KM-75049",
+            "patient": "PETCT_249dd35d0c",
+            "exam": "05-20-2005-NA-PET-CT Ganzkoerper  primaer mit KM-75049",
+            "baseline_fold": 3
+        },
+        {
+            "case_id": "PETCT_30001118d0_04-03-1999-NA-PET-CT Ganzkoerper  primaer mit KM-62786",
+            "patient": "PETCT_30001118d0",
+            "exam": "04-03-1999-NA-PET-CT Ganzkoerper  primaer mit KM-62786",
+            "baseline_fold": 3
+        },
+        {
+            "case_id": "PETCT_5ef99b0b6b_09-07-2000-NA-PET-CT Ganzkoerper  primaer mit KM-44649",
+            "patient": "PETCT_5ef99b0b6b",
+            "exam": "09-07-2000-NA-PET-CT Ganzkoerper  primaer mit KM-44649",
+            "baseline_fold": 4
+        },
+        {
+            "case_id": "PETCT_62405d117c_03-11-2001-NA-PET-CT Ganzkoerper  primaer mit KM-26235",
+            "patient": "PETCT_62405d117c",
+            "exam": "03-11-2001-NA-PET-CT Ganzkoerper  primaer mit KM-26235",
+            "baseline_fold": 0
+        },
+        {
+            "case_id": "PETCT_6a3477cd9a_01-15-2005-NA-PET-CT Ganzkoerper  primaer mit KM-52826",
+            "patient": "PETCT_6a3477cd9a",
+            "exam": "01-15-2005-NA-PET-CT Ganzkoerper  primaer mit KM-52826",
+            "baseline_fold": 1
+        },
+        {
+            "case_id": "PETCT_c4a686881e_04-23-1999-NA-PET-CT Ganzkoerper  primaer mit KM-83878",
+            "patient": "PETCT_c4a686881e",
+            "exam": "04-23-1999-NA-PET-CT Ganzkoerper  primaer mit KM-83878",
+            "baseline_fold": 0
+        },
+        {
+            "case_id": "PETCT_f47e31ceb5_07-26-2003-NA-PET-CT Ganzkoerper  primaer mit KM-36586",
+            "patient": "PETCT_f47e31ceb5",
+            "exam": "07-26-2003-NA-PET-CT Ganzkoerper  primaer mit KM-36586",
+            "baseline_fold": 0
+        }
+    ]
+}
