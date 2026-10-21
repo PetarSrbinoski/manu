@@ -3,9 +3,10 @@
 The four follow-up recommendations have implementation and analysis deliverables:
 the training-only sampling audit was executed, eight error examples were reviewed,
 SUVmax outliers were traced to original images, and an opt-in component-balanced
-sampler plus a controlled pilot/scoring workflow were implemented. A real-cohort
-training comparison remains pending user launch. No improvement from the new
-sampler has yet been demonstrated.
+sampler plus a controlled pilot/scoring workflow were implemented. The user subsequently completed the three-arm real-cohort pilot and evaluation.
+The 2026-10-26 review found improved Dice/FP volume but worse small-lesion recall;
+neither candidate passed its predefined screen. See
+[the completed results](SAMPLING_PILOT_RESULTS.md) and the status update below.
 
 ## 1. Completed training-only sampling audit (ticket 07)
 
@@ -140,20 +141,13 @@ primary endpoint and guards before training; a separate command exports complete
 inner-validation masks, scores both arms and applies the screen. See
 [the pilot plan](SAMPLING_PILOT_PLAN.md) for definitions and commands.
 
-The next user actions are:
-
-```bash
-.venv/bin/python scripts/train_sampling_pilot.py --smoke
-.venv/bin/python scripts/train_sampling_pilot.py --run
-# After both arms reach epoch 50:
-.venv/bin/python scripts/train_sampling_pilot.py --evaluate
-```
-
-Full pilot training and its measured segmentation comparison are **not complete**.
-No full training or real GPU inference was launched in this work. Synthetic CPU
-training was used only for regression checks. Current evidence establishes that
-the sampler changes target exposure as intended; only the pending comparison can
-show whether it improves small-component recall without unacceptable false positives.
+**Subsequent completion update (reviewed 2026-10-26):** The user completed the
+three-arm 128³ pilot and evaluation. All arms reached epoch 50; all evaluation
+manifests report completion on 23 inner-validation examinations. The original
+implementation-only status is superseded by [the results review](SAMPLING_PILOT_RESULTS.md).
+Neither sampling nor loss met its predeclared screen because small-lesion recall
+fell, despite higher Dice and lower unmatched FP volume. No new five-fold recipe
+has been selected. The CPU audits and prior 96³/128³ review above remain separate.
 
 **Subsequent requested extension:** ticket 12 adds a third arm with the same
 lesion-balanced sampler and 1 × Dice + 1 × cross-entropy. The launcher now defaults
