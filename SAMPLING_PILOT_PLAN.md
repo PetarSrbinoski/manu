@@ -1,10 +1,17 @@
 # Three matched 128³ sampling/loss pilots
 
+**Status: completed through the planned epoch-50 evaluation.** All three arms
+were evaluated on 23 inner-validation examinations. Neither candidate passed its
+predeclared screen: Dice/FP volume improved, but small-lesion recall declined.
+See [the results review](SAMPLING_PILOT_RESULTS.md). The protocol below records
+the completed experiment; commands are retained for reproducibility, not a request
+to rerun the existing output directories.
+
 The completed patch comparison improved Dice and false-positive burden with
 128³ patches, but pooled any-overlap recall of reference components <1 mL remained
 about 19%. This pilot tests sampling and loss in separate matched comparisons.
 Every arm uses 128³; the completed 96³ experiment is not rerun. Neither proposed
-change has yet demonstrated a trained-model improvement. Original images and
+change met the predefined joint improvement criteria. Original images and
 completed experiments are preserved.
 
 | Arm / directory | Foreground sampling | Training loss |
@@ -149,10 +156,9 @@ To run just one arm, add `--arm voxel`, `--arm lesion-balanced`, or
 Evaluation requires all three arms. `--strategy` remains an alias for `--arm`;
 legacy `--arm both` selects A/B only. The default is all three arms, all at 128³.
 
-No real-cohort pilot training or GPU inference was launched while implementing
-this plan. The next training action belongs to the user, as requested earlier.
-The only training performed during implementation used tiny synthetic CPU
-fixtures to verify sampling, checkpointing and resume.
+Implementation originally used only tiny synthetic CPU fixtures. The user has
+since completed all three real-cohort pilots and their inner-validation evaluation;
+see the linked results review. Further training remains a separate proposed step.
 
 ## Reproduce the completed CPU diagnostics
 
