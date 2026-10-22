@@ -1,0 +1,45 @@
+{
+  "created": "2026-10-19 14:12:55",
+  "seconds": 260,
+  "cases": [
+    "PETCT_0b57b247b6_05-02-2002-NA-PET-CT Ganzkoerper  primaer mit KM-42966",
+    "PETCT_1fe6e48293_06-26-2003-NA-PET-CT Ganzkoerper  primaer mit KM-45853",
+    "PETCT_22d07bdc49_01-05-2003-NA-PET-CT Ganzkoerper  primaer mit KM-77260",
+    "PETCT_249dd35d0c_05-20-2005-NA-PET-CT Ganzkoerper  primaer mit KM-75049",
+    "PETCT_30001118d0_04-03-1999-NA-PET-CT Ganzkoerper  primaer mit KM-62786",
+    "PETCT_5ef99b0b6b_09-07-2000-NA-PET-CT Ganzkoerper  primaer mit KM-44649",
+    "PETCT_62405d117c_03-11-2001-NA-PET-CT Ganzkoerper  primaer mit KM-26235",
+    "PETCT_6a3477cd9a_01-15-2005-NA-PET-CT Ganzkoerper  primaer mit KM-52826",
+    "PETCT_c4a686881e_04-23-1999-NA-PET-CT Ganzkoerper  primaer mit KM-83878",
+    "PETCT_f47e31ceb5_07-26-2003-NA-PET-CT Ganzkoerper  primaer mit KM-36586"
+  ],
+  "rows": 30,
+  "script_sha256": "48a0c4d8494103620ce9666120fcf1eef5f1da680d90198ecb8d19a134339b94",
+  "evaluate_a_vs_b_sha256": "4bafb7024e6073ae7f1ca4ac89fbd68a5d88856e5f544b4123a3acd3e3e5c287",
+  "summarize_a_vs_b_sha256": "f4443de1bf854b5cf1b4cc418bb28958677e93c7a99413f148157375f1a8bf3d",
+  "microsoft_metrics_sha256": "f6e6fd3d2b64b4e0e297b8907661bc97ae6e2a3da53ada8949b0c5a676fd8e45",
+  "ab_per_exam_metrics_sha256": "9f8334eb554a914cd33b2051ae11b263fbcab8be2c5c9d8260ea10df1d7012ee",
+  "subset_manifest_sha256": "fb882421d94280cf97eff2eefc87142116933630ea179f7dee011cfa8e81372c",
+  "C_predictions_sha256": {
+    "PETCT_0b57b247b6": "97726b9c0180062d5c1bea98d862877e187161ad989395d99ab1f89b96f9f593",
+    "PETCT_1fe6e48293": "2dd3b9dae2bb58800dea7c6a642e4ae40f7087bbebf4ee12d82afead090bc76d",
+    "PETCT_22d07bdc49": "9c4de219e0906cc3e9e0dbcb9719f98c727f5b4c21314565113fe1231f317d16",
+    "PETCT_249dd35d0c": "b9b7bbfea03057a1ecb842a296629cc142de6acee5fdac2cdb0b256fbd55ae25",
+    "PETCT_30001118d0": "241a62b31a3d2261548f61f3e94e0705d4733a556c2d27683a6a5cf9569ec2dc",
+    "PETCT_5ef99b0b6b": "da7bb0e4534be2ec978e0e72e3a67a33261fa7961715930b2f94f129b15c0fa9",
+    "PETCT_62405d117c": "755dd2d7d660edd6db84954eddf9085cdc7cf2e4efe2418dfa1199be070019a0",
+    "PETCT_6a3477cd9a": "febdd1864bf2de599fc56273a1ad2c536bb5a9027fc4648831802e3f3007d5b1",
+    "PETCT_c4a686881e": "dd848cd4afb74d9bc3e6560e2f0f5aa395e5f4e05914802e77e608a5887db65a",
+    "PETCT_f47e31ceb5": "aeceb51eb0ae74d859f44381d4192caa69af8cd5f3d7eded7da5b0ec7b2dd44b"
+  },
+  "consistency": "480/480 match",
+  "geometry_ok": true,
+  "connectivity": 18,
+  "iou_threshold": 0.5,
+  "versions": {
+    "python": "3.11.17",
+    "numpy": "1.24.3",
+    "pandas": "2.0.3",
+    "SimpleITK": "2.3.0"
+  }
+}

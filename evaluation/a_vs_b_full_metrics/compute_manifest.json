@@ -1,0 +1,17 @@
+{
+  "created": "2026-10-18 01:40:21",
+  "rows": 290,
+  "seconds": 2475,
+  "script_sha256": "4bafb7024e6073ae7f1ca4ac89fbd68a5d88856e5f544b4123a3acd3e3e5c287",
+  "microsoft_metrics_sha256": "f6e6fd3d2b64b4e0e297b8907661bc97ae6e2a3da53ada8949b0c5a676fd8e45",
+  "dataset": "/home/eva25/data/lymphoma-baseline",
+  "A_predictions": "/mnt/c/Users/eva/Desktop/6th semester/Projects/manu/experiments/unet_10ep/work/results/predictions",
+  "B_run": "/home/eva25/manu-runs/full-training",
+  "connectivity": 18,
+  "iou_threshold": 0.5,
+  "versions": {
+    "python": "3.11.17",
+    "numpy": "1.24.3",
+    "SimpleITK": "2.3.0"
+  }
+}
