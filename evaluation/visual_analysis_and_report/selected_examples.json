@@ -1,0 +1,156 @@
+[
+  {
+    "label": "E1",
+    "exam_id": "PETCT_30001118d0_04-03-1999-NA-PET-CT Ganzkoerper  primaer mit KM-62786",
+    "reason": "High tumour burden; A better than B; B misses many small lesions",
+    "slices": [
+      {
+        "view": "axial",
+        "index0": 179,
+        "purpose": "largest reference area"
+      },
+      {
+        "view": "axial",
+        "index0": 311,
+        "purpose": "largest A/B false-positive area"
+      },
+      {
+        "view": "coronal",
+        "index0": 178,
+        "purpose": "largest reference area"
+      }
+    ]
+  },
+  {
+    "label": "E2",
+    "exam_id": "PETCT_6a3477cd9a_01-15-2005-NA-PET-CT Ganzkoerper  primaer mit KM-52826",
+    "reason": "Most lesions (157); all three models miss small lesions",
+    "slices": [
+      {
+        "view": "axial",
+        "index0": 144,
+        "purpose": "largest reference area"
+      },
+      {
+        "view": "axial",
+        "index0": 112,
+        "purpose": "false positives at both kidneys"
+      },
+      {
+        "view": "coronal",
+        "index0": 180,
+        "purpose": "largest reference area"
+      }
+    ]
+  },
+  {
+    "label": "E3",
+    "exam_id": "PETCT_249dd35d0c_05-20-2005-NA-PET-CT Ganzkoerper  primaer mit KM-75049",
+    "reason": "B better than A; severe false positives of A",
+    "slices": [
+      {
+        "view": "axial",
+        "index0": 255,
+        "purpose": "largest reference area"
+      },
+      {
+        "view": "axial",
+        "index0": 297,
+        "purpose": "largest A false-positive component"
+      },
+      {
+        "view": "coronal",
+        "index0": 209,
+        "purpose": "largest reference area"
+      }
+    ]
+  },
+  {
+    "label": "E4",
+    "exam_id": "PETCT_1fe6e48293_06-26-2003-NA-PET-CT Ganzkoerper  primaer mit KM-45853",
+    "reason": "Largest false-positive volume of A (1376 ml) in several organs",
+    "slices": [
+      {
+        "view": "axial",
+        "index0": 93,
+        "purpose": "largest reference area"
+      },
+      {
+        "view": "axial",
+        "index0": 190,
+        "purpose": "false positives of A and B in the heart region"
+      },
+      {
+        "view": "coronal",
+        "index0": 184,
+        "purpose": "largest reference area"
+      }
+    ]
+  },
+  {
+    "label": "E5",
+    "exam_id": "PETCT_62405d117c_03-11-2001-NA-PET-CT Ganzkoerper  primaer mit KM-26235",
+    "reason": "autoPET III best case (Dice 0.977); A better than B; B under-segments the main lesion",
+    "slices": [
+      {
+        "view": "axial",
+        "index0": 230,
+        "purpose": "largest reference area"
+      },
+      {
+        "view": "axial",
+        "index0": 66,
+        "purpose": "largest A/B false-positive area"
+      },
+      {
+        "view": "coronal",
+        "index0": 236,
+        "purpose": "largest reference area"
+      }
+    ]
+  },
+  {
+    "label": "E6",
+    "exam_id": "PETCT_f47e31ceb5_07-26-2003-NA-PET-CT Ganzkoerper  primaer mit KM-36586",
+    "reason": "Smallest tumour burden (6.7 ml): Dice of A and B near 0 because of false positives",
+    "slices": [
+      {
+        "view": "axial",
+        "index0": 222,
+        "purpose": "largest reference area"
+      },
+      {
+        "view": "axial",
+        "index0": 68,
+        "purpose": "largest A false-positive component"
+      },
+      {
+        "view": "coronal",
+        "index0": 211,
+        "purpose": "largest reference area"
+      }
+    ]
+  },
+  {
+    "label": "E7",
+    "exam_id": "PETCT_22d07bdc49_01-05-2003-NA-PET-CT Ganzkoerper  primaer mit KM-77260",
+    "reason": "A better than B; B has more false-positive volume",
+    "slices": [
+      {
+        "view": "axial",
+        "index0": 65,
+        "purpose": "largest reference area"
+      },
+      {
+        "view": "axial",
+        "index0": 53,
+        "purpose": "largest A/B false-positive area"
+      },
+      {
+        "view": "coronal",
+        "index0": 211,
+        "purpose": "largest reference area"
+      }
+    ]
+  }
+]

@@ -1,0 +1,31 @@
+exam,model,Pred_SUVmax,GT_SUVmax,voxel_kji,location,structure
+0b57b247b6,A,24.983,21.868,"323,193,211",false-positive component,not reviewed (< 20 ml or model C)
+0b57b247b6,B,44.667,21.868,"0,205,231",false-positive component,not reviewed (< 20 ml or model C)
+0b57b247b6,C,33.058,21.868,"0,172,232",false-positive component,not reviewed (< 20 ml or model C)
+1fe6e48293,A,33.196,25.246,"324,180,208",false-positive component,brain
+1fe6e48293,B,43.869,25.246,"325,223,228",false-positive component,brain
+1fe6e48293,C,25.246,25.246,"91,186,184",inside reference,
+22d07bdc49,A,19.988,14.494,"48,197,200",false-positive component,urinary bladder
+22d07bdc49,B,63.333,14.494,"283,240,198",false-positive component,not reviewed (< 20 ml or model C)
+22d07bdc49,C,14.494,14.494,"64,200,160",inside reference,
+249dd35d0c,A,58.481,18.63,"60,218,211",false-positive component,urinary bladder (+ unidentified pelvic extension)
+249dd35d0c,B,58.481,18.63,"60,218,211",false-positive component,urinary bladder
+249dd35d0c,C,18.63,18.63,"247,199,242",inside reference,
+30001118d0,A,73.093,26.147,"68,195,205",false-positive component,urinary bladder
+30001118d0,B,60.352,26.147,"69,193,209",false-positive component,not reviewed (< 20 ml or model C)
+30001118d0,C,26.147,26.147,"276,209,175",inside reference,
+5ef99b0b6b,A,25.424,25.424,"207,193,195",inside reference,
+5ef99b0b6b,B,25.424,25.424,"207,193,195",inside reference,
+5ef99b0b6b,C,25.424,25.424,"207,193,195",inside reference,
+62405d117c,A,61.249,13.809,"325,186,218",false-positive component,brain
+62405d117c,B,26.673,13.809,"63,224,196",false-positive component,urinary bladder
+62405d117c,C,13.809,13.809,"228,244,262",inside reference,
+6a3477cd9a,A,194.281,26.718,"33,202,184",predicted lesion touching reference,
+6a3477cd9a,B,194.281,26.718,"33,202,184",false-positive component,urinary bladder
+6a3477cd9a,C,54.121,26.718,"27,197,186",false-positive component,not reviewed (< 20 ml or model C)
+c4a686881e,A,64.465,20.273,"69,210,191",false-positive component,urinary bladder
+c4a686881e,B,64.465,20.273,"69,210,191",false-positive component,urinary bladder
+c4a686881e,C,20.273,20.273,"220,196,222",inside reference,
+f47e31ceb5,A,89.989,11.75,"314,255,157",false-positive component,not reviewed (< 20 ml or model C)
+f47e31ceb5,B,89.989,11.75,"314,255,157",false-positive component,not reviewed (< 20 ml or model C)
+f47e31ceb5,C,11.75,11.75,"227,207,137",inside reference,

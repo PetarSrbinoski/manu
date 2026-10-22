@@ -1,0 +1,49 @@
+exam,model,component,volume_ml,cm_below_top_of_scan,centroid_k,centroid_j,centroid_i,SUVmax,SUVmean,CT_mean_HU,structure,group,confidence,evidence
+0b57b247b6,A,3,216.22,79.6,59.6,212.3,207.2,23.71,10.75,19.53,urinary bladder,bladder,high,midline pelvic fluid-density structure behind the pubic symphysis; intense uptake (urine)
+0b57b247b6,A,21,53.17,37.9,198.6,229.3,227.2,15.42,7.53,103.8,heart (left-ventricular myocardium),heart,high,ring-shaped uptake around the left-ventricular cavity in the mediastinum
+0b57b247b6,B,9,112.06,79.7,59.3,213.7,211.7,23.64,13.93,15.59,urinary bladder,bladder,high,midline pelvic fluid-density structure behind the pubic symphysis; intense uptake (urine)
+0b57b247b6,B,35,141.48,3.1,314.5,236.8,188.4,22.5,10.73,123.68,brain,brain,high,inside the calvarium on axial CT; cortical FDG pattern on SUV
+1fe6e48293,A,3,415.36,78.3,64.1,193.5,208.0,16.61,8.91,-10.62,urinary bladder,bladder,high,midline pelvic fluid-density structure behind the pubic symphysis; intense uptake (urine)
+1fe6e48293,A,17,93.43,55.1,141.5,166.7,174.1,28.33,5.98,104.85,right kidney,kidney,high,"contrast-enhancing renal parenchyma, patient right, bilateral counterpart visible"
+1fe6e48293,A,18,134.69,54.7,142.8,166.9,249.6,23.82,4.4,108.3,left kidney,kidney,high,"contrast-enhancing renal parenchyma, patient left, bilateral counterpart visible"
+1fe6e48293,A,28,350.04,40.4,190.4,204.4,240.6,23.69,7.47,-0.98,heart (left-ventricular myocardium),heart,high,ring-shaped uptake around the left-ventricular cavity in the mediastinum
+1fe6e48293,A,68,335.98,2.3,317.4,209.8,204.4,33.2,10.65,82.26,brain,brain,high,inside the calvarium on axial CT; cortical FDG pattern on SUV
+1fe6e48293,B,21,78.28,54.2,144.2,165.2,175.2,28.33,5.81,115.22,right kidney,kidney,high,"contrast-enhancing renal parenchyma, patient right, bilateral counterpart visible"
+1fe6e48293,B,27,51.72,53.5,146.7,166.5,245.7,23.82,4.94,108.77,left kidney,kidney,high,"contrast-enhancing renal parenchyma, patient left, bilateral counterpart visible"
+1fe6e48293,B,28,48.48,40.4,190.3,214.1,234.2,17.72,7.56,84.9,heart (left-ventricular myocardium),heart,high,ring-shaped uptake around the left-ventricular cavity in the mediastinum
+1fe6e48293,B,38,336.88,3.9,312.0,200.1,203.2,43.87,8.4,93.16,brain,brain,high,inside the calvarium on axial CT; cortical FDG pattern on SUV
+22d07bdc49,A,3,126.25,68.6,54.2,183.2,188.1,19.99,10.82,8.51,urinary bladder,bladder,high,midline pelvic fluid-density structure behind the pubic symphysis; intense uptake (urine)
+22d07bdc49,B,10,202.07,69.1,52.8,182.5,188.1,19.99,10.56,7.67,urinary bladder,bladder,high,midline pelvic fluid-density structure behind the pubic symphysis; intense uptake (urine)
+22d07bdc49,B,16,23.9,53.1,105.9,168.3,139.8,7.12,3.62,4.8,unassigned,unassigned,unassigned,"right lower abdomen, low CT density, moderate uptake; structure not identifiable on these views"
+22d07bdc49,B,19,60.14,46.6,127.5,173.8,229.9,12.62,4.14,113.08,left kidney,kidney,high,"contrast-enhancing renal parenchyma, patient left, bilateral counterpart visible"
+22d07bdc49,B,21,33.6,45.7,130.6,166.8,171.8,11.89,4.66,116.51,right kidney,kidney,high,"contrast-enhancing renal parenchyma, patient right, bilateral counterpart visible"
+22d07bdc49,B,25,49.28,34.2,169.1,220.8,225.9,7.99,4.21,38.12,heart (left-ventricular myocardium),heart,medium,left heart border on axial CT and coronal CT; partial ring only
+22d07bdc49,B,55,31.48,2.1,275.9,249.4,206.4,30.14,8.14,139.2,brain,brain,high,inside the calvarium on axial CT; cortical FDG pattern on SUV
+249dd35d0c,A,3,263.87,74.4,66.9,205.2,213.0,58.48,14.76,-6.97,urinary bladder (+ unidentified pelvic extension),bladder,high,bladder as above; an elongated tubular extension along the pelvic wall is not identified
+249dd35d0c,A,38,20.49,52.1,141.2,194.6,252.8,11.17,3.78,20.14,left renal hilum region,kidney,medium,medial to the left kidney at the hilum; exact structure uncertain
+249dd35d0c,A,64,731.44,5.4,297.1,202.0,203.1,14.65,4.93,45.76,brain,brain,high,inside the calvarium on axial CT; cortical FDG pattern on SUV
+249dd35d0c,B,1,22.74,76.4,60.3,211.1,218.1,58.48,33.29,2.0,urinary bladder,bladder,high,midline pelvic fluid-density structure behind the pubic symphysis; intense uptake (urine)
+249dd35d0c,B,22,166.83,3.5,303.3,204.6,198.3,11.43,5.03,31.52,brain,brain,high,inside the calvarium on axial CT; cortical FDG pattern on SUV
+30001118d0,A,3,92.44,77.3,67.4,182.9,199.9,73.09,14.97,47.79,urinary bladder,bladder,high,midline pelvic fluid-density structure behind the pubic symphysis; intense uptake (urine)
+30001118d0,A,62,1018.6,4.1,311.3,216.6,192.4,27.93,6.77,102.67,brain,brain,high,inside the calvarium on axial CT; cortical FDG pattern on SUV
+30001118d0,B,54,129.78,3.3,313.8,228.1,187.8,15.43,7.64,75.54,brain,brain,high,inside the calvarium on axial CT; cortical FDG pattern on SUV
+5ef99b0b6b,A,1,172.56,73.1,39.2,202.1,200.0,14.99,7.93,7.84,urinary bladder,bladder,high,midline pelvic fluid-density structure behind the pubic symphysis; intense uptake (urine)
+62405d117c,A,2,278.45,77.6,66.4,209.6,196.8,26.67,9.04,-33.67,urinary bladder,bladder,high,midline pelvic fluid-density structure behind the pubic symphysis; intense uptake (urine)
+62405d117c,A,15,204.57,38.5,196.7,230.4,224.5,12.77,5.42,47.83,heart (left-ventricular myocardium),heart,high,ring-shaped uptake around the left-ventricular cavity in the mediastinum
+62405d117c,A,34,162.89,1.3,320.7,211.0,199.7,61.25,12.47,74.69,brain,brain,high,inside the calvarium on axial CT; cortical FDG pattern on SUV
+62405d117c,B,1,63.61,77.7,66.0,219.9,195.6,26.67,13.24,-28.57,urinary bladder,bladder,high,midline pelvic fluid-density structure behind the pubic symphysis; intense uptake (urine)
+6a3477cd9a,A,63,58.01,51.7,110.7,174.5,167.7,59.21,8.06,91.57,right kidney region (collecting system?),kidney,medium,at the lower pole / hilum of the right kidney; intense focal uptake
+6a3477cd9a,A,132,216.29,1.8,276.9,225.3,197.1,27.1,9.78,87.06,brain,brain,high,inside the calvarium on axial CT; cortical FDG pattern on SUV
+6a3477cd9a,B,12,43.56,75.6,31.0,194.5,192.0,194.28,54.36,-24.93,urinary bladder,bladder,high,midline pelvic fluid-density structure behind the pubic symphysis; intense uptake (urine)
+6a3477cd9a,B,54,44.54,51.1,112.6,173.6,167.9,59.21,9.82,84.32,right kidney region (collecting system?),kidney,medium,at the lower pole / hilum of the right kidney; intense focal uptake
+6a3477cd9a,B,130,62.48,2.2,275.8,251.2,198.4,31.34,9.37,92.54,brain,brain,high,inside the calvarium on axial CT; cortical FDG pattern on SUV
+c4a686881e,A,14,278.58,76.8,69.0,198.9,207.1,64.47,22.41,18.06,urinary bladder,bladder,high,midline pelvic fluid-density structure behind the pubic symphysis; intense uptake (urine)
+c4a686881e,A,28,29.1,51.8,152.4,181.3,229.2,28.64,6.22,82.11,left kidney,kidney,high,"contrast-enhancing renal parenchyma, patient left, bilateral counterpart visible"
+c4a686881e,A,67,334.7,2.5,316.7,212.0,200.4,53.6,12.93,73.66,brain,brain,high,inside the calvarium on axial CT; cortical FDG pattern on SUV
+c4a686881e,B,1,86.66,77.1,67.9,203.9,209.8,64.47,30.32,1.76,urinary bladder,bladder,high,midline pelvic fluid-density structure behind the pubic symphysis; intense uptake (urine)
+c4a686881e,B,5,33.25,51.8,152.4,180.2,230.6,28.64,6.05,92.36,left kidney,kidney,high,"contrast-enhancing renal parenchyma, patient left, bilateral counterpart visible"
+c4a686881e,B,6,27.16,51.3,154.0,180.7,182.6,30.63,5.83,100.11,right kidney,kidney,high,"contrast-enhancing renal parenchyma, patient right, bilateral counterpart visible"
+c4a686881e,B,60,52.51,3.5,313.4,245.5,197.6,24.91,12.23,96.29,brain,brain,high,inside the calvarium on axial CT; cortical FDG pattern on SUV
+f47e31ceb5,A,2,378.53,77.2,67.7,202.0,201.3,20.87,9.17,-11.86,urinary bladder,bladder,high,midline pelvic fluid-density structure behind the pubic symphysis; intense uptake (urine)
+f47e31ceb5,A,30,52.74,1.1,321.4,188.5,205.8,27.05,10.56,79.83,brain,brain,high,inside the calvarium on axial CT; cortical FDG pattern on SUV
+f47e31ceb5,B,15,35.48,3.3,313.9,211.1,175.7,21.43,6.67,166.79,brain (lateral cortex),brain,medium,right lateral cortex at the inner skull table
