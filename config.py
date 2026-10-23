@@ -58,3 +58,9 @@ MIN_FREE_DISK_GIB = 40.0             # Include Windows C: free space when runnin
 # Diagnostic run and console progress.
 SMOKE_STEPS = 20
 LOG_EVERY = 10
+
+# Separate 96³/128³ five-fold experiments (scripts/train_patch_comparison.py).
+# All other scientific/resource defaults above still apply. Do not edit mid-run.
+PATCH_COMPARISON_SIZES = (96, 128)
+PATCH_COMPARISON_OUTPUT_ROOT = PROJECT_ROOT / 'runs/patch-comparison'
+PATCH_COMPARISON_SW_BATCH_SIZE = 1  # Conservative for larger patches; fit still needs a smoke check.

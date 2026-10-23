@@ -44,6 +44,55 @@ python scripts/train.py --fold all --resume
 
 Running without arguments prints help. The smoke run uses two training examinations and one separate validation examination; it does not produce held-out results.
 
+## Compare 96³ and 128³ patches across all five folds
+
+Use the existing trainer through the comparison launcher. It runs **all five folds
+at 96³, then all five at 128³**, sequentially on the selected GPU. Each size starts
+from scratch, with its own checkpoints and predictions. Both share the same
+patient/inner-validation splits. Defaults remain a 500-epoch cosine schedule with
+early stopping, training batch 1, 2 mm spacing and 16 CPU threads. Inference uses
+one window at a time to limit memory with the larger patches.
+
+```bash
+# From the project root; no environment activation needed.
+# Preview the commands without auditing data or launching training.
+.venv/bin/python scripts/train_patch_comparison.py
+
+# Recommended first: bounded training + full-volume validation for BOTH sizes.
+# GPU fit is not yet verified. These checks do not establish segmentation quality.
+.venv/bin/python scripts/train_patch_comparison.py --smoke
+
+# Train BOTH sizes, five folds each (10 fold runs in total).
+.venv/bin/python scripts/train_patch_comparison.py --run
+
+# Continue after interruption; verify/skip completed folds, resume partial folds.
+.venv/bin/python scripts/train_patch_comparison.py --run --resume
+
+# Alternatively, run one size at a time.
+.venv/bin/python scripts/train_patch_comparison.py --run --patch 96
+.venv/bin/python scripts/train_patch_comparison.py --run --patch 128
+```
+
+Outputs are under `runs/patch-comparison/`: shared `splits.json`, separate
+`smoke96/` and `smoke128/` diagnostics, and full `patch96/` and `patch128/` runs.
+Each full run has its own `run.json`, `logs/`, five fold directories and final
+`metrics.json`. The original `runs/full-training/` is preserved. The first launch
+audits the data and prepares splits if needed; auditing can take several minutes.
+
+The launcher stops on any failed child command. It does not silently reduce patch
+size or change the recipe after an out-of-memory error. Smoke checks are a separate
+command, not automatically launched by `--run`. Repeating smoke checks requires a
+fresh `--output-root`, since completed diagnostics are protected from overwrite.
+For full runs, use the same output root and unchanged settings when resuming.
+An interruption before the first checkpoint may require a new output root; the
+trainer will report that explicitly. Do not run the two sizes simultaneously on
+the laptop GPU. Keep the terminal/WSL session alive, or resume after interruption.
+
+Comparison defaults live in `config.py` under `PATCH_COMPARISON_*`; the remaining
+settings come from the existing trainer defaults. Do not edit them between folds.
+After both experiments finish, compare held-out results descriptively; use inner
+validation, not repeated outer-fold inspection, to choose further changes.
+
 ## Configuration and resume
 
 Edit [config.py](config.py) before a new experiment. CLI flags override its defaults. Current defaults are 64³ patches, training batch 1, learning rate `2e-4`, up to 500 epochs, validation every 2 epochs, 16 CPU threads and 8 inference windows per batch. The shared disk cache has a 160 GiB limit and keeps at least 40 GiB free; it fills as needed.
