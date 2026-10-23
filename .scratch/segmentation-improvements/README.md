@@ -42,7 +42,12 @@ is complete as a bounded six-examination training-only audit, including a verifi
 comparison. Ticket 08 is implemented/CPU-tested with a frozen paired pilot and
 inner-validation scoring command; ticket 12 extends this to three 128³-only arms
 with a Dice+CE candidate and separate sampling/loss comparisons. Both real pilot
-outcomes remain pending user launch.
+outcomes are now complete: the user trained all three arms to epoch 50 and
+evaluated 23 inner-validation examinations. Tickets 08 and 12 are completed
+experiments, but neither candidate passed its predefined screen. Dice and FP
+volume improved while small-lesion recall declined. See
+[the results review](../../SAMPLING_PILOT_RESULTS.md). No new five-fold recipe
+has been selected; the fourth loss-only arm remains a proposal.
 Ticket 05 benchmark tooling is implemented, with GPU measurements still pending.
 The missed-lesion/regression/SUVmax review is recorded in the follow-up report.
 Do not treat sampler frequencies or synthetic tests as trained-model improvement.
