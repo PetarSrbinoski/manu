@@ -1,7 +1,7 @@
 # Segmentation improvement TODO
 
-Proposed experiments following the October 2026 baseline review. These tasks are
-not implemented or authorized training launches. Our main observed weaknesses
+Proposed experiments following the October 2026 baseline review. Unchecked items remain proposals; completion updates appear below and in the
+local tracker. Listing a proposal does not authorize a training launch. Our main observed weaknesses
 are false positives in regions of physiological PET uptake and missed small
 lesions. No proposed change is guaranteed to improve segmentation.
 
@@ -68,7 +68,7 @@ lesions. No proposed change is guaranteed to improve segmentation.
   often background patches contain difficult physiological uptake. Retain the
   current 2:1 foreground/background sampler as the reference.
 
-- [ ] **Test lesion-balanced sampling.** Sample reference connected components
+- [x] **Test lesion-balanced sampling.** Sample reference connected components
   before selecting a foreground patch centre, so large lesions do not dominate
   all foreground draws. Preserve background sampling and compare small-lesion
   recall and false positives against the existing sampler.
@@ -91,7 +91,7 @@ lesions. No proposed change is guaranteed to improve segmentation.
   change one factor at a time. Start a new experiment: changing the total epoch
   budget changes the cosine schedule and is not a compatible continuation.
 
-- [ ] **Compare Dice with Dice plus cross-entropy.** Add a configurable loss choice
+- [x] **Compare Dice with Dice plus cross-entropy.** Add a configurable loss choice
   and explicit weighting while retaining stable float32 loss reductions and AMP
   recovery. Hold data, sampling, patch and optimization settings fixed. Check
   whether the extra voxelwise penalty reduces false positives without suppressing
@@ -158,3 +158,13 @@ implementing it.
   large contextual patches and joint organ/lesion supervision motivate controlled
   experiments, but do not establish the cause of our observed performance gap.
 - [nnU-Net](https://github.com/MIC-DKFZ/nnUNet): comparator implementation.
+
+## Completed pilot outcome (reviewed 2026-10-26)
+
+The user completed three 128³ fold-0 pilots through epoch 50 and evaluated all
+23 inner-validation examinations. Tickets 08 and 12 are complete as bounded
+comparisons, but neither candidate passed its predefined screen. Dice and FP
+volume improved while small-lesion recall declined. Checked experiment items
+do not mean adoption of their candidate recipes. See
+[results, limitations and proposed next work](SAMPLING_PILOT_RESULTS.md).
+No 96³ rerun or new five-fold candidate experiment was performed.
