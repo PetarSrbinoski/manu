@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import argparse
 from collections import Counter
+from dataclasses import asdict
 import json
 from pathlib import Path
 import random
@@ -12,7 +13,7 @@ if __package__ in (None, ''):
     sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 import config as settings
-from scripts.analysis_common import load_splits, new_report, provenance, verify_case, write_csv, case_record
+from scripts.analysis_common import load_splits, new_report, provenance, verify_case, write_csv
 from scripts.training_data import build_transforms, training_transforms, prepare_case, fold_cases
 from scripts.training_options import scientific_recipe
 from scripts.training_runtime import atomic_json, file_hash
@@ -132,7 +133,7 @@ def main(argv=None):
                         role='train', fold=args.fold, seed=args.seed, draws=args.draws,
                         patches=args.patches, suv_threshold=args.suv_threshold,
                         sampling=args.sampling,
-                        scientific_recipe=scientific_recipe(), cases=[case_record(c) for c in selected],
+                        scientific_recipe=scientific_recipe(), cases=[asdict(c) for c in selected],
                         coverage_grid='preprocessed training grid; 18-connected components', status='running')
     atomic_json(output / 'manifest.json', record)
     all_draws, all_lesions = [], []

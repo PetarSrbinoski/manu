@@ -7,6 +7,7 @@ retry instead of merely estimating fallback memory from a float32 forward pass.
 from __future__ import annotations
 
 import argparse
+from dataclasses import asdict
 import gc
 import json
 from pathlib import Path
@@ -19,7 +20,7 @@ if __package__ in (None, ''):
     sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 import config as settings
-from scripts.analysis_common import (case_record, load_splits, new_report, provenance,
+from scripts.analysis_common import (load_splits, new_report, provenance,
                                      verify_case, write_csv)
 from scripts.training_data import fold_cases
 from scripts.training_options import scientific_recipe
@@ -211,7 +212,7 @@ def main(argv=None):
             name = f'patch{patch}-{precision}'
             job = {'patch': patch, 'precision': precision, 'steps': args.steps, 'sw_batches': args.sw_batches,
                    'device': args.device, 'threads': args.threads, 'seed': settings.SEED,
-                   'training_case': case_record(training), 'validation_case': case_record(validation),
+                   'training_case': asdict(training), 'validation_case': asdict(validation),
                    'data_root': str(args.data_root.resolve()), 'result': str((output / f'{name}-results.json').resolve())}
             jobs.append(job)
             spec = output / f'{name}-job.json'

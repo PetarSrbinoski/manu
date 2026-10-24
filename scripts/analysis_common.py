@@ -2,7 +2,6 @@
 from __future__ import annotations
 
 import csv
-from dataclasses import asdict
 import importlib.metadata
 import json
 from pathlib import Path
@@ -10,7 +9,7 @@ import platform
 import sys
 
 from scripts.training_data import Case, FILES, fold_cases
-from scripts.training_runtime import atomic_json, file_hash, identity
+from scripts.training_runtime import file_hash, identity
 
 
 def load_splits(path: Path):
@@ -80,5 +79,40 @@ def write_csv(path, rows):
         writer.writerows(rows)
 
 
-def case_record(case):
-    return asdict(case)
+def load_evaluation(folder):
+    """Load a completed evaluation without silently collapsing case identities.
+
+    Stored source hashes describe the inputs at evaluation time. Consumers that
+    read those source images must additionally verify their current contents.
+    """
+    manifest = json.loads((folder / 'manifest.json').read_text())
+    rows = json.loads((folder / 'metrics.json').read_text())
+    inputs = manifest['cases']
+    if (manifest['status'] != 'complete' or not rows
+            or len(rows) != len({r['case_id'] for r in rows})
+            or len(inputs) != len({r['case_id'] for r in inputs})):
+        raise ValueError('Evaluation must be complete with unique case identities')
+    metrics = {r['case_id']: r for r in rows}
+    sources = {r['case_id']: r for r in inputs}
+    if metrics.keys() != sources.keys():
+        raise ValueError('Evaluation metrics and manifest case IDs differ')
+    for case, row in metrics.items():
+        if (row['patient'] != sources[case]['patient']
+                or not case.startswith(row['patient'] + '/')):
+            raise ValueError('Evaluation patient/case identities differ')
+    return metrics, sources
+
+
+def match_evaluations(reference, candidate):
+    """Require the same examinations, reference metrics and reference/PET inputs."""
+    a, inputs_a = reference
+    b, inputs_b = candidate
+    if a.keys() != b.keys():
+        raise ValueError('Evaluation case IDs differ')
+    for case in a:
+        if any(a[case][field] != b[case][field]
+               for field in ('patient', 'GT_SUVmax', 'GT_TMTV_ml', 'gt_lesions')):
+            raise ValueError('Reference case metrics differ')
+        if any(inputs_a[case][field]['sha256'] != inputs_b[case][field]['sha256']
+               for field in ('pet', 'reference')):
+            raise ValueError('Reference/PET input hashes differ')
