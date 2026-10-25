@@ -12,7 +12,7 @@ if __package__ in (None, ''):
 import config as settings
 from scripts.analysis_common import load_splits, new_report, provenance, verify_case
 from scripts.training_data import build_transforms, export_prediction, fold_cases, prepare_case, predict_volume
-from scripts.training_runtime import atomic_json, build_model, file_hash, implementation_hash
+from scripts.training_runtime import atomic_json, build_model, file_hash, implementation_hash, compatible_config
 from scripts.training_options import scientific_recipe
 
 
@@ -38,7 +38,9 @@ def main(argv=None):
     cases, manifest = load_splits(args.splits)
     checkpoint = torch.load(args.checkpoint, map_location='cpu', weights_only=False)
     config = checkpoint['config']
-    if checkpoint['split_id'] != manifest['identity'] or config['script_sha256'] != implementation_hash():
+    current = {**config, 'script_sha256': implementation_hash(),
+               'scientific': {**config['scientific'], 'patch_sampling': config['scientific'].get('patch_sampling', 'voxel')}}
+    if checkpoint['split_id'] != manifest['identity'] or not compatible_config(config, current):
         raise ValueError('Checkpoint split/source identity differs from supplied manifest/current trainer')
     recipe = scientific_recipe()
     if any(config['scientific'].get(k) != v for k, v in recipe.items()):

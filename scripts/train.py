@@ -115,7 +115,8 @@ def train_fold(args, cases: list[Case], manifest: dict, fold: int, config: dict,
                         fold, start_epoch, start_epoch + 1, f'{best:.4f}' if best >= 0 else 'not evaluated yet')
         wrapped = DistributedDataParallel(model, device_ids=[device.index]) if world > 1 else model
         disk_cache = PreprocessingCache(args.disk_cache, args.disk_cache_gib, args.min_free_disk_gib) if args.disk_cache else None
-        dataset = TrainingDataset(training, args.data_root, args.patch, args.cache_gib, disk_cache)
+        dataset = TrainingDataset(training, args.data_root, args.patch, args.cache_gib, disk_cache,
+                                  sampling=args.sampling)
         sampler = DistributedSampler(dataset, num_replicas=world, rank=rank, shuffle=True,
                                      seed=args.seed + fold, drop_last=False)
         generator = torch.Generator()

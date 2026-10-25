@@ -170,14 +170,20 @@ def build_transforms(labels: bool = True, concatenate: bool = True):
     return Compose(transforms)
 
 
-def training_transforms(patch: int):
+def training_transforms(patch: int, sampling: str = 'voxel'):
     from monai.transforms import (Compose, RandCropByPosNegLabeld, ResizeWithPadOrCropd,
                                   RandAffined, ConcatItemsd, DeleteItemsd)
     keys = ['CT', 'PT', 'GT']
     size = (patch,) * 3
+    if sampling not in ('voxel', 'lesion-balanced'):
+        raise ValueError('Unknown patch sampling strategy')
+    crop = RandCropByPosNegLabeld
+    if sampling == 'lesion-balanced':
+        from scripts.lesion_sampling import LesionBalancedCropd
+        crop = LesionBalancedCropd
     return Compose([
         DeleteItemsd(keys=['image']),
-        RandCropByPosNegLabeld(keys=keys, label_key='GT', spatial_size=size,
+        crop(keys=keys, label_key='GT', spatial_size=size,
                               pos=settings.POSITIVE_SAMPLE_WEIGHT, neg=settings.NEGATIVE_SAMPLE_WEIGHT, num_samples=1, image_key='PT',
                               image_threshold=settings.BACKGROUND_PET_THRESHOLD, allow_smaller=True,
                               fg_indices_key='GT_fg_indices', bg_indices_key='GT_bg_indices'),
@@ -196,11 +202,16 @@ class TrainingDataset:
     RAM caching requires workers=0 and has a per-rank budget. Disk caching uses
     shared memory-mapped entries and one budget across processes and folds.
     """
-    def __init__(self, cases: list[Case], root: Path, patch: int, cache_gib: float = 0, disk_cache: PreprocessingCache | None = None):
+    def __init__(self, cases: list[Case], root: Path, patch: int, cache_gib: float = 0,
+                 disk_cache: PreprocessingCache | None = None, sampling: str = 'voxel'):
         self.cases, self.root = cases, root
         self.prepare = build_transforms(concatenate=False)
         self.disk_cache = disk_cache
-        self.transform = training_transforms(patch)
+        self.transform = training_transforms(patch, sampling)
+        self.lesion_indices = None
+        if sampling == 'lesion-balanced':
+            from scripts.lesion_sampling import LesionIndexCache
+            self.lesion_indices = LesionIndexCache(settings.LESION_INDEX_CACHE_GIB * 1024**3)
         self.limit = int(cache_gib * 1024**3)
         self.cache: OrderedDict[str, tuple[dict, int]] = OrderedDict()
         self.bytes = 0
@@ -232,7 +243,10 @@ class TrainingDataset:
                 self.cache[case.id] = (data, size)
                 self.bytes += size
         # Spatial transforms must not mutate cached tensors or their histories.
-        result = self.transform(deepcopy(data) if case.id in self.cache else data)[0]
+        sample = deepcopy(data) if case.id in self.cache else data
+        if self.lesion_indices is not None:
+            sample = {**sample, '_lesion_index': self.lesion_indices.get(case.id, data['GT'].cpu().numpy())}
+        result = self.transform(sample)[0]
         if report:
             LOGGER.info('Training patch ready: %s | shape=%s | %.1fs | cache=%.2f GiB',
                         case.id, tuple(result['image'].shape), time.perf_counter() - started, self.bytes / 1024**3)

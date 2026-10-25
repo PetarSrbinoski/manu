@@ -136,7 +136,12 @@ This positive-only cohort cannot establish performance on lesion-negative examin
 Analysis tools for native-grid lesion/volume/SUV evaluation, patch memory/throughput
 benchmarks, sampling coverage and saved-checkpoint inner-validation predictions
 are described in [ANALYSIS_TOOLS.md](ANALYSIS_TOOLS.md). Each writes an isolated
-report; the training implementation and its resume identities are unchanged.
+report and preserves its inputs.
+
+The opt-in lesion-balanced sampler and matched 128³ inner-validation pilot are
+described in [SAMPLING_PILOT_PLAN.md](SAMPLING_PILOT_PLAN.md). The original voxel
+sampler remains the default. An exact recorded source migration allows existing
+voxel runs to resume; changing sampling requires a fresh experiment directory.
 
 ```bash
 python -m pip install pytest==9.1.1 mypy==2.1.0
@@ -144,6 +149,9 @@ python -m pytest -q
 python -m mypy --check-untyped-defs --follow-imports=skip --ignore-missing-imports scripts config.py
 ```
 
-The latest code verification passed 37 tests and type checking. Tests cover patient splits, geometry, caching, numerical recovery, resume and held-out routing; they do not establish segmentation quality. CUDA multi-GPU execution remains unverified; use `--help` for optional DDP and resource settings.
+The CPU regression suite covers patient splits, geometry, caching, numerical
+recovery, resume, held-out routing, evaluation and opt-in sampling. These checks
+do not establish segmentation quality. CUDA multi-GPU execution remains
+unverified; use `--help` for optional DDP and resource settings.
 
 The training loop is in `scripts/train.py`. Its helpers are `training_data.py`, `training_options.py`, `training_runtime.py` and `preprocessing_cache.py`, all under `scripts/`. Defaults stay in `config.py`.

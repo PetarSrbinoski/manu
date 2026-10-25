@@ -38,6 +38,8 @@ SPACING_MM = (2.0, 2.0, 2.0)
 CT_CLIP_HU = (-154, 325)
 POSITIVE_SAMPLE_WEIGHT = 2
 NEGATIVE_SAMPLE_WEIGHT = 1
+PATCH_SAMPLING = 'voxel'             # Reference; opt in with --sampling lesion-balanced.
+LESION_INDEX_CACHE_GIB = 0.25        # Bounded per loader process, derived foreground indices only.
 BACKGROUND_PET_THRESHOLD = 0.0
 AFFINE_PROBABILITY = 0.5
 TRANSLATION_RANGE = (10, 10, 10)
@@ -64,3 +66,12 @@ LOG_EVERY = 10
 PATCH_COMPARISON_SIZES = (96, 128)
 PATCH_COMPARISON_OUTPUT_ROOT = PROJECT_ROOT / 'runs/patch-comparison'
 PATCH_COMPARISON_SW_BATCH_SIZE = 1  # Conservative for larger patches; fit still needs a smoke check.
+
+# Matched sampling pilots: inspect inner validation before any outer inference.
+SAMPLING_PILOT_OUTPUT_ROOT = PROJECT_ROOT / 'runs/sampling-pilot'
+SAMPLING_PILOT_PATCH = 128
+SAMPLING_PILOT_FOLD = 0
+SAMPLING_PILOT_STOP_EPOCH = 50       # Retain EPOCHS=500 cosine schedule in both arms.
+SAMPLING_PILOT_MIN_SMALL_RECALL_GAIN = 0.05  # Exploratory screening: +5 percentage points.
+SAMPLING_PILOT_MAX_FPV_RATIO = 1.10          # At most 10% more mean unmatched FP volume.
+SAMPLING_PILOT_MAX_DICE_DROP = 0.02          # At most 0.02 lower mean foreground Dice.

@@ -32,6 +32,8 @@ def parse_args(argv=None):
     parser.add_argument('--splits', type=Path, help='Existing shared manifest; create with --prepare first')
     parser.add_argument('--epochs', type=int, help='Total cosine-schedule budget (default: config.EPOCHS; smoke: 1)')
     parser.add_argument('--patch', type=int, default=settings.PATCH_SIZE, help='Scientific choice; multiple of 32, at least 64')
+    parser.add_argument('--sampling', choices=['voxel', 'lesion-balanced'], default=settings.PATCH_SAMPLING,
+                        help='Foreground patch sampling; background policy is unchanged')
     parser.add_argument('--batch-size', type=int, default=settings.BATCH_SIZE, help='Training patches per GPU')
     parser.add_argument('--accumulate', type=int, default=settings.GRADIENT_ACCUMULATION, help='Microbatches per optimizer update')
     parser.add_argument('--lr', type=float, default=settings.LEARNING_RATE)
@@ -62,6 +64,8 @@ def parse_args(argv=None):
     parser.add_argument('--expected-exams', type=int, default=settings.EXPECTED_EXAMS)
     parser.add_argument('--expected-patients', type=int, default=settings.EXPECTED_PATIENTS)
     args = parser.parse_args(argv)
+    if args.sampling not in ('voxel', 'lesion-balanced'):
+        parser.error('Invalid configured patch sampling strategy')
     # Relative paths belong to the project, regardless of the launch directory.
     for name in ('data_root', 'output', 'splits', 'disk_cache'):
         value = getattr(args, name)
@@ -98,6 +102,12 @@ def parse_args(argv=None):
         parser.error('batch sizes, accumulation, intervals, steps and cohort sizes must be positive')
     if args.workers < 0 or not math.isfinite(args.cache_gib) or args.cache_gib < 0 or not math.isfinite(args.lr) or args.lr <= 0:
         parser.error('invalid resource budget or learning rate')
+    if not math.isfinite(settings.LESION_INDEX_CACHE_GIB) or settings.LESION_INDEX_CACHE_GIB < 0:
+        parser.error('Invalid lesion-index cache budget')
+    if args.sampling == 'lesion-balanced':
+        import importlib.util
+        if importlib.util.find_spec('cc3d') is None:
+            parser.error('lesion-balanced sampling requires requirements-analysis.txt')
     if (args.early_stopping_patience < 0 or args.early_stopping_min_epochs < 1
             or not math.isfinite(args.early_stopping_min_delta) or not 0 <= args.early_stopping_min_delta < 1):
         parser.error('Invalid early-stopping policy: patience >= 0, minimum epochs >= 1, and 0 <= delta < 1 required')
@@ -132,6 +142,7 @@ def stopping_policy(args) -> dict:
 def resolved_config(args, split_id: str, environment: dict, device, world: int) -> tuple[dict, dict]:
     """Keep scientific choices fixed across folds and hardware; preserve resume keys."""
     scientific = {**scientific_recipe(), 'patch': args.patch, 'channels': list(settings.MODEL_CHANNELS),
+                  'patch_sampling': args.sampling,
                   'input_order': ['CT', 'PET_SUV'],
                   'foreground_crop': 'none-full-field-of-view',
                   'loss': 'softmax-Dice', 'lr': args.lr,
@@ -153,4 +164,10 @@ def resolved_config(args, split_id: str, environment: dict, device, world: int) 
                  'sw_batch_size': args.sw_batch_size, 'world_size': world, 'threads_per_process': args.threads,
                  'disk_cache': str(args.disk_cache) if args.disk_cache else None,
                  'disk_cache_gib': args.disk_cache_gib, 'min_free_disk_gib': args.min_free_disk_gib}
+    if args.sampling == 'lesion-balanced':
+        import importlib.metadata
+        config['scientific']['lesion_index'] = '18-connected-components-uniform-then-voxel-C-order-v1'
+        config['versions'] = {**environment['packages'], 'connected-components-3d': importlib.metadata.version('connected-components-3d')}
+        config['lesion_index_cache_gib'] = settings.LESION_INDEX_CACHE_GIB
+        resources['lesion_index_cache_gib_per_process'] = settings.LESION_INDEX_CACHE_GIB
     return config, resources

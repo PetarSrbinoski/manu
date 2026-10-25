@@ -1,0 +1,26 @@
+{
+  "source_commit": "2814b41",
+  "training_data_source_sha256": "19237a3277d03e2cf97981a5ff5381ef59da2de13790733cd76371e2310e3319",
+  "cases": [
+    {
+      "seed": 3,
+      "image": "b950430c0831918876e0cd574058ebed8ad52e64cd0644db4e60d3ac0abf6bcf",
+      "GT": "c930afb3554e9ebee0eb6fc52912e88c23eb613a76abfed1058f3222b6854db8"
+    },
+    {
+      "seed": 9,
+      "image": "deebc533a53bd0e65a9d30414bf52d7a526265cb70e5300664931cc8b6403101",
+      "GT": "67794c7ff6707cefa78326bebfa58db0cabbfec41956d07609a20c9e49e92367"
+    },
+    {
+      "seed": 17,
+      "image": "477b474f0e975bde7b957ed5305695ed823d29986bd4178d35a91db1947385f4",
+      "GT": "47a3320dbd33bc3373fc02defc450e62007eb0775488b40f69091d8b77a598bd"
+    },
+    {
+      "seed": 29,
+      "image": "698df6eeb077d81bf9e2d89d3e1335ea46e8524fa4eea44c5208efba3de2d510",
+      "GT": "de837e265f0dcd0a6f2c19b8faf4a9cd0e47f284bddf356df24e0c1b2cfaf538"
+    }
+  ]
+}

@@ -37,6 +37,10 @@ Ticket 15 needs 13 only for an organ-aware rule. Ticket 18 requires an explicit 
 GenAI is outside this backlog until its role, data, comparator and measurable endpoint are agreed with Igor.
 
 Implementation update, 2026-10-25: ticket 02 tooling is implemented with CPU
-verification; full-cohort scoring remains pending. Tickets 05 and 07 have
-implemented, previewable commands; their real-data measurements are still pending.
-Do not treat implemented tools as completed experimental findings.
+verification and both 145-examination patch evaluations are complete. Ticket 07
+is complete as a bounded six-examination training-only audit, including a verified
+comparison. Ticket 08 is implemented/CPU-tested with a frozen paired pilot and
+inner-validation scoring command; the real pilot remains pending user launch.
+Ticket 05 benchmark tooling is implemented, with GPU measurements still pending.
+The missed-lesion/regression/SUVmax review is recorded in the follow-up report.
+Do not treat sampler frequencies or synthetic tests as trained-model improvement.

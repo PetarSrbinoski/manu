@@ -191,6 +191,13 @@ sampler's intended foreground/background coin flip after boundary correction.
 Sampling frequencies across these independent seeded draws are a diagnostic,
 not a reconstruction of all historical training epochs.
 
+`--sampling both` compares the original voxel sampler and the opt-in
+lesion-balanced sampler on the same cases/seed. It adds intended foreground
+targets, their reference component IDs, and corrected-centre counts. Intended
+targets and corrected centres differ near boundaries. For a single policy,
+use `--sampling voxel` or `--sampling lesion-balanced`. The updated audit
+precomputes the same deterministic candidate indices used by the training cache.
+
 The supplied SUV threshold (5 in this example) is a **high-uptake background
 proxy**, not an anatomical label, malignancy threshold or a mined hard negative.
 It can include physiological uptake or missing annotations. Review cases before
@@ -207,6 +214,6 @@ OMP_NUM_THREADS=1 .venv/bin/python -m unittest discover \
 The CPU suite checks metric geometry/known-volume and matching contracts,
 upstream snapshots, report preservation, patient routing, deterministic sampling
 and conservative benchmark recommendations. It needs no pytest and launches no
-GPU workload. GPU timing/fallback capacity and real-cohort sampling reports remain
-to be measured by the explicit commands above. Tickets 05 and 07 are not complete
-experiments merely because these tools and tests exist.
+GPU workload. Ticket 07 has now been executed on six training examinations; see
+the follow-up review and local issue status. Ticket 05 GPU timings remain pending.
+Tools and tests alone are not completed experimental findings.

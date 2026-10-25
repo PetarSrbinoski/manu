@@ -35,6 +35,9 @@ REFACTOR_PREDECESSOR = '9237f2bec8a77a782c62a183cb52c289e996d461c11e75f3c3e7a342
 SCRIPTS_PREDECESSOR = 'cf129b8b458bcdcfdbe963cae3d3f39d344c9277ed44b93e3135636b91e42dbd'
 # Exact implementation before anchoring paths to the project root.
 PATHS_PREDECESSOR = '9d836647be078742b8d9a615c98387e95027a890d2a74b7bc426744b30a0f214'
+# Exact trainer before opt-in component-balanced sampling. Only voxel-mode
+# continuation is allowed; switching sampling always requires fresh outputs.
+SAMPLING_PREDECESSOR = '5dcfa064fe0ae77ceb93f662d3416f05b8f1c8682db318b509e7cf27239e9557'
 # Fixed migration contract, independent of user-editable defaults. The pilot had
 # no stopping policy; this adoption cannot stop it before the completed epoch 50.
 PILOT_STOPPING_POLICY = {'patience': 25, 'min_delta': 0.001, 'min_epochs': 100}
@@ -256,19 +259,21 @@ def restore_checkpoint(path: Path, model, optimizer, scheduler, scaler,
 def implementation_hash() -> str:
     return identity({name: file_hash(Path(__file__).with_name(name))
                      for name in ('train.py', 'training_data.py', 'training_runtime.py',
-                                  'training_options.py', 'preprocessing_cache.py', '__init__.py')})
+                                  'training_options.py', 'preprocessing_cache.py', '__init__.py', 'lesion_sampling.py')})
 
 
 def compatible_config(saved: dict, current: dict) -> bool:
     """Allow exact known fixes, pilot policy adoption and the module refactor only."""
     if saved == current:
         return True
-    if (saved.get('script_sha256') not in (AMP_OVERFLOW_PREDECESSOR, AMP_FORWARD_PREDECESSOR, PILOT_PREDECESSOR, REFACTOR_PREDECESSOR, SCRIPTS_PREDECESSOR, PATHS_PREDECESSOR)
+    if (saved.get('script_sha256') not in (AMP_OVERFLOW_PREDECESSOR, AMP_FORWARD_PREDECESSOR, PILOT_PREDECESSOR, REFACTOR_PREDECESSOR, SCRIPTS_PREDECESSOR, PATHS_PREDECESSOR, SAMPLING_PREDECESSOR)
             or current.get('script_sha256') != implementation_hash()):
         return False
     migrated = {**saved, 'script_sha256': current['script_sha256']}
+    migrated['scientific'] = {**saved.get('scientific', {})}
+    migrated['scientific'].setdefault('patch_sampling', 'voxel')
     if saved['script_sha256'] not in (REFACTOR_PREDECESSOR, SCRIPTS_PREDECESSOR, PATHS_PREDECESSOR) and 'early_stopping' not in saved.get('scientific', {}):
-        migrated['scientific'] = {**saved.get('scientific', {}), 'early_stopping': PILOT_STOPPING_POLICY}
+        migrated['scientific']['early_stopping'] = PILOT_STOPPING_POLICY
     return migrated == current
 
 
@@ -363,6 +368,8 @@ def save_run_record(output: Path, record: dict, resume: bool) -> None:
                                       'Relocation of training modules to scripts/'),
                 PATHS_PREDECESSOR: ('paths', 'Applying verified project-path fix',
                                     'Resolve relative paths from the project root'),
+                SAMPLING_PREDECESSOR: ('sampling', 'Applying verified voxel-sampling continuation',
+                                       'Opt-in lesion-balanced sampler added; original voxel behavior preserved'),
             }
             name, message, reason = migrations[source]
             LOGGER.warning('%s | %s | remaining scientific/resource settings, data identity and versions unchanged',

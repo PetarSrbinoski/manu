@@ -4,19 +4,24 @@
 
 **Blocked by:** None (can start immediately).
 
-**Status:** implemented — awaiting explicit cohort audit execution
+**Status:** complete — bounded training-cohort audit and comparison reviewed
 
-- [ ] Use training patients only and retain the current 2:1 foreground/background policy as the reference.
-- [ ] Record coverage by reference component and predefined lesion-size groups, repeated draws and difficult high-uptake background exposure.
-- [ ] Use a fixed seed and bounded sample budget, preserving uncached random augmentation and original images.
-- [ ] Deliver a reproducible coverage report with examples and specific sampling hypotheses; document how difficult background was identified.
+- [x] Use training patients only and retain the current 2:1 foreground/background policy as the reference.
+- [x] Record coverage by reference component and predefined lesion-size groups, repeated draws and difficult high-uptake background exposure.
+- [x] Use a fixed seed and bounded sample budget, preserving uncached random augmentation and original images.
+- [x] Deliver a reproducible coverage report with examples and specific sampling hypotheses; document how difficult background was identified.
 
-**Implementation evidence (2026-10-25):** A seeded, training-only audit carries
-reference component IDs through the actual crop/pad/affine pipeline and reports
-component appearances by size, repeated centres and high-SUV background exposure.
-Synthetic tests verify deterministic coverage, known geometry and unchanged
-reference inputs. Cohort results and the resulting sampling hypotheses remain
-pending. High SUV outside annotations is a proxy requiring review, not confirmed
-physiological anatomy or an automatically accepted hard negative.
+**Evidence (2026-10-25):** Six seeded fold-0 training examinations, 50 draws per
+examination/policy at 128³, 300 draws per arm. The reference audit additionally
+covered 64³/96³. The verified comparison includes 118 training-grid components:
+53 <1 mL, 49 at 1–<10 mL and 16 ≥10 mL. All 53 small components appeared at least
+once in both arms, but only 3/204 reference foreground draws targeted them versus
+83/207 for uniform component sampling. Small-component mean visibility was
+52.75% versus 54.04%; this does not establish a trained-model recall gain.
+
+The actual MONAI cached/uncached paths are regression-tested. Early balanced
+diagnostics were marked superseded after an uncached candidate-list regeneration
+bug was discovered and fixed; use the verified comparison described in the
+follow-up review. High-SUV background remains a proxy requiring visual review.
 
 **Experiment constraints:** Preserve original images and saved experiments. Use separate outputs and record provenance. Keep training, inner validation and outer test patients separate, including repeat visits. Use inner validation for tuning, preserve native geometry/full field of view and quantitative SUV, and do not silently change the scientific recipe to fit hardware. Ticket approval authorizes planning, not full training, dataset/checkpoint downloads or large installations. Before any such launch, verify existing session authorization; if absent, prepare a concrete run specification for approval. Implementation or smoke-test success alone does not complete a ticket whose deliverable includes experiment results.

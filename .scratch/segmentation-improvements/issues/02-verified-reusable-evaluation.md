@@ -4,7 +4,7 @@
 
 **Blocked by:** None (can start immediately).
 
-**Status:** implemented — CPU verification passed; full-cohort evaluation pending
+**Status:** complete — CPU verification and both full patch-run evaluations passed
 
 - [x] Expose explicit input/output configuration and reject mismatched case identities, invalid masks or incompatible image geometry.
 - [x] Report per-case Dice, lesion detection, unmatched-component FPV/FNV, TMTV and SUVmax, with aggregate results and size-stratified lesion recall.
@@ -16,6 +16,7 @@
 run layouts or explicit input manifests; optional checkpoint inference exports
 inner-validation masks. The CPU suite includes 192 golden values generated with
 the pinned Microsoft functions. Historical real-case agreement has not been
-rerun. Completed 96³/128³ experiments are ready for full-cohort scoring.
+rerun. Both completed 96³/128³ experiments have now been scored on all 145
+examinations with complete manifests and matched case/reference identities.
 
 **Experiment constraints:** Preserve original images and saved experiments. Use separate outputs and record provenance. Keep training, inner validation and outer test patients separate, including repeat visits. Use inner validation for tuning, preserve native geometry/full field of view and quantitative SUV, and do not silently change the scientific recipe to fit hardware. Ticket approval authorizes planning, not full training, dataset/checkpoint downloads or large installations. Before any such launch, verify existing session authorization; if absent, prepare a concrete run specification for approval. Implementation or smoke-test success alone does not complete a ticket whose deliverable includes experiment results.
