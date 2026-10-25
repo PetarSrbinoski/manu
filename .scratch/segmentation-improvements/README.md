@@ -35,3 +35,8 @@ Ticket 15 needs 13 only for an organ-aware rule. Ticket 18 requires an explicit 
 **Shared research constraints:** Preserve original images and saved experiments. Use separate outputs and record provenance. Keep training, inner validation and outer test patients separate, including repeat visits. Use inner validation for tuning, preserve native geometry/full field of view and quantitative SUV, and do not silently change the scientific recipe to fit hardware. Ticket approval authorizes planning, not full training, dataset/checkpoint downloads or large installations. Before any such launch, verify existing session authorization; if absent, prepare a concrete run specification for approval. Implementation or smoke-test success alone does not complete a ticket whose deliverable includes experiment results.
 
 GenAI is outside this backlog until its role, data, comparator and measurable endpoint are agreed with Igor.
+
+Implementation update, 2026-10-25: ticket 02 tooling is implemented with CPU
+verification; full-cohort scoring remains pending. Tickets 05 and 07 have
+implemented, previewable commands; their real-data measurements are still pending.
+Do not treat implemented tools as completed experimental findings.

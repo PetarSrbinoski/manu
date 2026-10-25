@@ -4,11 +4,18 @@
 
 **Blocked by:** None (can start immediately).
 
-**Status:** ready-for-agent
+**Status:** implemented — awaiting explicit GPU benchmark execution
 
 - [ ] Benchmark 64³, 96³ and 128³ with fixed 2 mm spacing and architecture; record hardware and all resolved settings.
 - [ ] Measure training and sliding-window inference memory/time separately, recording failures without silently changing the recipe.
 - [ ] Use isolated diagnostics; test 160³/192³ only on suitable available hardware.
 - [ ] Deliver a feasible-size recommendation and exact bounded reproduction settings; do not claim segmentation improvement from throughput measurements.
+
+**Implementation evidence (2026-10-25):** Previewable bounded workers select the
+largest training and inner-validation examinations, isolate patch/precision
+processes, exercise AMP and forced float32 recovery, record training/validation
+memory and time, and recommend only settings that pass both modes. CPU tests
+verify preview safety and recommendation eligibility. Measurements and benchmark
+recommendations remain pending; the completed training runs are separate evidence.
 
 **Experiment constraints:** Preserve original images and saved experiments. Use separate outputs and record provenance. Keep training, inner validation and outer test patients separate, including repeat visits. Use inner validation for tuning, preserve native geometry/full field of view and quantitative SUV, and do not silently change the scientific recipe to fit hardware. Ticket approval authorizes planning, not full training, dataset/checkpoint downloads or large installations. Before any such launch, verify existing session authorization; if absent, prepare a concrete run specification for approval. Implementation or smoke-test success alone does not complete a ticket whose deliverable includes experiment results.

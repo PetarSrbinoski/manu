@@ -133,6 +133,11 @@ This positive-only cohort cannot establish performance on lesion-negative examin
 
 ## Tests and code
 
+Analysis tools for native-grid lesion/volume/SUV evaluation, patch memory/throughput
+benchmarks, sampling coverage and saved-checkpoint inner-validation predictions
+are described in [ANALYSIS_TOOLS.md](ANALYSIS_TOOLS.md). Each writes an isolated
+report; the training implementation and its resume identities are unchanged.
+
 ```bash
 python -m pip install pytest==9.1.1 mypy==2.1.0
 python -m pytest -q

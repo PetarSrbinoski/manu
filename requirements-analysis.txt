@@ -1,0 +1,2 @@
+# Optional analysis tools; does not change training dependencies.
+connected-components-3d==3.26.1
