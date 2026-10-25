@@ -154,3 +154,10 @@ No full training or real GPU inference was launched in this work. Synthetic CPU
 training was used only for regression checks. Current evidence establishes that
 the sampler changes target exposure as intended; only the pending comparison can
 show whether it improves small-component recall without unacceptable false positives.
+
+**Subsequent requested extension:** ticket 12 adds a third arm with the same
+lesion-balanced sampler and 1 × Dice + 1 × cross-entropy. The launcher now defaults
+to all three arms at 128³, under a separate sampling/loss pilot root; it does not
+repeat 96³. B/A measures sampling and C/B measures loss, with loss-specific guards
+frozen before launch. The pilot plan contains the current commands and output
+layout; the completed CPU audits and error-review findings above are unchanged.

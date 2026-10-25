@@ -38,6 +38,9 @@ PATHS_PREDECESSOR = '9d836647be078742b8d9a615c98387e95027a890d2a74b7bc426744b30a
 # Exact trainer before opt-in component-balanced sampling. Only voxel-mode
 # continuation is allowed; switching sampling always requires fresh outputs.
 SAMPLING_PREDECESSOR = '5dcfa064fe0ae77ceb93f662d3416f05b8f1c8682db318b509e7cf27239e9557'
+# Exact implementation before optional Dice+CE. Existing Dice policies may
+# continue unchanged; adding CE or changing weights requires a fresh experiment.
+LOSS_PREDECESSOR = 'af140d0e766ebf2023b4e82b407774061792857471be53fdf8b039f33b011cc8'
 # Fixed migration contract, independent of user-editable defaults. The pilot had
 # no stopping policy; this adoption cannot stop it before the completed epoch 50.
 PILOT_STOPPING_POLICY = {'patience': 25, 'min_delta': 0.001, 'min_epochs': 100}
@@ -121,6 +124,16 @@ def build_model():
     return UNet(spatial_dims=3, in_channels=2, out_channels=2,
                 channels=settings.MODEL_CHANNELS, strides=settings.MODEL_STRIDES,
                 num_res_units=settings.RESIDUAL_UNITS, norm=settings.NORMALIZATION)
+
+
+def build_loss(args):
+    from monai.losses import DiceLoss, DiceCELoss
+    common = {'to_onehot_y': True, 'softmax': True, 'include_background': settings.LOSS_INCLUDE_BACKGROUND}
+    if args.loss == 'dice':
+        return DiceLoss(**common)
+    if args.loss == 'dice-ce':
+        return DiceCELoss(**common, lambda_dice=args.dice_weight, lambda_ce=args.ce_weight)
+    raise ValueError('Unknown loss')
 
 
 def finite_tensors(tensors, synchronize: bool = False) -> bool:
@@ -266,7 +279,7 @@ def compatible_config(saved: dict, current: dict) -> bool:
     """Allow exact known fixes, pilot policy adoption and the module refactor only."""
     if saved == current:
         return True
-    if (saved.get('script_sha256') not in (AMP_OVERFLOW_PREDECESSOR, AMP_FORWARD_PREDECESSOR, PILOT_PREDECESSOR, REFACTOR_PREDECESSOR, SCRIPTS_PREDECESSOR, PATHS_PREDECESSOR, SAMPLING_PREDECESSOR)
+    if (saved.get('script_sha256') not in (AMP_OVERFLOW_PREDECESSOR, AMP_FORWARD_PREDECESSOR, PILOT_PREDECESSOR, REFACTOR_PREDECESSOR, SCRIPTS_PREDECESSOR, PATHS_PREDECESSOR, SAMPLING_PREDECESSOR, LOSS_PREDECESSOR)
             or current.get('script_sha256') != implementation_hash()):
         return False
     migrated = {**saved, 'script_sha256': current['script_sha256']}
@@ -370,6 +383,8 @@ def save_run_record(output: Path, record: dict, resume: bool) -> None:
                                     'Resolve relative paths from the project root'),
                 SAMPLING_PREDECESSOR: ('sampling', 'Applying verified voxel-sampling continuation',
                                        'Opt-in lesion-balanced sampler added; original voxel behavior preserved'),
+                LOSS_PREDECESSOR: ('loss', 'Applying verified Dice-only continuation',
+                                   'Optional combined loss added; existing Dice loss and sampling unchanged'),
             }
             name, message, reason = migrations[source]
             LOGGER.warning('%s | %s | remaining scientific/resource settings, data identity and versions unchanged',

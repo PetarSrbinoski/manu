@@ -30,6 +30,9 @@ LEARNING_RATE = 2e-4
 WEIGHT_DECAY = 1e-5
 MIN_LEARNING_RATE = 0.0             # Cosine schedule's final rate.
 LOSS_INCLUDE_BACKGROUND = True
+LOSS_NAME = 'dice'                  # Reference; --loss dice-ce opts into the combined loss.
+LOSS_DICE_WEIGHT = 1.0              # Combined loss: 1 × Dice + 1 × cross-entropy.
+LOSS_CE_WEIGHT = 1.0
 MODEL_CHANNELS = (16, 32, 64, 128, 256, 512)
 MODEL_STRIDES = (2, 2, 2, 2, 2)
 RESIDUAL_UNITS = 2
@@ -68,10 +71,12 @@ PATCH_COMPARISON_OUTPUT_ROOT = PROJECT_ROOT / 'runs/patch-comparison'
 PATCH_COMPARISON_SW_BATCH_SIZE = 1  # Conservative for larger patches; fit still needs a smoke check.
 
 # Matched sampling pilots: inspect inner validation before any outer inference.
-SAMPLING_PILOT_OUTPUT_ROOT = PROJECT_ROOT / 'runs/sampling-pilot'
+SAMPLING_PILOT_OUTPUT_ROOT = PROJECT_ROOT / 'runs/sampling-loss-pilot'
 SAMPLING_PILOT_PATCH = 128
 SAMPLING_PILOT_FOLD = 0
-SAMPLING_PILOT_STOP_EPOCH = 50       # Retain EPOCHS=500 cosine schedule in both arms.
+SAMPLING_PILOT_STOP_EPOCH = 50       # Retain EPOCHS=500 cosine schedule in all arms.
 SAMPLING_PILOT_MIN_SMALL_RECALL_GAIN = 0.05  # Exploratory screening: +5 percentage points.
 SAMPLING_PILOT_MAX_FPV_RATIO = 1.10          # At most 10% more mean unmatched FP volume.
 SAMPLING_PILOT_MAX_DICE_DROP = 0.02          # At most 0.02 lower mean foreground Dice.
+LOSS_PILOT_MIN_FPV_REDUCTION = 0.10         # C vs B: at least 10% lower mean unmatched FP volume.
+LOSS_PILOT_MAX_SMALL_RECALL_DROP = 0.02     # At most 2 percentage points lower small-component recall.

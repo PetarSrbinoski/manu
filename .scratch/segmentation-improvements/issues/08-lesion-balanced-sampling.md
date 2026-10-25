@@ -18,7 +18,8 @@ continue only with voxel sampling; default seeded outputs are bitwise unchanged.
 Tests cover real MONAI cached/uncached selection, the 2:1 background policy,
 paired geometry, cache limits, CPU training/resume and frozen pilot criteria.
 
-A matched 128³ fold-0 control/candidate launcher pauses both arms at epoch 50 of
+A matched 128³ fold-0 launcher now includes control, sampling and sampling+loss
+arms and pauses all three at epoch 50 of
 the unchanged 500-epoch schedule. A separate evaluation command exports/scores
 the complete inner-validation sets and applies a predeclared screen (+5 percentage
 points small-component recall, at most +10% mean FPV, at most 0.02 Dice loss).

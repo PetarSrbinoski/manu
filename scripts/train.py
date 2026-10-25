@@ -34,7 +34,7 @@ from scripts.training_options import parse_args, scientific_recipe, resolved_con
 from scripts.training_runtime import (
     AMP_FORWARD_PREDECESSOR, AMP_OVERFLOW_PREDECESSOR, PILOT_PREDECESSOR,
     PILOT_STOPPING_POLICY, REFACTOR_PREDECESSOR, SCRIPTS_PREDECESSOR, PATHS_PREDECESSOR, FORMAT_VERSION, LOGGER, UPSTREAM,
-    atomic_json, atomic_torch_save, build_model, compatible_config,
+    atomic_json, atomic_torch_save, build_model, build_loss, compatible_config,
     early_stopping_status, elapsed_time, environment_info, file_hash, finite_tensors,
     gpu_peak, hardware_info, identity, implementation_hash, inference_forward,
     log_progress, random_state, reset_peak, restore_checkpoint, run_logging,
@@ -48,7 +48,6 @@ def train_fold(args, cases: list[Case], manifest: dict, fold: int, config: dict,
     import torch
     import torch.distributed as dist
     from monai.data import DataLoader
-    from monai.losses import DiceLoss
     from torch.nn.parallel import DistributedDataParallel
     from torch.utils.data.distributed import DistributedSampler
 
@@ -98,7 +97,9 @@ def train_fold(args, cases: list[Case], manifest: dict, fold: int, config: dict,
         optimizer = torch.optim.AdamW(model.parameters(), lr=args.lr, weight_decay=settings.WEIGHT_DECAY)
         scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optimizer, T_max=args.epochs, eta_min=settings.MIN_LEARNING_RATE)
         scaler = torch.amp.GradScaler('cuda', enabled=device.type == 'cuda')
-        loss_function = DiceLoss(to_onehot_y=True, softmax=True, include_background=settings.LOSS_INCLUDE_BACKGROUND)
+        loss_function = build_loss(args)
+        LOGGER.info('Training loss: %s | weights=%s', config['scientific']['loss'],
+                    config['scientific'].get('loss_weights', 'original Dice only'))
         start_epoch, best, history = 0, -1.0, []
         selected_checkpoint = None
         if args.resume and (output / 'last.pt').exists():
@@ -254,6 +255,8 @@ def train_fold(args, cases: list[Case], manifest: dict, fold: int, config: dict,
             validation_memory = gpu_peak(device)
             validation_seconds = time.perf_counter() - validation_start
             loss_key = 'loss_including_background' if settings.LOSS_INCLUDE_BACKGROUND else 'loss_excluding_background'
+            if args.loss == 'dice-ce':
+                loss_key = 'dice_ce_' + loss_key
             row = {'epoch': epoch + 1, loss_key: total_loss / examples,
                    'inner_foreground_dice_2mm': score, 'next_lr': scheduler.get_last_lr()[0],
                    'train_seconds': train_seconds, 'validation_seconds': validation_seconds,

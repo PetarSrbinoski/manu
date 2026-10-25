@@ -146,13 +146,15 @@ def test_empty_reference_rejected_and_pilot_is_preview_only(tmp_path, monkeypatc
     assert commands[0] != commands[1]
 
 
-def test_balanced_training_epoch_resume_matches_uninterrupted(tmp_path, monkeypatch):
+@pytest.mark.parametrize('loss_name', ['dice', 'dice-ce'])
+def test_balanced_training_epoch_resume_matches_uninterrupted(tmp_path, monkeypatch, loss_name):
     from test_training import make_data
     from scripts import train
     root = tmp_path / 'data'
     make_data(root)
     monkeypatch.setattr(train, 'build_model', lambda: torch.nn.Conv3d(2, 2, 1))
     base = ['--smoke', '--epochs', '2', '--smoke-steps', '2', '--sampling', 'lesion-balanced',
+            '--loss', loss_name,
             '--device', 'cpu', '--threads', '1', '--no-disk-cache', '--data-root', str(root),
             '--expected-exams', '10', '--expected-patients', '10']
     train.main(base + ['--output', str(tmp_path / 'continuous')])
@@ -163,7 +165,8 @@ def test_balanced_training_epoch_resume_matches_uninterrupted(tmp_path, monkeypa
     assert left['epoch'] == right['epoch'] == 2
     for key in left['model']:
         torch.testing.assert_close(left['model'][key], right['model'][key], rtol=0, atol=0)
-    assert left['history'][-1]['loss_including_background'] == right['history'][-1]['loss_including_background']
+    key = 'dice_ce_loss_including_background' if loss_name == 'dice-ce' else 'loss_including_background'
+    assert left['history'][-1][key] == right['history'][-1][key]
 
 
 def test_reference_voxel_transform_preserves_original_golden_outputs():
@@ -219,13 +222,16 @@ def test_pilot_evaluation_rejects_confounded_arms_before_inference(tmp_path, mon
     splits = tmp_path / 'splits.json'
     splits.write_text('{}')
     root = tmp_path / 'pilot'
-    for sampling, patch_size in [('voxel', 128), ('lesion-balanced', 96)]:
-        folder = root / sampling / 'fold_0'
+    for arm, (sampling, loss) in pilot.ARMS.items():
+        folder = root / arm / 'fold_0'
         folder.mkdir(parents=True)
         (folder / 'best.pt').touch()
         (folder / 'history.json').write_text(json.dumps([{'epoch': 50}]))
-        config = {'scientific': {'patch_sampling': sampling, 'patch': patch_size},
+        config = {'scientific': {'patch_sampling': sampling, 'patch': 96 if arm == 'lesion-balanced' else 128,
+                                  'loss': 'softmax-Dice+CE' if loss == 'dice-ce' else 'softmax-Dice'},
                   'versions': {'torch': 'test'}, 'script_sha256': 'test'}
+        if loss == 'dice-ce':
+            config['scientific']['loss_weights'] = {'dice': 1., 'cross_entropy': 1.}
         (folder.parent / 'run.json').write_text(json.dumps({'config': config}))
     def unexpected(*args, **kwargs):
         raise AssertionError('Confounded arms must not launch inference')

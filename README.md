@@ -138,10 +138,12 @@ benchmarks, sampling coverage and saved-checkpoint inner-validation predictions
 are described in [ANALYSIS_TOOLS.md](ANALYSIS_TOOLS.md). Each writes an isolated
 report and preserves its inputs.
 
-The opt-in lesion-balanced sampler and matched 128³ inner-validation pilot are
+The opt-in lesion-balanced sampler, Dice+cross-entropy loss and three matched
+128³ inner-validation pilot arms are
 described in [SAMPLING_PILOT_PLAN.md](SAMPLING_PILOT_PLAN.md). The original voxel
-sampler remains the default. An exact recorded source migration allows existing
-voxel runs to resume; changing sampling requires a fresh experiment directory.
+sampler and Dice loss remain the defaults. Exact recorded source migrations
+allow unchanged older runs to resume; changing sampling/loss requires a fresh
+experiment directory. The pilot launcher runs only 128³, never the 96³ experiment.
 
 ```bash
 python -m pip install pytest==9.1.1 mypy==2.1.0

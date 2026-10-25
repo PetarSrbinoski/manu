@@ -34,6 +34,11 @@ def parse_args(argv=None):
     parser.add_argument('--patch', type=int, default=settings.PATCH_SIZE, help='Scientific choice; multiple of 32, at least 64')
     parser.add_argument('--sampling', choices=['voxel', 'lesion-balanced'], default=settings.PATCH_SAMPLING,
                         help='Foreground patch sampling; background policy is unchanged')
+    parser.add_argument('--loss', choices=['dice', 'dice-ce'], default=settings.LOSS_NAME)
+    parser.add_argument('--dice-weight', type=float, default=settings.LOSS_DICE_WEIGHT,
+                        help='Dice coefficient for dice-ce only')
+    parser.add_argument('--ce-weight', type=float, default=settings.LOSS_CE_WEIGHT,
+                        help='Cross-entropy coefficient for dice-ce only')
     parser.add_argument('--batch-size', type=int, default=settings.BATCH_SIZE, help='Training patches per GPU')
     parser.add_argument('--accumulate', type=int, default=settings.GRADIENT_ACCUMULATION, help='Microbatches per optimizer update')
     parser.add_argument('--lr', type=float, default=settings.LEARNING_RATE)
@@ -66,6 +71,8 @@ def parse_args(argv=None):
     args = parser.parse_args(argv)
     if args.sampling not in ('voxel', 'lesion-balanced'):
         parser.error('Invalid configured patch sampling strategy')
+    if args.loss not in ('dice', 'dice-ce') or any(not math.isfinite(v) or v <= 0 for v in (args.dice_weight, args.ce_weight)):
+        parser.error('Expected a valid loss and positive finite combined-loss weights')
     # Relative paths belong to the project, regardless of the launch directory.
     for name in ('data_root', 'output', 'splits', 'disk_cache'):
         value = getattr(args, name)
@@ -164,6 +171,9 @@ def resolved_config(args, split_id: str, environment: dict, device, world: int) 
                  'sw_batch_size': args.sw_batch_size, 'world_size': world, 'threads_per_process': args.threads,
                  'disk_cache': str(args.disk_cache) if args.disk_cache else None,
                  'disk_cache_gib': args.disk_cache_gib, 'min_free_disk_gib': args.min_free_disk_gib}
+    if args.loss == 'dice-ce':
+        config['scientific']['loss'] = 'softmax-Dice+CE'
+        config['scientific']['loss_weights'] = {'dice': args.dice_weight, 'cross_entropy': args.ce_weight}
     if args.sampling == 'lesion-balanced':
         import importlib.metadata
         config['scientific']['lesion_index'] = '18-connected-components-uniform-then-voxel-C-order-v1'

@@ -1,10 +1,21 @@
-# Matched lesion-sampling pilot
+# Three matched 128³ sampling/loss pilots
 
 The completed patch comparison improved Dice and false-positive burden with
 128³ patches, but pooled any-overlap recall of reference components <1 mL remained
-about 19%. This is a proposal to test one additional factor: how foreground
-patch candidates are selected. It is not evidence that the new sampler improves
-segmentation. Original images and the completed experiments are preserved.
+about 19%. This pilot tests sampling and loss in separate matched comparisons.
+Every arm uses 128³; the completed 96³ experiment is not rerun. Neither proposed
+change has yet demonstrated a trained-model improvement. Original images and
+completed experiments are preserved.
+
+| Arm / directory | Foreground sampling | Training loss |
+|---|---|---|
+| A / `voxel` | Original voxel sampling | Original Dice |
+| B / `lesion-balanced` | Uniform reference component, then voxel | Original Dice |
+| C / `lesion-balanced-dice-ce` | Same as B | 1 × Dice + 1 × cross-entropy |
+
+**B versus A** tests sampling. **C versus B** tests loss. C versus A is reported
+descriptively as the combination of both changes. There is no automatic winner
+selection from these three pilot runs.
 
 ## Implemented sampler
 
@@ -37,21 +48,37 @@ size, sampler, data, versions or unknown source histories still fail resume
 checks. Completed 96³/128³ run metadata passes this compatibility check without
 modifying its saved files. The default sampling policy remains voxel.
 
+## Combined loss
+
+The trainer now accepts `--loss dice-ce --dice-weight 1 --ce-weight 1`. MONAI's
+DiceCELoss computes the weighted sum of background-inclusive softmax Dice and
+cross-entropy on raw two-class logits. Loss/reduction computation stays in float32
+inside the existing AMP recovery path. The default remains the original Dice
+loss; changing the objective or either positive weight fails resume compatibility.
+Combined-loss training history uses a distinct `dice_ce_loss_*` key. Its magnitude
+must not be compared directly with Dice-only training loss or interpreted as
+segmentation accuracy. Checkpoint selection still uses inner-validation Dice.
+
+The exact known pre-loss source can continue an unchanged Dice experiment with
+either existing sampling policy. Other source migrations remain narrowly
+restricted. Existing frozen two-arm protocols cannot silently become three-arm
+protocols; the new default output root is separate.
+
 ## Frozen comparison
 
-| Item | Both arms |
+| Item | All three arms |
 |---|---|
 | Patch | 128³, 2 mm grid, full field of view |
 | Fold | 0, existing patient-level train/inner-validation assignments |
-| Network/loss/optimizer | Existing residual U-Net, background-inclusive Dice, AdamW |
+| Network/optimizer | Existing residual U-Net and AdamW; loss differs only for C |
 | Schedule | Original 500-epoch cosine schedule, starting LR 2e-4 |
 | Inspection point | Pause after epoch 50; early stopping cannot trigger before epoch 100 |
 | Update budget | One patch per training examination per epoch, batch 1, accumulation 1 |
 | Selection | Highest inner-validation foreground Dice within the first 50 epochs |
 | Outer test | No outer inference at the pilot pause or during pilot evaluation |
-| Changed factor | Foreground candidate distribution: voxel versus uniform component |
+| Comparisons | B/A changes sampling only; C/B changes loss only |
 
-Both arms start from scratch with the same seed. A new 50-epoch control is needed:
+All three arms start from scratch with the same seed. A new 50-epoch control is needed:
 the completed 128³ run retained best/last checkpoints, not an arbitrary historical
 epoch-50 model. This is not a fresh cosine schedule ending at 50; at epoch 50 the
 500-epoch schedule still uses about 97.6% of its initial learning rate.
@@ -80,6 +107,14 @@ evidence. A one-fold, one-seed, 50-epoch result cannot establish a final gain or
 justify tuning repeatedly against outer scores. If the endpoint has no reference
 small components, the screen is inconclusive and does not advance automatically.
 
+For the **C versus B loss comparison**, the primary endpoint is mean native-grid
+unmatched-component FP volume. Advance the combined loss to further validation
+only if mean FP volume falls by at least **10%**, small-component C1 recall falls
+by no more than **0.02 absolute**, and mean Dice falls by no more than **0.02**.
+These additional research criteria are frozen before launch. They reflect the
+loss hypothesis (better background rejection) and do not replace the sampling
+comparison's recall endpoint. Report all outcomes even when a screen fails.
+
 ## Commands
 
 From the project root:
@@ -88,25 +123,31 @@ From the project root:
 # Preview only; prints commands and starts nothing.
 .venv/bin/python scripts/train_sampling_pilot.py
 
-# Optional short execution checks for both policies.
+# Optional short execution checks for all three 128³ arms.
 .venv/bin/python scripts/train_sampling_pilot.py --smoke
 
-# Two sequential fold-0 pilots, each pausing at epoch 50/500.
+# Three sequential fold-0 pilots, each pausing at epoch 50/500.
 .venv/bin/python scripts/train_sampling_pilot.py --run
 
 # Resume after interruption with unchanged settings/protocol.
 .venv/bin/python scripts/train_sampling_pilot.py --run --resume
 
-# Once BOTH pilots reach epoch 50, export their complete inner-validation masks,
-# compute common native-grid metrics and apply the predefined screen.
+# Once ALL THREE reach epoch 50, score the complete inner-validation sets.
 .venv/bin/python scripts/train_sampling_pilot.py --evaluate
 ```
 
-Outputs: `runs/sampling-pilot/voxel/`, `lesion-balanced/`, `pilot_protocol.json`
-and `inner-review/`. The last contains the two prediction/evaluation packages
-and `comparison.json`. The evaluator checks the two arms' source/settings and
-case/reference identities before reporting a comparison. Repeated evaluation
+Outputs are under **`runs/sampling-loss-pilot/`**: `voxel/`, `lesion-balanced/`,
+`lesion-balanced-dice-ce/`, `pilot_protocol.json` and `inner-review/`. The last
+contains all three prediction/evaluation packages and `comparison.json`, with
+separate `sampling_B_vs_A`, `loss_C_vs_B` and `combined_C_vs_A_descriptive` entries.
+The evaluator rejects differences beyond the intended factor in each comparison
+and checks all three case/reference identities. Repeated evaluation
 uses a fresh `--review-output`. Keep the terminal/WSL alive during GPU workloads.
+
+To run just one arm, add `--arm voxel`, `--arm lesion-balanced`, or
+`--arm lesion-balanced-dice-ce`. Resume later with the same root and protocol.
+Evaluation requires all three arms. `--strategy` remains an alias for `--arm`;
+legacy `--arm both` selects A/B only. The default is all three arms, all at 128³.
 
 No real-cohort pilot training or GPU inference was launched while implementing
 this plan. The next training action belongs to the user, as requested earlier.

@@ -40,7 +40,9 @@ Implementation update, 2026-10-25: ticket 02 tooling is implemented with CPU
 verification and both 145-examination patch evaluations are complete. Ticket 07
 is complete as a bounded six-examination training-only audit, including a verified
 comparison. Ticket 08 is implemented/CPU-tested with a frozen paired pilot and
-inner-validation scoring command; the real pilot remains pending user launch.
+inner-validation scoring command; ticket 12 extends this to three 128³-only arms
+with a Dice+CE candidate and separate sampling/loss comparisons. Both real pilot
+outcomes remain pending user launch.
 Ticket 05 benchmark tooling is implemented, with GPU measurements still pending.
 The missed-lesion/regression/SUVmax review is recorded in the follow-up report.
 Do not treat sampler frequencies or synthetic tests as trained-model improvement.
