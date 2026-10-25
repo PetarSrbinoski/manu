@@ -2,7 +2,6 @@
 from __future__ import annotations
 
 import argparse
-import json
 from pathlib import Path
 import sys
 
@@ -10,16 +9,8 @@ if __package__ in (None, ''):
     sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 import numpy as np
-from scripts.analysis_common import new_report, provenance, write_csv
+from scripts.analysis_common import load_evaluation, match_evaluations, new_report, provenance, write_csv
 from scripts.training_runtime import atomic_json, file_hash
-
-
-def load_evaluation(folder):
-    manifest = json.loads((folder / 'manifest.json').read_text())
-    rows = json.loads((folder / 'metrics.json').read_text())
-    if manifest['status'] != 'complete' or len(rows) != len({r['case_id'] for r in rows}):
-        raise ValueError('Evaluation must be complete with unique case identities')
-    return {r['case_id']: r for r in rows}, {r['case_id']: r for r in manifest['cases']}
 
 
 def choose_examples(a, b, count):
@@ -156,11 +147,7 @@ def main(argv=None):
         parser.error('Positive per-category count required')
     a, inputs_a = load_evaluation(args.evaluation96)
     b, inputs_b = load_evaluation(args.evaluation128)
-    if a.keys() != b.keys():
-        raise ValueError('Evaluation case IDs differ')
-    for key in a:
-        if any(a[key][field] != b[key][field] for field in ('patient', 'GT_SUVmax', 'GT_TMTV_ml', 'gt_lesions')):
-            raise ValueError('Reference case metrics differ')
+    match_evaluations((a, inputs_a), (b, inputs_b))
     output = new_report(args.output, [args.data_root, args.evaluation96, args.evaluation128])
     record = provenance(status='running', evaluation96_sha256=file_hash(args.evaluation96 / 'metrics.json'),
                         evaluation128_sha256=file_hash(args.evaluation128 / 'metrics.json'))
@@ -169,9 +156,6 @@ def main(argv=None):
     sources, examples = [], []
     for i, (case, reasons) in enumerate(selected.items(), 1):
         print(f'Review {i}/{len(selected)}: {case}; {reasons}', flush=True)
-        for field in ('pet', 'reference'):
-            if inputs_a[case][field]['sha256'] != inputs_b[case][field]['sha256']:
-                raise ValueError('Reference/PET input hashes differ')
         paths = {'ct': args.data_root / case / 'CTres.nii.gz',
                  'pet': Path(inputs_a[case]['pet']['path']), 'gt': Path(inputs_a[case]['reference']['path']),
                  'p96': Path(inputs_a[case]['prediction']['path']), 'p128': Path(inputs_b[case]['prediction']['path'])}
