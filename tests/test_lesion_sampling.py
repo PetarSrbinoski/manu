@@ -146,20 +146,33 @@ def test_empty_reference_rejected_and_pilot_is_preview_only(tmp_path, monkeypatc
     assert commands[0] != commands[1]
 
 
-@pytest.mark.parametrize('loss_name', ['dice', 'dice-ce'])
-def test_balanced_training_epoch_resume_matches_uninterrupted(tmp_path, monkeypatch, loss_name):
+@pytest.mark.parametrize('sampling,loss_name', [('voxel', 'dice'), ('lesion-balanced', 'dice'),
+                                             ('lesion-balanced', 'dice-ce')])
+def test_training_epoch_resume_across_cleanup_matches_uninterrupted(tmp_path, monkeypatch, sampling, loss_name):
     from test_training import make_data
     from scripts import train
+    from scripts.training_runtime import CLEANUP_PREDECESSOR
     root = tmp_path / 'data'
     make_data(root)
     monkeypatch.setattr(train, 'build_model', lambda: torch.nn.Conv3d(2, 2, 1))
-    base = ['--smoke', '--epochs', '2', '--smoke-steps', '2', '--sampling', 'lesion-balanced',
+    base = ['--smoke', '--epochs', '2', '--smoke-steps', '2', '--sampling', sampling,
             '--loss', loss_name,
             '--device', 'cpu', '--threads', '1', '--no-disk-cache', '--data-root', str(root),
             '--expected-exams', '10', '--expected-patients', '10']
     train.main(base + ['--output', str(tmp_path / 'continuous')])
     train.main(base + ['--output', str(tmp_path / 'resumed'), '--stop-after-epoch', '1'])
+    # Exercise the exact pre-cleanup checkpoint/run migration on temporary data.
+    output = tmp_path / 'resumed'
+    for path in (output / 'fold_0').glob('*.pt'):
+        state = torch.load(path, weights_only=False)
+        state['config']['script_sha256'] = CLEANUP_PREDECESSOR
+        torch.save(state, path)
+    record = json.loads((output / 'run.json').read_text())
+    record['config']['script_sha256'] = CLEANUP_PREDECESSOR
+    (output / 'run.json').write_text(json.dumps(record))
     train.main(base + ['--output', str(tmp_path / 'resumed'), '--resume'])
+    migration = json.loads((output / 'cleanup-resume-migration.json').read_text())
+    assert migration['previous_run'] == record
     left = torch.load(tmp_path / 'continuous/fold_0/last.pt', weights_only=False)
     right = torch.load(tmp_path / 'resumed/fold_0/last.pt', weights_only=False)
     assert left['epoch'] == right['epoch'] == 2

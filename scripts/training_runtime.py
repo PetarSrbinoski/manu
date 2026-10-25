@@ -41,6 +41,8 @@ SAMPLING_PREDECESSOR = '5dcfa064fe0ae77ceb93f662d3416f05b8f1c8682db318b509e7cf27
 # Exact implementation before optional Dice+CE. Existing Dice policies may
 # continue unchanged; adding CE or changing weights requires a fresh experiment.
 LOSS_PREDECESSOR = 'af140d0e766ebf2023b4e82b407774061792857471be53fdf8b039f33b011cc8'
+# Exact trainer before removing unused forwarding imports from train.py.
+CLEANUP_PREDECESSOR = '4bcbfa2cc1457a49e1d4cee3deaaba133ababe842f870b28f933a91e8cdbc972'
 # Fixed migration contract, independent of user-editable defaults. The pilot had
 # no stopping policy; this adoption cannot stop it before the completed epoch 50.
 PILOT_STOPPING_POLICY = {'patience': 25, 'min_delta': 0.001, 'min_epochs': 100}
@@ -276,13 +278,15 @@ def implementation_hash() -> str:
 
 
 def compatible_config(saved: dict, current: dict) -> bool:
-    """Allow exact known fixes, pilot policy adoption and the module refactor only."""
+    """Allow only verified source migrations with matching experiment settings."""
     if saved == current:
         return True
-    if (saved.get('script_sha256') not in (AMP_OVERFLOW_PREDECESSOR, AMP_FORWARD_PREDECESSOR, PILOT_PREDECESSOR, REFACTOR_PREDECESSOR, SCRIPTS_PREDECESSOR, PATHS_PREDECESSOR, SAMPLING_PREDECESSOR, LOSS_PREDECESSOR)
+    if (saved.get('script_sha256') not in (AMP_OVERFLOW_PREDECESSOR, AMP_FORWARD_PREDECESSOR, PILOT_PREDECESSOR, REFACTOR_PREDECESSOR, SCRIPTS_PREDECESSOR, PATHS_PREDECESSOR, SAMPLING_PREDECESSOR, LOSS_PREDECESSOR, CLEANUP_PREDECESSOR)
             or current.get('script_sha256') != implementation_hash()):
         return False
     migrated = {**saved, 'script_sha256': current['script_sha256']}
+    if saved['script_sha256'] == CLEANUP_PREDECESSOR:
+        return migrated == current
     migrated['scientific'] = {**saved.get('scientific', {})}
     migrated['scientific'].setdefault('patch_sampling', 'voxel')
     if saved['script_sha256'] not in (REFACTOR_PREDECESSOR, SCRIPTS_PREDECESSOR, PATHS_PREDECESSOR) and 'early_stopping' not in saved.get('scientific', {}):
@@ -385,6 +389,8 @@ def save_run_record(output: Path, record: dict, resume: bool) -> None:
                                        'Opt-in lesion-balanced sampler added; original voxel behavior preserved'),
                 LOSS_PREDECESSOR: ('loss', 'Applying verified Dice-only continuation',
                                    'Optional combined loss added; existing Dice loss and sampling unchanged'),
+                CLEANUP_PREDECESSOR: ('cleanup', 'Applying verified training-import cleanup',
+                                      'Unused forwarding imports removed; training behavior unchanged'),
             }
             name, message, reason = migrations[source]
             LOGGER.warning('%s | %s | remaining scientific/resource settings, data identity and versions unchanged',
