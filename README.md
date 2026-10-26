@@ -107,6 +107,18 @@ python scripts/train.py --fold 0 --resume --stop-after-epoch 100
 
 Resume rejects incompatible settings, data, software versions and unknown source changes. Only the exact known AMP fixes, pilot stopping-policy upgrade, refactor, directory move and project-path fix are allowed by [training_runtime.py](scripts/training_runtime.py); accepted upgrades write `*-resume-migration.json` records.
 
+The architecture cleanup also permits the exact pre-cleanup trainer hash
+`4bcbfa2cc1457a49e1d4cee3deaaba133ababe842f870b28f933a91e8cdbc972`:
+only unused forwarding imports changed in the training loop module. Scientific,
+resource and version settings must still match; continuation records a
+`cleanup-resume-migration.json`. The pilot launcher accepts the exact paired
+pre-cleanup trainer/launcher hashes with all other protocol fields unchanged,
+retains the original `pilot_protocol.json`, and records a separate
+`cleanup-protocol-migration.json`. Review and pilot comparisons share completion,
+unique-examination and reference/PET identity checks in `analysis_common.py`.
+Verification covered identical training function bodies, 10,368 unchanged pilot
+scoring outputs and synthetic checkpoint continuation for all three pilot arms.
+
 ## Results
 
 Outputs default to `runs/full-training/`:
@@ -144,6 +156,12 @@ described in [SAMPLING_PILOT_PLAN.md](SAMPLING_PILOT_PLAN.md). The original voxe
 sampler and Dice loss remain the defaults. Exact recorded source migrations
 allow unchanged older runs to resume; changing sampling/loss requires a fresh
 experiment directory. The pilot launcher runs only 128³, never the 96³ experiment.
+
+The user completed all three 50-epoch pilots and evaluation on 23 inner-validation
+examinations. Dice improved (0.516 → 0.531 → 0.565), but small-lesion detection
+declined (37 → 30 → 17 of 348); neither candidate passed the frozen screen.
+See [completed pilot results and next steps](SAMPLING_PILOT_RESULTS.md).
+A new five-fold candidate run and a fourth loss-only arm have not been launched.
 
 ```bash
 python -m pip install pytest==9.1.1 mypy==2.1.0
