@@ -10,7 +10,7 @@ from monai.losses import DiceLoss
 import config
 from scripts.training_options import parse_args, resolved_config
 from scripts.training_runtime import (build_loss, training_loss, implementation_hash,
-                                      compatible_config, LOSS_PREDECESSOR)
+                                      compatible_config, LOSS_PREDECESSOR, CLEANUP_PREDECESSOR)
 from scripts import train_sampling_pilot as pilot
 
 
@@ -57,6 +57,60 @@ def test_loss_metadata_and_weights_prevent_incompatible_resume():
     old['script_sha256'] = LOSS_PREDECESSOR
     assert compatible_config(old, dice)
     assert not compatible_config(old, combined)
+
+
+@pytest.mark.parametrize('sampling,loss', [('voxel', 'dice'), ('lesion-balanced', 'dice'),
+                                        ('lesion-balanced', 'dice-ce')])
+def test_cleanup_resume_only_changes_the_exact_source_identity(sampling, loss):
+    env = {'packages': {'torch': 'test'}, 'script_sha256': implementation_hash()}
+    args = parse_args(['--fold', '0', '--sampling', sampling, '--loss', loss])
+    current = resolved_config(args, 'split', env, torch.device('cpu'), 1)[0]
+    saved = deepcopy(current)
+    saved['script_sha256'] = CLEANUP_PREDECESSOR
+    assert compatible_config(saved, current)
+    for section, field, value in [('scientific', 'lr', 1.), ('scientific', 'patch', 256),
+                                  ('scientific', 'loss', 'other'), ('versions', 'torch', 'other'),
+                                  (None, 'threads', 1), (None, 'split_id', 'other'),
+                                  (None, 'script_sha256', 'unknown')]:
+        changed = deepcopy(saved)
+        (changed[section] if section else changed)[field] = value
+        assert not compatible_config(changed, current)
+    missing_sampling = deepcopy(saved)
+    del missing_sampling['scientific']['patch_sampling']
+    assert not compatible_config(missing_sampling, current)
+
+
+@pytest.mark.parametrize('change', [None, 'trainer', 'launcher', 'config', 'metrics', 'criteria', 'commands'])
+def test_cleanup_protocol_migration_preserves_original_and_rejects_other_changes(tmp_path, change):
+    splits = tmp_path / 'splits.json'
+    splits.write_text('{}')
+    root = tmp_path / 'pilot'
+    current = pilot.freeze_protocol(root, splits)
+    saved = deepcopy(current)
+    saved['trainer_sha256'] = CLEANUP_PREDECESSOR
+    saved['pilot_launcher_sha256'] = pilot.CLEANUP_PILOT_PREDECESSOR
+    if change in ('trainer', 'launcher', 'config'):
+        field = {'trainer': 'trainer_sha256', 'launcher': 'pilot_launcher_sha256', 'config': 'config_sha256'}[change]
+        saved[field] = 'unknown'
+    elif change == 'metrics':
+        saved['metric_source_sha256']['segmentation_metrics.py'] = 'unknown'
+    elif change == 'criteria':
+        saved['criteria']['minimum_small_recall_gain'] = .9
+    elif change == 'commands':
+        saved['commands'][0].append('--changed')
+    path = root / 'pilot_protocol.json'
+    original = json.dumps(saved)
+    path.write_text(original)
+    if change:
+        with pytest.raises(ValueError, match='changed'):
+            pilot.freeze_protocol(root, splits, require_existing=True)
+        assert not (root / 'cleanup-protocol-migration.json').exists()
+    else:
+        assert pilot.freeze_protocol(root, splits, require_existing=True) == saved
+        migration = json.loads((root / 'cleanup-protocol-migration.json').read_text())
+        assert migration['original_protocol'] == saved
+        assert migration['current_protocol'] == current
+    assert path.read_text() == original
 
 
 def test_combined_loss_float32_retry_restores_buffers_and_gradients():
@@ -135,7 +189,8 @@ def test_loss_screen_requires_fp_reduction_and_recall_dice_guards():
     assert pilot.comparison(summary(.2, 100, .5), summary(.25, 110, .48))['advance_to_further_validation']
 
 
-def test_three_arm_evaluation_routes_and_scores_each_comparison(tmp_path, monkeypatch):
+@pytest.mark.parametrize('artifact_problem', [None, 'incomplete', 'duplicate', 'reference'])
+def test_three_arm_evaluation_routes_and_scores_each_comparison(tmp_path, monkeypatch, artifact_problem):
     env = {'packages': {'torch': 'test'}, 'script_sha256': implementation_hash()}
     for arm, (sampling, loss) in pilot.ARMS.items():
         folder = tmp_path / 'pilot' / arm / 'fold_0'
@@ -163,8 +218,24 @@ def test_three_arm_evaluation_routes_and_scores_each_comparison(tmp_path, monkey
                        'per_exam': {'FPV_ml': {'mean': fp}, 'DSC': {'mean': dice}}}
             (output / 'summary.json').write_text(json.dumps(summary))
             row = {'case_id': 'p/e', 'patient': 'p', 'GT_TMTV_ml': 1., 'GT_SUVmax': 4., 'gt_lesions': 10}
-            (output / 'metrics.json').write_text(json.dumps([row]))
+            rows = [row, row] if arm == 'lesion-balanced' and artifact_problem == 'duplicate' else [row]
+            (output / 'metrics.json').write_text(json.dumps(rows))
+            source = {'case_id': 'p/e', 'patient': 'p',
+                      'pet': {'sha256': 'a' * 64}, 'reference': {'sha256': 'b' * 64}}
+            status = 'complete'
+            if arm == 'lesion-balanced':
+                if artifact_problem == 'incomplete':
+                    status = 'running'
+                elif artifact_problem == 'reference':
+                    source['reference']['sha256'] = 'c' * 64
+            (output / 'manifest.json').write_text(json.dumps({'status': status, 'cases': [source]}))
     monkeypatch.setattr(pilot.subprocess, 'run', child)
+    if artifact_problem:
+        with pytest.raises(ValueError):
+            pilot.evaluate_pilot(tmp_path / 'pilot', splits, tmp_path / 'review')
+        assert not (tmp_path / 'review/comparison.json').exists()
+        assert json.loads((tmp_path / 'review/manifest.json').read_text())['status'] == 'running'
+        return
     pilot.evaluate_pilot(tmp_path / 'pilot', splits, tmp_path / 'review')
     result = json.loads((tmp_path / 'review/comparison.json').read_text())
     assert len(launched) == 6

@@ -16,6 +16,8 @@ import config as settings
 ARMS = {'voxel': ('voxel', 'dice'),
         'lesion-balanced': ('lesion-balanced', 'dice'),
         'lesion-balanced-dice-ce': ('lesion-balanced', 'dice-ce')}
+# Exact launcher before shared evaluation checks and scoring cleanup.
+CLEANUP_PILOT_PREDECESSOR = 'f23dd213d83fc553416f4ba83c1e001c70ae113c2a57b7c2578a2595bc0f4bae'
 
 
 def pilot_commands(root, splits, strategy, smoke, resume):
@@ -38,26 +40,33 @@ def pilot_commands(root, splits, strategy, smoke, resume):
         yield command
 
 
-def comparison(reference, balanced):
+def _metric_changes(reference, balanced):
     old = reference['pooled_detection']['C1']['size_strata']['small_lt1ml']['recall']
     new = balanced['pooled_detection']['C1']['size_strata']['small_lt1ml']['recall']
     old_fp = reference['per_exam']['FPV_ml']['mean']
     new_fp = balanced['per_exam']['FPV_ml']['mean']
     dice_delta = balanced['per_exam']['DSC']['mean'] - reference['per_exam']['DSC']['mean']
     gain = new - old if old is not None and new is not None else None
-    checks = {'small_recall_gain': gain is not None and gain + 1e-12 >= settings.SAMPLING_PILOT_MIN_SMALL_RECALL_GAIN,
-              'mean_FPV_guard': new_fp <= old_fp * settings.SAMPLING_PILOT_MAX_FPV_RATIO + 1e-12,
-              'mean_Dice_guard': dice_delta + 1e-12 >= -settings.SAMPLING_PILOT_MAX_DICE_DROP}
     return {'small_recall_delta': gain, 'mean_FPV_reference_ml': old_fp, 'mean_FPV_candidate_ml': new_fp,
-            'mean_Dice_delta': dice_delta, 'checks': checks, 'advance_to_further_validation': all(checks.values()),
-            'criteria': {'minimum_small_recall_gain': settings.SAMPLING_PILOT_MIN_SMALL_RECALL_GAIN,
-                         'maximum_mean_FPV_ratio': settings.SAMPLING_PILOT_MAX_FPV_RATIO,
-                         'maximum_mean_Dice_drop': settings.SAMPLING_PILOT_MAX_DICE_DROP},
+            'mean_Dice_delta': dice_delta,
             'interpretation': 'Exploratory inner-validation screen, not clinical thresholds or final held-out evidence.'}
 
 
+def comparison(reference, balanced):
+    result = _metric_changes(reference, balanced)
+    gain = result['small_recall_delta']
+    old_fp, new_fp = result['mean_FPV_reference_ml'], result['mean_FPV_candidate_ml']
+    checks = {'small_recall_gain': gain is not None and gain + 1e-12 >= settings.SAMPLING_PILOT_MIN_SMALL_RECALL_GAIN,
+              'mean_FPV_guard': new_fp <= old_fp * settings.SAMPLING_PILOT_MAX_FPV_RATIO + 1e-12,
+              'mean_Dice_guard': result['mean_Dice_delta'] + 1e-12 >= -settings.SAMPLING_PILOT_MAX_DICE_DROP}
+    return {**result, 'checks': checks, 'advance_to_further_validation': all(checks.values()),
+            'criteria': {'minimum_small_recall_gain': settings.SAMPLING_PILOT_MIN_SMALL_RECALL_GAIN,
+                         'maximum_mean_FPV_ratio': settings.SAMPLING_PILOT_MAX_FPV_RATIO,
+                         'maximum_mean_Dice_drop': settings.SAMPLING_PILOT_MAX_DICE_DROP}}
+
+
 def loss_comparison(reference, candidate):
-    result = comparison(reference, candidate)
+    result = _metric_changes(reference, candidate)
     old_fp, new_fp = result['mean_FPV_reference_ml'], result['mean_FPV_candidate_ml']
     reduction = (old_fp - new_fp) / old_fp if old_fp > 0 else None
     delta = result['small_recall_delta']
@@ -72,7 +81,7 @@ def loss_comparison(reference, candidate):
 
 
 def freeze_protocol(root, splits, require_existing=False):
-    from scripts.training_runtime import file_hash, implementation_hash
+    from scripts.training_runtime import CLEANUP_PREDECESSOR, atomic_json, file_hash, implementation_hash
     protocol = {'fold': settings.SAMPLING_PILOT_FOLD, 'patch': settings.SAMPLING_PILOT_PATCH,
                 'inspection_epoch': settings.SAMPLING_PILOT_STOP_EPOCH, 'schedule_epochs': settings.EPOCHS,
                 'splits_sha256': file_hash(splits), 'trainer_sha256': implementation_hash(),
@@ -94,8 +103,23 @@ def freeze_protocol(root, splits, require_existing=False):
                 'interpretation': 'Research screening criteria, not clinical thresholds or final evidence'}
     path = root / 'pilot_protocol.json'
     if path.exists():
-        if json.loads(path.read_text()) != protocol:
+        saved = json.loads(path.read_text())
+        if saved == protocol:
+            return saved
+        migrated = {**saved}
+        if (saved.get('trainer_sha256'), saved.get('pilot_launcher_sha256')) == (
+                CLEANUP_PREDECESSOR, CLEANUP_PILOT_PREDECESSOR):
+            migrated.update(trainer_sha256=protocol['trainer_sha256'],
+                            pilot_launcher_sha256=protocol['pilot_launcher_sha256'])
+        if migrated != protocol:
             raise ValueError('Pilot protocol/source/settings changed; preserve this experiment and choose a fresh root')
+        migration = root / 'cleanup-protocol-migration.json'
+        if not migration.exists():
+            atomic_json(migration, {'reason': 'Verified import/scoring cleanup and shared evaluation integrity checks; '
+                                             'scientific settings, thresholds and metric definitions unchanged',
+                                    'original_protocol': saved, 'current_protocol': protocol})
+        print('Using verified cleanup migration; original pilot protocol preserved.', flush=True)
+        return saved
     else:
         if require_existing:
             raise ValueError('Missing pre-training pilot protocol; cannot create one retroactively during evaluation')
@@ -131,7 +155,7 @@ def validate_arm_configs(configs):
 
 
 def evaluate_pilot(root, splits, review):
-    from scripts.analysis_common import new_report, provenance
+    from scripts.analysis_common import load_evaluation, match_evaluations, new_report, provenance
     from scripts.training_runtime import atomic_json, file_hash
     configs = {}
     for arm in ARMS:
@@ -147,7 +171,7 @@ def evaluate_pilot(root, splits, review):
     record = provenance(status='running', role='validation', splits_sha256=file_hash(splits),
                         stop_epoch=settings.SAMPLING_PILOT_STOP_EPOCH)
     atomic_json(output / 'manifest.json', record)
-    summaries, case_rows = {}, {}
+    summaries, evaluations = {}, {}
     for arm in ARMS:
         checkpoint = root / arm / f'fold_{settings.SAMPLING_PILOT_FOLD}' / 'best.pt'
         predictions = output / f'{arm}-predictions'
@@ -163,13 +187,9 @@ def evaluate_pilot(root, splits, review):
             print(shlex.join(command), flush=True)
             subprocess.run(command, cwd=settings.PROJECT_ROOT, check=True)
         summaries[arm] = json.loads((metrics / 'summary.json').read_text())
-        case_rows[arm] = {r['case_id']: r for r in json.loads((metrics / 'metrics.json').read_text())}
-    reference = case_rows['voxel']
-    for arm in ARMS:
-        rows = case_rows[arm]
-        if reference.keys() != rows.keys() or any(reference[k][field] != rows[k][field]
-                for k in reference for field in ('patient', 'GT_TMTV_ml', 'GT_SUVmax', 'gt_lesions')):
-            raise ValueError('Pilot evaluation cases/references differ')
+        evaluations[arm] = load_evaluation(metrics)
+    for arm in list(ARMS)[1:]:
+        match_evaluations(evaluations['voxel'], evaluations[arm])
     a, b, c = (summaries[arm] for arm in ARMS)
     atomic_json(output / 'comparison.json', {
         'sampling_B_vs_A': comparison(a, b), 'loss_C_vs_B': loss_comparison(b, c),
