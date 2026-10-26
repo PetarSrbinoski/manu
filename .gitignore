@@ -5,4 +5,5 @@ runs/
 __pycache__/
 *.pyc
 *.md
+!architecture-cleanup-and-pilot-results-summary.md
 tests/

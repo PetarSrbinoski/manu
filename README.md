@@ -160,7 +160,7 @@ experiment directory. The pilot launcher runs only 128³, never the 96³ experim
 The user completed all three 50-epoch pilots and evaluation on 23 inner-validation
 examinations. Dice improved (0.516 → 0.531 → 0.565), but small-lesion detection
 declined (37 → 30 → 17 of 348); neither candidate passed the frozen screen.
-See [completed pilot results and next steps](SAMPLING_PILOT_RESULTS.md).
+See [completed pilot results and next steps](architecture-cleanup-and-pilot-results-summary.md).
 A new five-fold candidate run and a fourth loss-only arm have not been launched.
 
 ```bash

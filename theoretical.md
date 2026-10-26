@@ -15,7 +15,7 @@ Our completed 128³ pilot demonstrates why Dice alone is insufficient. The
 balanced-sampling plus Dice/CE model improved mean Dice from 0.516 to 0.565,
 but detected only 17 of 348 small reference lesions, compared with 37 for the
 original model. These are results from 23 inner-validation examinations in one
-fold, not independent test performance. See [the pilot results](SAMPLING_PILOT_RESULTS.md).
+fold, not independent test performance. See [the pilot results](architecture-cleanup-and-pilot-results-summary.md).
 
 The objective must account for finding lesions as well as drawing their boundaries.
 

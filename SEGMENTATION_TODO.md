@@ -166,5 +166,5 @@ The user completed three 128³ fold-0 pilots through epoch 50 and evaluated all
 comparisons, but neither candidate passed its predefined screen. Dice and FP
 volume improved while small-lesion recall declined. Checked experiment items
 do not mean adoption of their candidate recipes. See
-[results, limitations and proposed next work](SAMPLING_PILOT_RESULTS.md).
+[results, limitations and proposed next work](architecture-cleanup-and-pilot-results-summary.md).
 No 96³ rerun or new five-fold candidate experiment was performed.
